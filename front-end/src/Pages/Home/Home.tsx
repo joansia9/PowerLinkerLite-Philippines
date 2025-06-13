@@ -7,11 +7,13 @@ import { Tree } from "../../Models/Tree";
 import useFormatData from "../../Services/useFormatData";
 import submitMatch from "../../Services/submitMatch";
 import useGetHint from "../../Services/useGetHint";
+import { useTranslation } from 'react-i18next';
 
 //Shows a comparison table for each possible ark/pid attachment
 // also displays as add/match person table for when there is no match
 // has an attach all button at the bottom that greys out if attaching is somehow not possible
 export function Home() {
+  const { t } = useTranslation();
   const [hintsDone, setHintsDone] : [number, Function] = useState(0);
   const [hintsRequested, setHintsRequested]: [number, Function] = useState(0);
   const [hintsInFlight, setHintsInFlight] = useState<number>(0);
@@ -39,13 +41,13 @@ export function Home() {
   return (
       <main className="page-home">
         <header>
-          <h2>Match record information to families on the tree</h2>
+          <h2>{t('home.title') as string}</h2>
         </header>
         {typeof data[0] === "string" ? (
           <div>
             <div className="hint-message">{data[0]}</div>
             {hintsDone > 0 ? (
-              <h3 className="counter">{"You completed " + hintsDone + " hints."}</h3>
+              <h3 className="counter">{t('home.hintMessage', { count: hintsDone }) as string}</h3>
             ) : (
               <div/>
             )}
@@ -54,7 +56,7 @@ export function Home() {
           <div>
             <div className="hint-message">{data[0].message}</div>
             {hintsDone > 0 ? (
-              <h3 className="counter">{"You completed " + hintsDone + " hints."}</h3>
+              <h3 className="counter">{t('home.hintMessage', { count: hintsDone }) as string}</h3>
             ) : (
               <div/>
             )}

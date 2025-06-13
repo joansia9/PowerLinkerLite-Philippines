@@ -1,7 +1,9 @@
 import { useState } from "react";
 import uploadHints from "../../Services/uploadHints";
+import { useTranslation } from 'react-i18next';
 
 export function Upload() {
+  const { t } = useTranslation();
   const [csvUri, setUri] = useState<string>("");
   const [message, setMessage] = useState<string>("");
 
@@ -9,7 +11,7 @@ export function Upload() {
     <>
       <div>
         <header>
-          <h1>Upload</h1>
+          <h1>{t('upload.title') as string}</h1>
         </header>
 
         <form
@@ -21,12 +23,12 @@ export function Upload() {
         >
           <input
             type="text"
-            placeholder="S3 file name"
+            placeholder={t('upload.dragAndDrop')}
             value={csvUri}
             onChange={(e) => setUri(e.target.value)}
           />
           <button type="submit" className="primary">
-            Submit
+            {t('upload.browse') as string}
           </button>
           <span>{message}</span>
         </form>
