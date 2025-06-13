@@ -15,7 +15,12 @@ const resources = {
         hintMessage: "You have completed {{count}} hints.",
         createNew: "Create New"
       },
-      
+      upload: {
+        title: "Upload Documents",
+        dragAndDrop: "Drag and drop files here",
+        or: "or",
+        browse: "Browse Files"
+      },
       footer: {
         copyright: "Copyright © BYU Record Linking Lab 2023. All rights reserved."
       }
@@ -32,9 +37,36 @@ const resources = {
         hintMessage: "Nakumpleto mo ang {{count}} na mga hint.",
         createNew: "Gumawa ng Bago"
       },
-      
+      upload: {
+        title: "Mag-upload ng mga Dokumento",
+        dragAndDrop: "I-drag at i-drop ang mga file dito",
+        or: "o",
+        browse: "Mag-browse ng mga File"
+      },
       footer: {
         copyright: "Copyright © BYU Record Linking Lab 2023. Lahat ng karapatan ay nakalaan."
+      }
+    }
+  },
+  es: {
+    translation: {
+      header: {
+        title: "Power Linker",
+        language: "Idioma"
+      },
+      home: {
+        title: "Emparejar información de registros con familias en el árbol",
+        hintMessage: "Has completado {{count}} pistas.",
+        createNew: "Crear Nuevo"
+      },
+      upload: {
+        title: "Subir Documentos",
+        dragAndDrop: "Arrastra y suelta archivos aquí",
+        or: "o",
+        browse: "Buscar Archivos"
+      },
+      footer: {
+        copyright: "Copyright © BYU Record Linking Lab 2023. Todos los derechos reservados."
       }
     }
   }

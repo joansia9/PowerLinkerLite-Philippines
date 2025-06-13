@@ -33,7 +33,7 @@ export function Home() {
   useFormatData({ data, setRecord, setTree });
   // Fill rest of the queue
   useEffect(() => {
-    if (data.length + hintsInFlight < HINT_QUEUE_MAX_SIZE)
+    if (data.length + hintsInFlight < HINT_QUEUE_MAX_SIZE) 
       setHintsRequested(hintsRequested + 1);
     // eslint-disable-next-line
   }, [hintsRequested]);

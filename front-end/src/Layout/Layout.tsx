@@ -10,8 +10,9 @@ export interface IAppProps {}
 export function Layout(props: IAppProps) {
   const { t, i18n } = useTranslation();
 
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
+  //called when the language is changed this function gets called!
+  const changeLanguage = (lng: string) => { //creating a function called changeLanguage
+    i18n.changeLanguage(lng); //calling a DIFFERENT method of the i18n object that is also named language
   };
 
   return (
@@ -28,6 +29,7 @@ export function Layout(props: IAppProps) {
           >
             <option value="en">English</option>
             <option value="tl">Tagalog</option>
+            <option value="es">Español</option>
           </select>
         </div>
         <img
