@@ -1,0 +1,17 @@
+.language-selector {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.language-select {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--color-accent);
+  background-color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.language-select:hover {
+ 

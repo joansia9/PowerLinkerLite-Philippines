@@ -1,0 +1,20 @@
+{
+  "header": {
+    "title": "Power Linker",
+    "language": "Wika"
+  },
+  "home": {
+    "title": "I-match ang impormasyon ng record sa mga pamilya sa puno",
+    "hintMessage": "Nakumpleto mo ang {{count}} na mga hint.",
+    "createNew": "Gumawa ng Bago"
+  },
+  "upload": {
+    "title": "Mag-upload ng mga Dokumento",
+    "dragAndDrop": "I-drag at i-drop ang mga file dito",
+    "or": "o",
+    "browse": "Mag-browse ng mga File"
+  },
+  "footer": {
+    "copyright": "Copyright © BYU Record Linking Lab 2023. Lahat ng karapatan ay nakalaan."
+  }
+} 
