@@ -1,0 +1,54 @@
+.document-matcher {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  justify-content: stretch;
+}
+
+.document-matcher h3 {
+  margin-inline: auto;
+  margin-block: .5em 0;
+  width: min(27em, 100%);
+}
+
+.document-matcher h3 svg {
+  height: 1em;
+}
+
+.potential-matches {
+  padding-bottom: 35em;
+}
+
+.document-matcher .potential-matches > * {
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.document-matcher > .attach-buttons > button[type="submit"] {
+  margin-right: 1em;
+}
+
+.attach-buttons {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+
+  text-align: center;
+}
+
+.document-matcher .loader {
+  margin: auto;
+  width: fit-content;
+}
+
+.button-bar  {
+  z-index: 1;
+  background-color: var(--color-white);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 2em;
+}

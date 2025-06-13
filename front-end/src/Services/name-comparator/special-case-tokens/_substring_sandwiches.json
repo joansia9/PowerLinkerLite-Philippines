@@ -1,0 +1,296 @@
+[
+  {
+    "filling1": "c",
+    "filling2": "cc",
+    "leftBread": "all_letters",
+    "rightBread": "all_letters",
+    "minLength": 4
+  },
+  {
+    "filling1": "c",
+    "filling2": "s",
+    "leftBread": ["t"],
+    "rightBread": ["h"],
+    "minLength": 4
+  },
+  {
+    "filling1": "y",
+    "filling2": "ey",
+    "leftBread": "consonants",
+    "rightBread": ["-"],
+    "minLength": 0
+  },
+  {
+    "filling1": "i",
+    "filling2": "y",
+    "leftBread": "consonants",
+    "rightBread": ["-"],
+    "minLength": 4
+  },
+  {
+    "filling1": "i",
+    "filling2": "e",
+    "leftBread": ["g"],
+    "rightBread": ["n"],
+    "minLength": 4
+  },
+  {
+    "filling1": "ce",
+    "filling2": "sa",
+    "leftBread": "consonants",
+    "rightBread": "consonants",
+    "minLength": 5
+  },
+  {
+    "filling1": "ou",
+    "filling2": "oe",
+    "leftBread": "consonants",
+    "rightBread": "consonants",
+    "minLength": 5
+  },
+  {
+    "filling1": "a",
+    "filling2": "o",
+    "leftBread": ["n"],
+    "rightBread": ["n"],
+    "minLength": 6
+  },
+  {
+    "filling1": "a",
+    "filling2": "ai",
+    "leftBread": "consonants",
+    "rightBread": ["th-"],
+    "minLength": 4
+  },
+  {
+    "filling1": "a",
+    "filling2": "ay",
+    "leftBread": "consonants",
+    "rightBread": "consonants",
+    "minLength": 4
+  },
+  {
+    "filling1": "ron",
+    "filling2": "an",
+    "leftBread": ["f"],
+    "rightBread": ["t"],
+    "minLength": 5
+  },
+  {
+    "filling1": "sc",
+    "filling2": "s",
+    "leftBread": ["-"],
+    "rightBread": ["h"],
+    "minLength": 0
+  },
+  {
+    "filling1": "s",
+    "filling2": "z",
+    "leftBread": ["t"],
+    "rightBread": ["e"],
+    "minLength": 0
+  },
+  {
+    "filling1": "e",
+    "filling2": "z",
+    "leftBread": ["s"],
+    "rightBread": ["-"],
+    "minLength": 5
+  },
+  {
+    "filling1": "s",
+    "filling2": "c",
+    "leftBread": ["a"],
+    "rightBread": ["e"],
+    "minLength": 0
+  },
+  {
+    "filling1": "ee",
+    "filling2": "ea",
+    "leftBread": ["-r"],
+    "rightBread": ["d-"],
+    "minLength": 0
+  },
+  {
+    "filling1": "a",
+    "filling2": "e",
+    "leftBread": ["h"],
+    "rightBread": ["lm"],
+    "minLength": 6
+  },
+  {
+    "filling1": "a",
+    "filling2": "e",
+    "leftBread": ["r"],
+    "rightBread": ["n-"],
+    "minLength": 6
+  },
+  {
+    "filling1": "a",
+    "filling2": "ai",
+    "leftBread": ["b"],
+    "rightBread": ["t"],
+    "minLength": 6
+  },
+  {
+    "filling1": "tt",
+    "filling2": "d",
+    "leftBread": ["a"],
+    "rightBread": ["el"],
+    "minLength": 0
+  },
+  {
+    "filling1": "tt",
+    "filling2": "dd",
+    "leftBread": ["a"],
+    "rightBread": ["el"],
+    "minLength": 0
+  },
+  {
+    "filling1": "le",
+    "filling2": "el",
+    "leftBread": "consonants",
+    "rightBread": ["-"],
+    "minLength": 5
+  },
+  {
+    "filling1": "asure",
+    "filling2": "azer",
+    "leftBread": "consonants",
+    "rightBread": ["-"],
+    "minLength": 0
+  },
+  {
+    "filling1": "toun",
+    "filling2": "town",
+    "leftBread": ["-"],
+    "rightBread": "consonants",
+    "minLength": 0
+  },
+  {
+    "filling1": "ee",
+    "filling2": "y",
+    "leftBread": "consonants",
+    "rightBread": ["-"],
+    "minLength": 0
+  },
+  {
+    "filling1": "k",
+    "filling2": "c",
+    "leftBread": ["-"],
+    "rightBread": ["oh"],
+    "minLength": 0
+  },
+  {
+    "filling1": "d",
+    "filling2": "t",
+    "leftBread": ["r"],
+    "rightBread": ["el"],
+    "minLength": 0
+  },
+  {
+    "filling1": "kow",
+    "filling2": "cow",
+    "leftBread": "consonants",
+    "rightBread": ["-"],
+    "minLength": 0
+  },
+  {
+    "filling1": "kow",
+    "filling2": "cowe",
+    "leftBread": "consonants",
+    "rightBread": ["-"],
+    "minLength": 0
+  },
+  {
+    "filling1": "ole",
+    "filling2": "ol",
+    "leftBread": ["-"],
+    "rightBread": "consonants",
+    "minLength": 4
+  },
+  {
+    "filling1": "ole",
+    "filling2": "ol",
+    "leftBread": "consonants",
+    "rightBread": "consonants",
+    "minLength": 4
+  },
+  {
+    "filling1": "ow",
+    "filling2": "ou",
+    "leftBread": "consonants",
+    "rightBread": "consonants",
+    "minLength": 0
+  },
+  {
+    "filling1": "oo",
+    "filling2": "oa",
+    "leftBread": "consonants",
+    "rightBread": ["r"],
+    "minLength": 0
+  },
+  {
+    "filling1": "ue",
+    "filling2": "uc",
+    "leftBread": "consonants",
+    "rightBread": ["k"],
+    "minLength": 0
+  },
+  {
+    "filling1": "ue",
+    "filling2": "e",
+    "leftBread": "consonants",
+    "rightBread": ["w"],
+    "minLength": 0
+  },
+  {
+    "filling1": "ri",
+    "filling2": "e",
+    "leftBread": ["f"],
+    "rightBread": ["d"],
+    "minLength": 6
+  },
+  {
+    "filling1": "o",
+    "filling2": "a",
+    "leftBread": "consonants",
+    "rightBread": ["n-"],
+    "minLength": 5
+  },
+  {
+    "filling1": "ch",
+    "filling2": "ck",
+    "leftBread": ["a"],
+    "rightBread": ["s"],
+    "minLength": 0
+  },
+  {
+    "filling1": "chs",
+    "filling2": "xe",
+    "leftBread": ["a"],
+    "rightBread": ["-"],
+    "minLength": 0
+  },
+  {
+    "filling1": "ae",
+    "filling2": "aa",
+    "leftBread": "consonants",
+    "rightBread": "consonants",
+    "minLength": 0
+  },
+  {
+    "filling1": "u",
+    "filling2": "oo",
+    "leftBread": ["l"],
+    "rightBread": ["s"],
+    "minLength": 5
+  },
+  {
+    "filling1": "ma",
+    "filling2": "na",
+    "leftBread": "all_letters",
+    "rightBread": ["-"],
+    "minLength": 5
+  }
+]

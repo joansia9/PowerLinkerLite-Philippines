@@ -1,0 +1,28 @@
+.modal-component {
+  z-index: 1000;
+  isolation: isolate;
+  position: relative;
+}
+
+.modal-component .backdrop {
+  background-color: var(--green-9);
+  opacity: 0.5;
+  position: fixed;
+  inset: 0;
+}
+
+.modal-component .modal {
+  background-color: var(--color-white);
+  border: 0.125em solid black;
+  border-radius: 0.25em;
+  min-width: min(33rem, 50vw);
+  width: fit-content;
+  max-width: min(33rem, 80vw);
+  min-height: 16.5rem;
+  height: fit-content;
+  max-height: 80vh;
+  margin: auto;
+
+  position: fixed;
+  inset: 0;
+}

@@ -1,0 +1,320 @@
+.potential-match h4 {
+  font-weight: inherit;
+  margin: 0;
+}
+
+.data-matches {
+  background-color: var(--color-accent-lightest);
+}
+
+.data-not-matches {
+  background-color: var(--color-danger-lighter)
+}
+
+.flex-row {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.potential-match fieldset,
+.potential-match legend {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.potential-match .potential-match-table {
+  --match-border: 1px solid var(--color-accent);
+
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(2, 15.8125em);
+  grid-template-rows: auto 1fr;
+}
+
+.potential-match-table .header-button {
+  text-align: unset;
+  z-index: 1;
+
+  --header-padding: 0.5em;
+}
+
+.potential-match-table .header-button,
+.details-wrapper {
+  border: var(--match-border);
+  background-color: white;
+  box-shadow: var(--shadow-1);
+}
+
+/*////////*/
+/* Header */
+/*////////*/
+
+.potential-match-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: "img header header" "img lifespan id";
+
+  padding: var(--header-padding);
+
+  position: relative;
+
+  text-align: left;
+  font-size: 1em;
+}
+
+.potential-match + .potential-match .lifespan {
+  display: none;
+}
+
+.header-button:not(:first-child) {
+  border-left-width: 0;
+}
+
+.potential-match-header h5 {
+  grid-area: header;
+  font: inherit;
+  font-weight: bold;
+  margin: 0;
+}
+
+.potential-match-header .lifespan {
+  grid-area: lifespan;
+}
+
+.potential-match-header .pid {
+  grid-area: id;
+  color: var(--med-dark-text);
+}
+
+.potential-match-header img,
+.potential-match-header svg {
+  grid-area: img;
+
+  width: 1.75em;
+  height: 1.75em;
+  margin: 0.25em;
+  margin-right: 0.5em;
+}
+
+.potential-match .create-new-person {
+  background-color: transparent;
+  border-style: dashed;
+  box-shadow: none;
+
+  text-align: center;
+}
+
+.header-button
+  + .header-button:not(.create-new-person)
+  .potential-match-header::before {
+  /* content: "\2B95"; */
+  content: "\2192";
+
+  background-color: inherit;
+
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  color: var(--color-accent-dark);
+  font-size: 1.35em;
+}
+
+/*/ ////////*/
+/* Details */
+/*/////////*/
+.details-wrapper {
+  box-shadow: var(--shadow-1);
+  margin: 0 1em;
+  grid-column: span 2;
+}
+
+.collapsible-outer {
+  grid-column: span 2;
+}
+
+.details-grid {
+  grid-column: span 2;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.potential-match-details {
+  display: contents;
+}
+
+.potential-match-details .detail {
+  font-size: 1em;
+  padding: 0.5em;
+}
+
+.potential-match-details .event-type-wrapper {
+  grid-column: 1 / 2;
+  border-right: var(--match-border);
+}
+
+.potential-match-details + .potential-match-details .event-type-wrapper {
+  grid-column: 2 / 3;
+  border-right: none;
+}
+
+.potential-match-details h6 {
+  font-weight: 100;
+  font-size: 0.787em;
+  margin: 0;
+}
+
+.toggle-details {
+  display: block;
+
+  border-top: 1px solid var(--color-accent);
+  /* margin: 0 calc(-1 * var(--header-padding)) calc(-1 * var(--header-padding)); */
+  padding: 0.5em;
+  width: 100%;
+
+  color: var(--color-accent);
+  text-align: start;
+}
+
+/*/ ///////////*/
+/* Match List */
+/*////////////*/
+
+.potential-match-list {
+  grid-row: 1 / -2;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
+}
+
+.potential-match-list h3 {
+  border-bottom: var(--match-border);
+  margin: 0;
+
+  font: inherit;
+}
+
+.potential-match-list h3 ~ h3 {
+  border-top: var(--match-border);
+  border-top-width: 2px;
+}
+
+.potential-match-list ul {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
+
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.potential-match-list button {
+  background-color: unset;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+
+  text-align: start;
+}
+
+.potential-match-list .potential-match-header {
+  border: none;
+  border-top: var(--match-border);
+}
+
+.potential-match-list > * + *,
+.potential-match-list > * > * + * {
+  border-top: var(--match-border);
+}
+
+/*/ ///////*/
+/* Footer */
+/*////////*/
+
+.potential-match-footer {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 1em;
+
+  padding: 1em 0 0 1em;
+}
+
+.potential-match-footer::before {
+  content: "";
+  margin-top: -2em;
+}
+
+.potential-match-footer button img,
+.potential-match-footer button svg {
+  height: 1em;
+}
+
+/* .potential-match-footer > * + * {
+  margin-left: 0.75em;
+} */
+
+.potential-match .modal {
+  display: flex;
+  flex-flow: column nowrap;
+
+  padding: 1.75em 1.25em;
+  height: 100%;
+}
+
+.potential-match .modal > :nth-last-child(2) {
+  flex-grow: 1;
+}
+
+/* .potential-match input[type="radio"] {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+} */
+
+.potential-match .modal label {
+  display: flex;
+  flex-flow: row wrap;
+
+  padding: 0.5em 0;
+
+  cursor: pointer;
+}
+
+.potential-match .modal .potential-match-header {
+  flex: 1;
+  box-shadow: none;
+}
+
+/* Highlight selected header, if we hide the checkbox
+.potential-match input[type="radio"]:checked + .potential-match-header {
+  background-color: var(--color-accent-lightest);
+} */
+
+.potential-match .modal footer {
+  flex: 0;
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.sourcelinker-button {
+  float: right;
+}
+
+.sourcelinker-button button{ /* Target the anchor link within NewWindowLink */
+  padding: 0.25em 0.5em; /* Make the button smaller using em units */
+  font-size: 0.8em; /* Smaller font size using em units */
+  border-radius: 0.25em; /* Example border radius using em units */
+  position: relative;
+  transform: translateY(-0.5em); /* Move button up */
+}

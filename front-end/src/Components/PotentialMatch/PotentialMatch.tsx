@@ -1,0 +1,61 @@
+import "./PotentialMatch.css";
+
+
+import Person, { Relationship } from "../../Models/Person";
+
+import MatchTable from "../MatchTable/MatchTable";
+import NewWindowLink from "../NewWindowLink/NewWindowLink";
+
+/* Defines comparison table component which has two iterations:
+  1.) One person is being compared to one other (yes/no question)
+  2.) One person has multiple possible options (matching question, can also add an entirely new person) */
+
+export function PotentialMatch({
+  recordCandidate,
+  treeCandidates,
+  setAttached,
+  selectedCandidate,
+  createPerson,
+  ark,
+  pid,
+}: {
+  recordCandidate: Person;
+  treeCandidates: Person[];
+  attached: boolean | undefined;
+  setAttached: Function;
+  selectedCandidate: number | undefined;
+  setSelectedCandidate: Function;
+  createPerson: Function;
+  ark: string | undefined;
+  pid: string | undefined;
+}) {
+
+  let sourceLinkerURL: string = "https://www.familysearch.org/search/linker?pal=/ark:/61903/1:1:" + ark + "&id=" + pid;
+
+  return (
+    <div className="potential-match">
+      <h4>
+        {recordCandidate.relationship}
+        {recordCandidate.relationship === Relationship.FocusPerson ? (
+        <span className="sourcelinker-button">
+          <NewWindowLink
+            url={sourceLinkerURL}
+            linkName="To SourceLinker"
+          />
+        </span>
+        ) : (
+          <span/>
+        )}
+      </h4>
+      <div className="flex-row">
+        <MatchTable
+          selectedCandidate={selectedCandidate}
+          recordCandidate={recordCandidate}
+          treeCandidates={treeCandidates}
+          createPerson={createPerson}
+          setAttached={setAttached}
+        />
+      </div>
+    </div>
+  );
+}

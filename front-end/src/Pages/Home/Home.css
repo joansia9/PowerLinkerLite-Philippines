@@ -1,0 +1,47 @@
+.page-home {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  align-items: stretch;
+}
+
+.page-home header {
+  background-color: var(--color-accent-lightest);
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 1em;
+}
+
+.page-home header h2 {
+  margin: 0;
+  padding: 0.5rem 0;
+  margin-right: auto;
+  font-size: .9rem;
+  max-width: 14em;
+}
+
+.page-home header h1 {
+  margin: 0;
+  padding: 0.5rem 0;
+  margin-right: auto;
+  font-size: 2.7rem;
+  max-width: 14em;
+}
+
+.page-home header button {
+  font-size: 0.675em;
+  padding: 0 1rem;
+}
+
+.page-home .hint-message {
+  text-align: center;
+  font-size: 1.8em;
+  margin: 1em;
+  margin-bottom: 0em;
+}
+
+.counter {
+  font-weight: bold;
+  text-align: center;
+  margin-top: .5em;
+  margin-bottom: .5em;
+}

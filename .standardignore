@@ -1,0 +1,13 @@
+
+!s3_client
+
+!do_GET
+!do_POST
+!do_PUT
+!do_DELETE
+!do_OPTIONS
+
+!handle_getHint
+!handle_setMatch
+!handle_uploadHints
+!handle_getResults

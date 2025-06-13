@@ -1,0 +1,174 @@
+[
+  {
+    "description": "Removes Punctuation",
+    "regex": "[.,?;!\"'*()]",
+    "flags": "g",
+    "replaceWith": ""
+  },
+  {
+    "description": "Replaces '-' with ' '",
+    "regex": "-",
+    "flags": "g",
+    "replaceWith": " "
+  },
+  { "regex": "\bjr\b", "flags": "g", "replaceWith": "" },
+  {
+    "description": "Removes jr",
+    "regex": "\bjunior\b",
+    "flags": "g",
+    "replaceWith": ""
+  },
+  { "regex": "\bsr\b", "flags": "g", "replaceWith": "" },
+  {
+    "description": "Removes sr",
+    "regex": "\bsenior\b",
+    "flags": "g",
+    "replaceWith": ""
+  },
+  { "regex": "\bprof\b", "flags": "g", "replaceWith": "" },
+  {
+    "description": "Removes professor",
+    "regex": "\bprofessor\b",
+    "flags": "g",
+    "replaceWith": ""
+  },
+  { "regex": "\bmr\b", "flags": "g", "replaceWith": "" },
+  {
+    "description": "Removes mister",
+    "regex": "\bmister\b",
+    "flags": "g",
+    "replaceWith": ""
+  },
+  { "regex": "\bmrs\b", "flags": "g", "replaceWith": "" },
+  {
+    "description": "Removes missus",
+    "regex": "\bmissus\b",
+    "flags": "g",
+    "replaceWith": ""
+  },
+  { "regex": "\bms\b", "replaceWith": "" },
+  {
+    "description": "Removes missus",
+    "regex": "\bmiss\b",
+    "flags": "g",
+    "replaceWith": ""
+  },
+  { "regex": "\bdr\b", "replaceWith": "" },
+  {
+    "description": "Removes doctor",
+    "regex": "\bdoctor\b",
+    "flags": "g",
+    "replaceWith": ""
+  },
+  {
+    "description": "Removes student",
+    "regex": "\bstudent\b",
+    "flags": "g",
+    "replaceWith": ""
+  },
+  {
+    "description": "Removes sister",
+    "regex": "\bsister\b",
+    "flags": "g",
+    "replaceWith": ""
+  },
+  {
+    "description": "Removes brother",
+    "regex": "\bbrother\b",
+    "flags": "g",
+    "replaceWith": ""
+  },
+  {
+    "description": "Removes mother",
+    "regex": "\bmother\b",
+    "flags": "g",
+    "replaceWith": ""
+  },
+  {
+    "description": "Removes father",
+    "regex": "\bfather\b",
+    "flags": "g",
+    "replaceWith": ""
+  },
+  {
+    "description": "Removes in law",
+    "regex": " in law",
+    "flags": "g",
+    "replaceWith": " "
+  },
+  {
+    "description": "Removes more than one space",
+    "regex": " +",
+    "flags": "g",
+    "replaceWith": " "
+  },
+  { "regex": "[1-9][a-z]{2,6}", "flags": "g", "replaceWith": "" },
+  {
+    "description": "Removes stuff like 'the 3rd'",
+    "regex": " the ",
+    "flags": "g",
+    "replaceWith": ""
+  },
+  {
+    "description": "Removes 'no suffix'",
+    "regex": "no suffix",
+    "flags": "g",
+    "replaceWith": ""
+  },
+  {
+    "description": "Removes ' rev' at the end",
+    "regex": " rev$",
+    "replaceWith": ""
+  },
+  {
+    "description": "Removes 'rev ' at the beginning",
+    "regex": "^rev ",
+    "replaceWith": ""
+  },
+  {
+    "description": "Removes 'reverend' everywhere",
+    "regex": "reverend",
+    "flags": "g",
+    "replaceWith": ""
+  },
+  {
+    "description": "Removes 'head of household'",
+    "regex": "head of household",
+    "flags": "g",
+    "replaceWith": ""
+  },
+  {
+    "description": "Removes spaces between mc last names",
+    "regex": " mc ",
+    "flags": "g",
+    "replaceWith": " mc"
+  },
+  { "regex": "^mc ", "replaceWith": "mc" },
+  {
+    "description": "Removes spaces between mac last names",
+    "regex": " mac ",
+    "flags": "g",
+    "replaceWith": " mac"
+  },
+  { "regex": "^mac ", "replaceWith": "mac" },
+  { "regex": " van den ", "replaceWith": " vanden " },
+  {
+    "description": "Removes spaces between vander last names",
+    "regex": " vander ",
+    "flags": "g",
+    "replaceWith": " vander"
+  },
+  { "regex": "^vander ", "replaceWith": "vander" },
+  {
+    "description": "Bandaid fix",
+    "regex": " del ",
+    "flags": "g",
+    "replaceWith": " de "
+  },
+  {
+    "description": "Removes more than one space",
+    "regex": " +",
+    "flags": "g",
+    "replaceWith": " "
+  }
+]

@@ -1,0 +1,51 @@
+/* Header */
+
+.site-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-bottom: 0.125em solid var(--color-accent);
+  font-size: 1.8em;
+
+  padding-left: 1rem;
+}
+
+.site-header h1 {
+  margin: 0;
+  margin-right: auto;
+  font-size: inherit;
+  line-height: 1em;
+}
+
+.site-header .logo {
+  height: 2em;
+}
+
+@media screen and (max-width: 1024px) {
+  .header_main {
+    flex-direction: column;
+    max-width: 82.5%;
+    grid-template-columns: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header_main {
+    flex-direction: column;
+    max-width: 95%;
+  }
+}
+
+/* Footer */
+
+#copyright {
+  z-index: 1;
+  text-align: center;
+  font-size: 0.72rem;
+  padding: .5rem;
+  margin: 0rem;
+  background-color: var(--color-white);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

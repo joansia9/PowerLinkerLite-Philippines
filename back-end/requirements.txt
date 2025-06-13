@@ -1,0 +1,5 @@
+awslambdaric==2.0.4
+python-lambda-local==0.1.13
+python-dotenv==1.0.0
+pandas==2.2.2
+setuptools==70.1.1

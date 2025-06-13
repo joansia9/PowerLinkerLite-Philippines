@@ -1,0 +1,415 @@
+[
+  {
+    "filling1": "u",
+    "filling2": "ju",
+    "leftBread": "dashAndAllIPACons",
+    "rightBread": "dashAndAllIPACons",
+    "minLength": 0
+  },
+  {
+    "filling1": "ɑ",
+    "filling2": "aɪ",
+    "leftBread": "dashAndAllIPACons",
+    "rightBread": "dashAndAllIPACons",
+    "minLength": 6
+  },
+  {
+    "filling1": "eɪ",
+    "filling2": "ɑ",
+    "leftBread": "dashAndAllIPACons",
+    "rightBread": "dashAndAllIPACons",
+    "minLength": 5
+  },
+  {
+    "filling1": "eɪ",
+    "filling2": "aɪ",
+    "leftBread": "dashAndAllIPACons",
+    "rightBread": "dashAndAllIPACons",
+    "minLength": 5
+  },
+  {
+    "filling1": "eɪ",
+    "filling2": "i",
+    "leftBread": "allIPAConsonants",
+    "rightBread": ["-"],
+    "minLength": 5
+  },
+  {
+    "filling1": "eɪ",
+    "filling2": "j",
+    "leftBread": ["k"],
+    "rightBread": ["s"],
+    "minLength": 5
+  },
+  {
+    "filling1": "i",
+    "filling2": "aɪ",
+    "leftBread": "allIPAConsonants",
+    "rightBread": ["-"],
+    "minLength": 5
+  },
+  {
+    "filling1": "i",
+    "filling2": "j",
+    "leftBread": "allIPAConsonants",
+    "rightBread": ["-"],
+    "minLength": 5
+  },
+  {
+    "filling1": "i",
+    "filling2": "ɪɛ",
+    "leftBread": "allIPAConsonants",
+    "rightBread": ["-"],
+    "minLength": 0
+  },
+  {
+    "filling1": "i",
+    "filling2": "ɪ",
+    "leftBread": ["l"],
+    "rightBread": ["l"],
+    "minLength": 5
+  },
+  {
+    "filling1": "i",
+    "filling2": "ɪ",
+    "leftBread": ["l", "r"],
+    "rightBread": ["-"],
+    "minLength": 5
+  },
+  {
+    "filling1": "i",
+    "filling2": "ɪ",
+    "leftBread": ["r"],
+    "rightBread": ["k"],
+    "minLength": 5
+  },
+  {
+    "filling1": "i",
+    "filling2": "ə",
+    "leftBread": ["m"],
+    "rightBread": ["l"],
+    "minLength": 5
+  },
+  {
+    "filling1": "i",
+    "filling2": "ɪ",
+    "leftBread": ["m"],
+    "rightBread": ["l"],
+    "minLength": 5
+  },
+  {
+    "filling1": "i",
+    "filling2": "aɪ",
+    "leftBread": ["v"],
+    "rightBread": ["-"],
+    "minLength": 5
+  },
+  {
+    "filling1": "i",
+    "filling2": "ɛ",
+    "leftBread": ["h"],
+    "rightBread": ["l"],
+    "minLength": 5
+  },
+  {
+    "filling1": "i",
+    "filling2": "eɪ",
+    "leftBread": ["z"],
+    "rightBread": ["-"],
+    "minLength": 5
+  },
+  {
+    "filling1": "i",
+    "filling2": "ə",
+    "leftBread": ["k"],
+    "rightBread": ["r-"],
+    "minLength": 0
+  },
+  {
+    "filling1": "ɛ",
+    "filling2": "j",
+    "leftBread": ["l"],
+    "rightBread": ["-"],
+    "minLength": 0
+  },
+  {
+    "filling1": "ɛ",
+    "filling2": "i",
+    "leftBread": ["l"],
+    "rightBread": ["-"],
+    "minLength": 0
+  },
+  {
+    "filling1": "ɛ",
+    "filling2": "ɪ",
+    "leftBread": "dashAndAllIPACons",
+    "rightBread": ["ld"],
+    "minLength": 0
+  },
+  {
+    "filling1": "ɛ",
+    "filling2": "ɪ",
+    "leftBread": ["l"],
+    "rightBread": ["t"],
+    "minLength": 5
+  },
+  {
+    "filling1": "ɛ",
+    "filling2": "ɪ",
+    "leftBread": "allIPAConsonants",
+    "rightBread": ["d"],
+    "minLength": 5
+  },
+  {
+    "filling1": "ɛ",
+    "filling2": "ɑ",
+    "leftBread": "allIPAConsonants",
+    "rightBread": ["r"],
+    "minLength": 5
+  },
+  {
+    "filling1": "ɛ",
+    "filling2": "æ",
+    "leftBread": "allIPAConsonants",
+    "rightBread": ["r"],
+    "minLength": 5
+  },
+  {
+    "filling1": "ɛ",
+    "filling2": "ə",
+    "leftBread": "dashAndAllIPACons",
+    "rightBread": ["r"],
+    "minLength": 0
+  },
+  {
+    "filling1": "ɛ",
+    "filling2": "ə",
+    "leftBread": ["s"],
+    "rightBread": ["n"],
+    "minLength": 5
+  },
+  {
+    "filling1": "ɛ",
+    "filling2": "aɪ",
+    "leftBread": ["ʤ"],
+    "rightBread": ["l"],
+    "minLength": 5
+  },
+  {
+    "filling1": "ɪ",
+    "filling2": "j",
+    "leftBread": "allIPAConsonants",
+    "rightBread": "dashAndAllIPACons",
+    "minLength": 0
+  },
+  {
+    "filling1": "æ",
+    "filling2": "eɪ",
+    "leftBread": ["-"],
+    "rightBread": "allIPAConsonants",
+    "minLength": 5
+  },
+  {
+    "filling1": "æ",
+    "filling2": "ɑ",
+    "leftBread": ["k"],
+    "rightBread": ["k"],
+    "minLength": 0
+  },
+  {
+    "filling1": "æ",
+    "filling2": "ɑ",
+    "leftBread": ["g"],
+    "rightBread": ["r"],
+    "minLength": 0
+  },
+  {
+    "filling1": "æ",
+    "filling2": "ɑ",
+    "leftBread": ["b"],
+    "rightBread": ["k-"],
+    "minLength": 0
+  },
+  {
+    "filling1": "æ",
+    "filling2": "ɑ",
+    "leftBread": ["r"],
+    "rightBread": ["m"],
+    "minLength": 0
+  },
+  {
+    "filling1": "æ",
+    "filling2": "ɑ",
+    "leftBread": ["r"],
+    "rightBread": ["b"],
+    "minLength": 0
+  },
+  {
+    "filling1": "æ",
+    "filling2": "ə",
+    "leftBread": ["m"],
+    "rightBread": ["n-"],
+    "minLength": 5
+  },
+  {
+    "filling1": "æ",
+    "filling2": "ɑ",
+    "leftBread": ["m"],
+    "rightBread": ["n-"],
+    "minLength": 5
+  },
+  {
+    "filling1": "æ",
+    "filling2": "ɑh",
+    "leftBread": "allIPAConsonants",
+    "rightBread": "allIPAConsonants",
+    "minLength": 0
+  },
+  {
+    "filling1": "r",
+    "filling2": "ər",
+    "leftBread": "allIPAConsonants",
+    "rightBread": ["-"],
+    "minLength": 5
+  },
+  {
+    "filling1": "z",
+    "filling2": "st",
+    "leftBread": "allIPAConsonants",
+    "rightBread": ["-"],
+    "minLength": 0
+  },
+  {
+    "filling1": "z",
+    "filling2": "ɛs",
+    "leftBread": "allIPAConsonants",
+    "rightBread": ["-"],
+    "minLength": 4
+  },
+  {
+    "filling1": "z",
+    "filling2": "s",
+    "leftBread": "allIPAConsonants",
+    "rightBread": "dashAndAllIPACons",
+    "minLength": 5
+  },
+  {
+    "filling1": "ə",
+    "filling2": "ɪ",
+    "leftBread": "allIPAConsonants",
+    "rightBread": "allIPAConsonants",
+    "minLength": 5
+  },
+  {
+    "filling1": "ə",
+    "filling2": "eɪ",
+    "leftBread": ["z"],
+    "rightBread": ["l"],
+    "minLength": 5
+  },
+  {
+    "filling1": "ə",
+    "filling2": "ɔ",
+    "leftBread": "allIPAConsonants",
+    "rightBread": ["n"],
+    "minLength": 0
+  },
+  {
+    "filling1": "ʊ",
+    "filling2": "ɔ",
+    "leftBread": "allIPAConsonants",
+    "rightBread": "allIPAConsonants",
+    "minLength": 0
+  },
+  {
+    "filling1": "uə",
+    "filling2": "ɔ",
+    "leftBread": "allIPAConsonants",
+    "rightBread": ["r"],
+    "minLength": 0
+  },
+  {
+    "filling1": "oʊ",
+    "filling2": "ɔ",
+    "leftBread": "dashAndAllIPACons",
+    "rightBread": "dashAndAllIPACons",
+    "minLength": 0
+  },
+  {
+    "filling1": "oʊ",
+    "filling2": "aʊə",
+    "leftBread": "dashAndAllIPACons",
+    "rightBread": "dashAndAllIPACons",
+    "minLength": 0
+  },
+  {
+    "filling1": "oʊ",
+    "filling2": "u",
+    "leftBread": "dashAndAllIPACons",
+    "rightBread": ["r"],
+    "minLength": 5
+  },
+  {
+    "filling1": "oʊ",
+    "filling2": "oʊw",
+    "leftBread": "allIPAConsonants",
+    "rightBread": ["-"],
+    "minLength": 0
+  },
+  {
+    "filling1": "u",
+    "filling2": "au",
+    "leftBread": ["n"],
+    "rightBread": ["m"],
+    "minLength": 0
+  },
+  {
+    "filling1": "u",
+    "filling2": "aʊ",
+    "leftBread": ["n"],
+    "rightBread": ["m"],
+    "minLength": 0
+  },
+  {
+    "filling1": "aʊ",
+    "filling2": "oʊuə",
+    "leftBread": "dashAndAllIPACons",
+    "rightBread": "dashAndAllIPACons",
+    "minLength": 0
+  },
+  {
+    "filling1": "s",
+    "filling2": "z",
+    "leftBread": "allIPAVowels",
+    "rightBread": ["-"],
+    "minLength": 4
+  },
+  {
+    "filling1": "æŋ",
+    "filling2": "ɛng",
+    "leftBread": "allIPAConsonants",
+    "rightBread": "dashAndAllIPACons",
+    "minLength": 0
+  },
+  {
+    "filling1": "ɪs",
+    "filling2": "iz",
+    "leftBread": ["n"],
+    "rightBread": ["-"],
+    "minLength": 5
+  },
+  {
+    "filling1": "th",
+    "filling2": "θ",
+    "leftBread": "dashAndAllIPACons",
+    "rightBread": "allIPAVowels",
+    "minLength": 5
+  },
+  {
+    "filling1": "ə",
+    "filling2": "ʊ",
+    "leftBread": "dashAndAllIPACons",
+    "rightBread": ["r"],
+    "minLength": 0
+  }
+]
