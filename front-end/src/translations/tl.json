@@ -16,5 +16,37 @@
   },
   "footer": {
     "copyright": "Copyright © BYU Record Linking Lab 2023. Lahat ng karapatan ay nakalaan."
+  },
+  "fields": {
+    "firstname": "Pangalan",
+    "lastname": "Apelyido",
+    "birthdate": "Petsa ng Kapanganakan",
+    "birthplace": "Lugar ng Kapanganakan",
+    "deathdate": "Petsa ng Kamatayan",
+    "father_givenname": "Pangalan ng Ama",
+    "father_surname": "Apelyido ng Ama",
+    "mother_givenname": "Pangalan ng Ina",
+    "mother_surname": "Apelyido ng Ina",
+    "sex": "Kasarian",
+    "relationship": "Relasyon",
+    "pid": "PID",
+    "ark": "ARK",
+    "score": "Puntos",
+    "url": "URL"
+  },
+  "relationships": {
+    "Focus": "Pangunahing Tao",
+    "Spouse": "Asawa",
+    "Mother": "Ina",
+    "Father": "Ama",
+    "Sister": "Kapatid na Babae",
+    "Brother": "Kapatid na Lalaki",
+    "Child": "Anak",
+    "Other": "Iba"
+  },
+  "sex": {
+    "Male": "Lalaki",
+    "Female": "Babae",
+    "Unknown": "Hindi Alam"
   }
 } 

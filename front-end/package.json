@@ -23,7 +23,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "concurrently \"npm run start-front-end\" \"npm run start-lambda\" \"npm run start-growth-spurt\" ",
+    "start": "npm run start-front-end",
     "start-front-end": "react-scripts start",
     "start-growth-spurt": "node ./start-growth-spurt.mjs",
     "start-lambda": "node ./start-lambda.mjs",

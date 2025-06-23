@@ -4,7 +4,7 @@ import NumidentHint from "../../Models/NumidentHint";
 import { useEffect, useState } from "react";
 import { Record } from "../../Models/Record";
 import { Tree } from "../../Models/Tree";
-import useFormatData from "../../Services/useFormatData";
+import useFormatData, { useFieldTranslations } from "../../Services/useFormatData";
 import submitMatch from "../../Services/submitMatch";
 import useGetHint from "../../Services/useGetHint";
 import { useTranslation } from 'react-i18next';
@@ -14,6 +14,7 @@ import { useTranslation } from 'react-i18next';
 // has an attach all button at the bottom that greys out if attaching is somehow not possible
 export function Home() {
   const { t } = useTranslation();
+  const { translateFieldName } = useFieldTranslations();
   const [hintsDone, setHintsDone] : [number, Function] = useState(0);
   const [hintsRequested, setHintsRequested]: [number, Function] = useState(0);
   const [hintsInFlight, setHintsInFlight] = useState<number>(0);
@@ -43,6 +44,22 @@ export function Home() {
         <header>
           <h2>{t('home.title') as string}</h2>
         </header>
+        
+        {/* Field Translation Test */}
+        <div style={{ 
+          background: '#f0f0f0', 
+          padding: '10px', 
+          margin: '10px 0', 
+          borderRadius: '5px',
+          fontSize: '14px'
+        }}>
+          <strong>Field Translation Test:</strong><br/>
+          First Name: {translateFieldName('firstname')}<br/>
+          Last Name: {translateFieldName('lastname')}<br/>
+          Birth Date: {translateFieldName('birthdate')}<br/>
+          Switch languages in the header to see translations!
+        </div>
+        
         {typeof data[0] === "string" ? (
           <div>
             <div className="hint-message">{data[0]}</div>

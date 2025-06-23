@@ -3,6 +3,18 @@ import { Record } from "../Models/Record";
 import Person, { Event, Relationship } from "../Models/Person";
 import NumidentHint from "../Models/NumidentHint";
 import { Tree } from "../Models/Tree";
+import { useTranslation } from "react-i18next";
+
+// Simple utility function to translate field names
+export function useFieldTranslations() {
+  const { t } = useTranslation();
+  
+  const translateFieldName = (fieldName: string): string => {
+    return t(`fields.${fieldName}`, fieldName);
+  };
+  
+  return { translateFieldName };
+}
 
 export default function useFormatData({
   data,

@@ -1,0 +1,52 @@
+{
+  "header": {
+    "title": "Power Linker",
+    "language": "Idioma"
+  },
+  "home": {
+    "title": "Emparejar información de registros con familias en el árbol",
+    "hintMessage": "Has completado {{count}} pistas.",
+    "createNew": "Crear Nuevo"
+  },
+  "upload": {
+    "title": "Subir Documentos",
+    "dragAndDrop": "Arrastra y suelta archivos aquí",
+    "or": "o",
+    "browse": "Buscar Archivos"
+  },
+  "footer": {
+    "copyright": "Copyright © BYU Record Linking Lab 2023. Todos los derechos reservados."
+  },
+  "fields": {
+    "firstname": "Nombre",
+    "lastname": "Apellido",
+    "birthdate": "Fecha de Nacimiento",
+    "birthplace": "Lugar de Nacimiento",
+    "deathdate": "Fecha de Muerte",
+    "father_givenname": "Nombre del Padre",
+    "father_surname": "Apellido del Padre",
+    "mother_givenname": "Nombre de la Madre",
+    "mother_surname": "Apellido de la Madre",
+    "sex": "Sexo",
+    "relationship": "Relación",
+    "pid": "PID",
+    "ark": "ARK",
+    "score": "Puntuación",
+    "url": "URL"
+  },
+  "relationships": {
+    "Focus": "Persona Principal",
+    "Spouse": "Cónyuge",
+    "Mother": "Madre",
+    "Father": "Padre",
+    "Sister": "Hermana",
+    "Brother": "Hermano",
+    "Child": "Hijo/a",
+    "Other": "Otro"
+  },
+  "sex": {
+    "Male": "Masculino",
+    "Female": "Femenino",
+    "Unknown": "Desconocido"
+  }
+} 

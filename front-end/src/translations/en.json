@@ -1,0 +1,52 @@
+{
+  "header": {
+    "title": "Power Linker",
+    "language": "Language"
+  },
+  "home": {
+    "title": "Match record information to families in the tree",
+    "hintMessage": "You have completed {{count}} hints.",
+    "createNew": "Create New"
+  },
+  "upload": {
+    "title": "Upload Documents",
+    "dragAndDrop": "Drag and drop files here",
+    "or": "or",
+    "browse": "Browse Files"
+  },
+  "footer": {
+    "copyright": "Copyright © BYU Record Linking Lab 2023. All rights reserved."
+  },
+  "fields": {
+    "firstname": "First Name",
+    "lastname": "Last Name",
+    "birthdate": "Birth Date",
+    "birthplace": "Birth Place",
+    "deathdate": "Death Date",
+    "father_givenname": "Father's Given Name",
+    "father_surname": "Father's Surname",
+    "mother_givenname": "Mother's Given Name",
+    "mother_surname": "Mother's Surname",
+    "sex": "Sex",
+    "relationship": "Relationship",
+    "pid": "PID",
+    "ark": "ARK",
+    "score": "Score",
+    "url": "URL"
+  },
+  "relationships": {
+    "Focus": "Focus Person",
+    "Spouse": "Spouse",
+    "Mother": "Mother",
+    "Father": "Father",
+    "Sister": "Sister",
+    "Brother": "Brother",
+    "Child": "Child",
+    "Other": "Other"
+  },
+  "sex": {
+    "Male": "Male",
+    "Female": "Female",
+    "Unknown": "Unknown"
+  }
+} 

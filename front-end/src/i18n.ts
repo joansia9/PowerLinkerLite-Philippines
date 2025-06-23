@@ -23,13 +23,45 @@ const resources = {
       },
       footer: {
         copyright: "Copyright © BYU Record Linking Lab 2023. All rights reserved."
+      },
+      fields: {
+        firstname: "First Name",
+        lastname: "Last Name",
+        birthdate: "Birth Date",
+        birthplace: "Birth Place",
+        deathdate: "Death Date",
+        father_givenname: "Father's Given Name",
+        father_surname: "Father's Surname",
+        mother_givenname: "Mother's Given Name",
+        mother_surname: "Mother's Surname",
+        sex: "Sex",
+        relationship: "Relationship",
+        pid: "PID",
+        ark: "ARK",
+        score: "Score",
+        url: "URL"
+      },
+      relationships: {
+        Focus: "Focus Person",
+        Spouse: "Spouse",
+        Mother: "Mother",
+        Father: "Father",
+        Sister: "Sister",
+        Brother: "Brother",
+        Child: "Child",
+        Other: "Other"
+      },
+      sex: {
+        Male: "Male",
+        Female: "Female",
+        Unknown: "Unknown"
       }
     }
   },
   tl: {
     translation: {
       header: {
-        title: "Power Linker (tagalog)",
+        title: "Power Linker",
         language: "Wika"
       },
       home: {
@@ -45,13 +77,45 @@ const resources = {
       },
       footer: {
         copyright: "Copyright © BYU Record Linking Lab 2023. Lahat ng karapatan ay nakalaan."
+      },
+      fields: {
+        firstname: "Pangalan",
+        lastname: "Apelyido",
+        birthdate: "Petsa ng Kapanganakan",
+        birthplace: "Lugar ng Kapanganakan",
+        deathdate: "Petsa ng Kamatayan",
+        father_givenname: "Pangalan ng Ama",
+        father_surname: "Apelyido ng Ama",
+        mother_givenname: "Pangalan ng Ina",
+        mother_surname: "Apelyido ng Ina",
+        sex: "Kasarian",
+        relationship: "Relasyon",
+        pid: "PID",
+        ark: "ARK",
+        score: "Puntos",
+        url: "URL"
+      },
+      relationships: {
+        Focus: "Pangunahing Tao",
+        Spouse: "Asawa",
+        Mother: "Ina",
+        Father: "Ama",
+        Sister: "Kapatid na Babae",
+        Brother: "Kapatid na Lalaki",
+        Child: "Anak",
+        Other: "Iba"
+      },
+      sex: {
+        Male: "Lalaki",
+        Female: "Babae",
+        Unknown: "Hindi Alam"
       }
     }
   },
   es: {
     translation: {
       header: {
-        title: "Power Linker (español)",
+        title: "Power Linker",
         language: "Idioma"
       },
       home: {
@@ -67,6 +131,38 @@ const resources = {
       },
       footer: {
         copyright: "Copyright © BYU Record Linking Lab 2023. Todos los derechos reservados."
+      },
+      fields: {
+        firstname: "Nombre",
+        lastname: "Apellido",
+        birthdate: "Fecha de Nacimiento",
+        birthplace: "Lugar de Nacimiento",
+        deathdate: "Fecha de Muerte",
+        father_givenname: "Nombre del Padre",
+        father_surname: "Apellido del Padre",
+        mother_givenname: "Nombre de la Madre",
+        mother_surname: "Apellido de la Madre",
+        sex: "Sexo",
+        relationship: "Relación",
+        pid: "PID",
+        ark: "ARK",
+        score: "Puntuación",
+        url: "URL"
+      },
+      relationships: {
+        Focus: "Persona Principal",
+        Spouse: "Cónyuge",
+        Mother: "Madre",
+        Father: "Padre",
+        Sister: "Hermana",
+        Brother: "Hermano",
+        Child: "Hijo/a",
+        Other: "Otro"
+      },
+      sex: {
+        Male: "Masculino",
+        Female: "Femenino",
+        Unknown: "Desconocido"
       }
     }
   }

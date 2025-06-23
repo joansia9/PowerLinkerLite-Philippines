@@ -3,8 +3,11 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+// Use the correct path to the virtual environment
+const venvPath = process.env.LAMBDA_VENV_PATH || "../back-end/venv/bin/activate";
+
 exec(
-  `source ${process.env.LAMBDA_VENV_PATH} && python3 ../back-end/lambda_dev_server.py`,
+  `source ${venvPath} && python3 ../back-end/lambda_dev_server.py`,
   execOutput
 );
 
