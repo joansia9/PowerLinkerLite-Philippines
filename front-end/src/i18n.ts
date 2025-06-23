@@ -29,7 +29,7 @@ const resources = {
   tl: {
     translation: {
       header: {
-        title: "Power Linker",
+        title: "Power Linker (tagalog)",
         language: "Wika"
       },
       home: {
@@ -51,7 +51,7 @@ const resources = {
   es: {
     translation: {
       header: {
-        title: "Power Linker",
+        title: "Power Linker (español)",
         language: "Idioma"
       },
       home: {
@@ -72,12 +72,13 @@ const resources = {
   }
 };
 
+// my language switching engine vroom vroom
 i18n
-  .use(LanguageDetector)
-  .use(initReactI18next)
+  .use(LanguageDetector) //detects the user's choice
+  .use(initReactI18next) // language changes -> react RERENDERs -> new translation shows up in ui 
   .init({
-    resources,
-    fallbackLng: 'en',
+    resources, //loades translations
+    fallbackLng: 'en', //default 
     debug: process.env.NODE_ENV === 'development',
     interpolation: {
       escapeValue: false

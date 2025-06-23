@@ -1,8 +1,6 @@
 import sys, os, importlib, json
 from decimal import Decimal
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from lambda_local.main import call, TimeoutException
-from lambda_local.context import Context
 from lambda_server_settings import URL_MAPPINGS, SERVER_PORT, TIMEOUT_IN_SECONDS
 
 current = os.path.dirname(os.path.realpath(__file__))
@@ -10,6 +8,23 @@ sys.path.append(f'{current}/lambda')
 
 class RequestHandler(BaseHTTPRequestHandler):
     """Handler for HTTP requests directed at the lambda development server."""
+    
+    #cors error responses
+    def send_cors_headers(self):
+        """Sends CORS headers for cross-origin requests."""
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Headers', '*')
+        self.send_header('Access-Control-Allow-Methods', '*')
+    
+    def send_error(self, code, message=None, explain=None):
+        """Override send_error to include CORS headers."""
+        self.send_response(code)
+        self.send_cors_headers()
+        self.send_header('Content-type', 'text/plain; charset=utf-8')
+        self.end_headers()
+        if message:
+            self.wfile.write(message.encode('utf-8'))
+    
     def do_GET(self) -> None:
         """Handles GET requests."""
         self.doAny("GET")
@@ -53,16 +68,13 @@ class RequestHandler(BaseHTTPRequestHandler):
                     "headers": headers,
                     "body": json.dumps(body)
                 }
-            context = Context(TIMEOUT_IN_SECONDS)
+            context = {"timeout": TIMEOUT_IN_SECONDS}
             handler = self.getHandler(method, path)                
-            result = call(handler, event, context)
+            result = handler(event, context)
             
-            if isinstance(result, TimeoutException):
-                raise TimeoutError
-            else:
-                print("No Timeout")
-                result = self.replaceDecimalsWithFloatsInts(result[0])
-                result = json.dumps(result).encode("utf-8")
+            print("Handler executed successfully")
+            result = self.replaceDecimalsWithFloatsInts(result)
+            result = json.dumps(result).encode("utf-8")
 
             self.sendJsonResponse(json=result)
         
@@ -97,7 +109,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             status (int, optional): the response status code; defaults to 200
         """
         self.send_response(status)
-        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_cors_headers()
         self.send_header('Content-type', 'application/json')
         self.send_header("Content-Length", str(len(json)))
         self.end_headers()
@@ -106,9 +118,7 @@ class RequestHandler(BaseHTTPRequestHandler):
     def do_OPTIONS(self) -> None:
         """Handles OPTIONS requests."""
         self.send_response(200)
-        self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Access-Control-Allow-Headers', '*')
-        self.send_header('Access-Control-Allow-Methods', '*')
+        self.send_cors_headers()
         self.end_headers()
 
     def replaceDecimalsWithFloatsInts(self, obj: object) -> object:

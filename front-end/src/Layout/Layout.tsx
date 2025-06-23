@@ -5,10 +5,18 @@ import "./Layout.css";
 
 export interface IAppProps {}
 
-//implements all features that remain from page to page
-// such as the header, navbar, and footer
+// Define supported languages and STORES them
+const languages = [
+  { code: 'en', name: 'English' },
+  { code: 'tl', name: 'Tagalog' },
+  { code: 'es', name: 'Español' }
+];
+
+//implements all features that remain from page to page such as the header, navbar, and footerrrr
 export function Layout(props: IAppProps) {
   const { t, i18n } = useTranslation();
+  // t -> translation function
+  // i18n -> internationalization object
 
   //called when the language is changed this function gets called!
   const changeLanguage = (lng: string) => { //creating a function called changeLanguage
@@ -27,9 +35,11 @@ export function Layout(props: IAppProps) {
             onChange={(e) => changeLanguage(e.target.value)}
             className="language-select"
           >
-            <option value="en">English</option>
-            <option value="tl">Tagalog</option>
-            <option value="es">Español</option>
+            {languages.map((lang) => (
+              <option key={lang.code} value={lang.code}>
+                {lang.name}
+              </option>
+            ))}
           </select>
         </div>
         <img
