@@ -92,3 +92,16 @@ export function Layout(props: IAppProps) {
     </>
   );
 }
+
+/* layout component! 
+┌─────────────────────────────────────┐
+│ Header (Title + Language + Logo)    │
+├─────────────────────────────────────┤
+│                                     │
+│        <Outlet />                   │
+│     (Current Page Content)          │
+│                                     │
+├─────────────────────────────────────┤
+│ Footer (Copyright)                  │
+└─────────────────────────────────────┘
+*/

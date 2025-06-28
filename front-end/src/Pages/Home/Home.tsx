@@ -47,7 +47,7 @@ export function Home() {
         
         {/* Field Translation Test */}
         <div style={{ 
-          background: '#f0f0f0', 
+          background: 'pink', 
           padding: '10px', 
           margin: '10px 0', 
           borderRadius: '5px',
@@ -57,6 +57,12 @@ export function Home() {
           First Name: {translateFieldName('firstname')}<br/>
           Last Name: {translateFieldName('lastname')}<br/>
           Birth Date: {translateFieldName('birthdate')}<br/>
+          Birth Place: {translateFieldName('birthplace')}<br/>
+          Death Date: {translateFieldName('deathdate')}<br/>
+          Father Given Name: {translateFieldName('father_givenname')}<br/>
+          Father Surname: {translateFieldName('father_surname')}<br/>
+          Mother Given Name: {translateFieldName('mother_givenname')}<br/>
+          Mother Surname: {translateFieldName('mother_surname')}<br/>
           Switch languages in the header to see translations!
         </div>
         
@@ -99,3 +105,20 @@ export function Home() {
       </main>
   );
 }
+
+/*
+┌─────────────────────────────────────┐
+│ Header (Title + Language + Logo)    │ ← Layout.tsx
+├─────────────────────────────────────┤
+│                                     │
+│  <main className="page-home">       │ ← Home.tsx (Outlet content)
+│    <header>                         │
+│      <h2>Home Title</h2>            │
+│    </header>                        │
+│    <DocumentMatcher />              │
+│  </main>                            │
+│                                     │
+├─────────────────────────────────────┤
+│ Footer (Copyright)                  │ ← Layout.tsx
+└─────────────────────────────────────┘
+*/

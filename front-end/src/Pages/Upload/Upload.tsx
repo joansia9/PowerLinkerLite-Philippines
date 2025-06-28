@@ -36,3 +36,23 @@ export function Upload() {
     </>
   );
 }
+
+/*
+┌─────────────────────────────────────┐
+│ Header (Title + Language + Logo)    │ ← Layout.tsx
+├─────────────────────────────────────┤
+│                                     │
+│  <div>                              │ ← Upload.tsx (Outlet content)
+│    <header>                         │
+│      <h1>Upload Title</h1>          │
+│    </header>                        │
+│    <form>                           │
+│      <input />                      │
+│      <button>Browse</button>        │
+│    </form>                          │
+│  </div>                             │
+│                                     │
+├─────────────────────────────────────┤
+│ Footer (Copyright)                  │ ← Layout.tsx
+└─────────────────────────────────────┘
+*/
