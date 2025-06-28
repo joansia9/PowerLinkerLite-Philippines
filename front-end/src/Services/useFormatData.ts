@@ -33,7 +33,7 @@ export default function useFormatData({
     if (firstHint instanceof Error) return;
     setRecord(
       new Record({
-        ARK: firstHint.ark,
+        ARK: firstHint.ark, //(archival resource key)
         title: firstHint.batchID,
         people: [
           new Person({
