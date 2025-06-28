@@ -48,5 +48,14 @@
     "Male": "Lalaki",
     "Female": "Babae",
     "Unknown": "Hindi Alam"
+  },
+  "relationship": {
+    "focus": "Pokos",
+    "father": "Ama",
+    "mother": "Ina"
+  },
+  "event": {
+    "birth": "kapanganakan",
+    "death": "kamatayan"
   }
 } 

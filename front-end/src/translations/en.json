@@ -48,5 +48,14 @@
     "Male": "Male",
     "Female": "Female",
     "Unknown": "Unknown"
+  },
+  "relationship": {
+    "focus": "Focus",
+    "father": "Father",
+    "mother": "Mother"
+  },
+  "event": {
+    "birth": "birth",
+    "death": "death"
   }
 } 

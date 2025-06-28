@@ -133,3 +133,36 @@ export default function DocumentMatcher({
     </form>
   );
 }
+
+/*
+┌─────────────────────────────────────┐
+│ Header (Title + Language + Logo)    │ ← Layout.tsx
+├─────────────────────────────────────┤
+│                                     │
+│  <main className="page-home">       │ ← Home.tsx (Outlet content)
+│    <header>                         │
+│      <h2>Home Title</h2>            │
+│    </header>                        │
+│                                     │
+│    <DocumentMatcher>                │ ← Hints rendered here
+│      <h3>Record Title</h3>          │
+│      <div className="potential-matches">
+│        <PotentialMatch>             │ ← Individual hint cards
+│          <h4>Focus Person</h4>      │
+│          <MatchTable>               │ ← Hint comparison table
+│            // Hint data displayed    │
+│          </MatchTable>              │
+│        </PotentialMatch>            │
+│      </div>                         │
+│      <div className="button-bar">   │
+│        <div>Complete: {hintsDone}</div>
+│        <button>Attach All</button>  │
+│        <button>Skip</button>        │
+│      </div>                         │
+│    </DocumentMatcher>               │
+│  </main>                            │
+│                                     │
+├─────────────────────────────────────┤
+│ Footer (Copyright)                  │ ← Layout.tsx
+└─────────────────────────────────────┘
+*/
