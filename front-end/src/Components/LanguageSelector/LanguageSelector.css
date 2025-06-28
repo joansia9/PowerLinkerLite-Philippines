@@ -2,18 +2,19 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
+  background-color: rgb(197, 137, 137);
 }
 
 .language-select {
-  padding: 0.5rem;
+  padding: 1rem;
   border-radius: 4px;
   border: 1px solid var(--color-accent);
-  background-color: white;
+  background-color: rgb(197, 137, 137);
   font-size: 1rem;
   cursor: pointer;
 }
 
 .language-select:hover {
   background-color: var(--color-accent);
-  color: white;
+  color: rgb(197, 97, 97);
 } 
