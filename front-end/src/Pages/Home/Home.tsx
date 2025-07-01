@@ -44,27 +44,7 @@ export function Home() {
         <header>
           <h2>{t('home.title') as string}</h2>
         </header>
-        
-        {/* Field Translation Test */}
-        <div style={{ 
-          background: 'pink', 
-          padding: '10px', 
-          margin: '10px 0', 
-          borderRadius: '5px',
-          fontSize: '14px'
-        }}>
-          <strong>{t('test.fieldTranslation') as string}:</strong><br/>
-          {t('fields.firstname') as string}: {translateFieldName('firstname')}<br/>
-          {t('fields.lastname') as string}: {translateFieldName('lastname')}<br/>
-          {t('fields.birthdate') as string}: {translateFieldName('birthdate')}<br/>
-          {t('fields.birthplace') as string}: {translateFieldName('birthplace')}<br/>
-          {t('fields.deathdate') as string}: {translateFieldName('deathdate')}<br/>
-          {t('fields.father_givenname') as string}: {translateFieldName('father_givenname')}<br/>
-          {t('fields.father_surname') as string}: {translateFieldName('father_surname')}<br/>
-          {t('fields.mother_givenname') as string}: {translateFieldName('mother_givenname')}<br/>
-          {t('fields.mother_surname') as string}: {translateFieldName('mother_surname')}<br/>
-          {t('instructions.switchLanguages') as string}
-        </div>
+
         
         {typeof data[0] === "string" ? (
           <div>

@@ -80,5 +80,15 @@
   },
   "instructions": {
     "switchLanguages": "¡Cambia el idioma en el encabezado para ver las traducciones!"
+  },
+  "buttons": {
+    "attachAll": "Adjuntar Todo",
+    "skip": "Saltar"
+  },
+  "status": {
+    "complete": "Completado"
+  },
+  "errors": {
+    "personNotFound": "Persona no encontrada"
   }
 } 

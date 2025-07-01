@@ -80,5 +80,15 @@
   },
   "instructions": {
     "switchLanguages": "Switch languages in the header to see translations!"
+  },
+  "buttons": {
+    "attachAll": "Attach All",
+    "skip": "Skip"
+  },
+  "status": {
+    "complete": "Complete"
+  },
+  "errors": {
+    "personNotFound": "Person not found"
   }
 } 

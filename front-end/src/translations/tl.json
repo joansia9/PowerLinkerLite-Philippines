@@ -80,5 +80,15 @@
   },
   "instructions": {
     "switchLanguages": "Palitan ang wika sa header para makita ang mga pagsasalin!"
+  },
+  "buttons": {
+    "attachAll": "I-attach Lahat",
+    "skip": "Laktawan"
+  },
+  "status": {
+    "complete": "Nakumpleto"
+  },
+  "errors": {
+    "personNotFound": "Hindi nahanap ang tao"
   }
 } 

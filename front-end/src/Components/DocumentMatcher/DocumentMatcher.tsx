@@ -7,6 +7,7 @@ import { PotentialMatch } from "../PotentialMatch/PotentialMatch";
 import RecordSVG from "../svg/RecordSVG";
 import Match from "../../Models/Match";
 import { Loading } from "../Loading/Loading";
+import { useTranslation } from 'react-i18next';
 
 export default function DocumentMatcher({
   hintsDone,
@@ -21,6 +22,7 @@ export default function DocumentMatcher({
   tree: Tree;
   submit: Function;
 }) {
+  const { t } = useTranslation();
   const [matches, setMatches]: [Match[], Function] = useState([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [buttonsEnabled, setButtonsEnabled] = useState<boolean>(false);
@@ -31,7 +33,7 @@ export default function DocumentMatcher({
     let _matches = record.people?.map((recordPerson, i) => {
       const treePeople = [
         tree.people?.at(i) ??
-          new Person({ PID: "xxx-xxxx", firstname: "Person not found" }),
+          new Person({ PID: "xxx-xxxx", firstname: t('errors.personNotFound') as string }),
       ]; // TODO don't love this approach
       return {
         recordPerson,
@@ -100,7 +102,7 @@ export default function DocumentMatcher({
         })}
       </div>
       <div className="button-bar">
-        <div className="counter">{"Complete: " + hintsDone}</div>
+        <div className="counter">{t('status.complete') as string + ": " + hintsDone}</div>
         {/* The following will submit info back to Dr. Price's CSV, creating a new column for each row in the process */}
         <div className="attach-buttons">
           <button
@@ -113,7 +115,7 @@ export default function DocumentMatcher({
             }}
             disabled={!buttonsEnabled}
           >
-            Attach All
+            {t('buttons.attachAll') as string}
           </button>
           <button
             type="button"
@@ -125,7 +127,7 @@ export default function DocumentMatcher({
             }}
             disabled={!buttonsEnabled}
           >
-            Skip
+            {t('buttons.skip') as string}
           </button>
         </div>
       </div>

@@ -80,5 +80,15 @@
   },
   "instructions": {
     "switchLanguages": "I-usab ang pinulongan sa header aron makita ang mga pagsalin!"
+  },
+  "buttons": {
+    "attachAll": "I-attach Tanan",
+    "skip": "Laktawan"
+  },
+  "status": {
+    "complete": "Nahuman"
+  },
+  "errors": {
+    "personNotFound": "Wala nakit-an ang tawo"
   }
 } 
