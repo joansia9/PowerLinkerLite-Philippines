@@ -50,12 +50,25 @@
     "Unknown": "Unknown"
   },
   "relationship": {
-    "focus": "Focus",
-    "father": "Father",
-    "mother": "Mother"
+    "Focus": "Focus",
+    "Father": "Father",
+    "Mother": "Mother",
+    "Spouse": "Spouse",
+    "Sister": "Sister",
+    "Brother": "Brother",
+    "Child": "Child",
+    "Other": "Other"
   },
   "event": {
-    "birth": "birth",
-    "death": "death"
+    "birth": "Birth",
+    "death": "Death",
+    "unknown": "Unknown"
+  },
+  "test": {
+    "fieldTranslation": "Field Translation Test"
+  },
+  "events": {
+    "show": "Show Events",
+    "hide": "Hide Events"
   }
 } 

@@ -50,12 +50,25 @@
     "Unknown": "Hindi Alam"
   },
   "relationship": {
-    "focus": "Pokos",
-    "father": "Ama",
-    "mother": "Ina"
+    "Focus": "Pokos",
+    "Father": "Ama",
+    "Mother": "Ina",
+    "Spouse": "Asawa",
+    "Sister": "Kapatid na Babae",
+    "Brother": "Kapatid na Lalaki",
+    "Child": "Anak",
+    "Other": "Iba"
   },
   "event": {
-    "birth": "kapanganakan",
-    "death": "kamatayan"
+    "birth": "Kapanganakan",
+    "death": "Kamatayan",
+    "unknown": "Hindi Alam"
+  },
+  "test": {
+    "fieldTranslation": "Pagsusulit sa Pagsasalin ng Field"
+  },
+  "events": {
+    "show": "Ipakita ang mga Event",
+    "hide": "Itago ang mga Event"
   }
 } 

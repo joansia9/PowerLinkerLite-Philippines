@@ -6,6 +6,7 @@ import getSortedEventTypes from "../PotentialMatch/EventIndex";
 import compareTwoStrings from "../../Services/name-comparator";
 import getHighlightType from "../../Services/getHighlightType";
 import { HighlightType } from "../../Models/HighlightType";
+import { useTranslation } from 'react-i18next';
 
 export default function MatchTable({
   selectedCandidate,
@@ -20,6 +21,7 @@ export default function MatchTable({
   createPerson: Function;
   setAttached: Function;
 }) {
+  const { t } = useTranslation();
   const [showDetails, setShowDetails]: [boolean, Function] = useState(true);
   const treeCandidate = useMemo(() => {
     if (selectedCandidate === -1) {
@@ -97,7 +99,7 @@ export default function MatchTable({
             setAttached(true);
           }}
         >
-          Create New
+          {t('home.createNew') as string}
         </button>
       )}
 
@@ -132,7 +134,7 @@ export default function MatchTable({
             }}
             type="button"
           >
-            {showDetails ? "Hide Events" : "Show Events"}
+            {showDetails ? (t('events.hide') as string) : (t('events.show') as string)}
           </button>
         </div>
       )}
@@ -156,7 +158,7 @@ export default function MatchTable({
               {eventsOfType.length > 0 &&
                 eventsOfType.map((event, j) => (
                   <div className="detail" key={eventType + j}>
-                    <h6>{event.type}</h6>
+                    <h6>{t(`event.${event.type?.toLowerCase() || 'unknown'}`) as string}</h6> 
 
                     <div className={"date " + (highlightType === HighlightType.Green ? "data-matches" : highlightType === HighlightType.Red ? "data-not-matches" : "")}>
                       {" "}

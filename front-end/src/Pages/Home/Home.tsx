@@ -53,16 +53,16 @@ export function Home() {
           borderRadius: '5px',
           fontSize: '14px'
         }}>
-          <strong>Field Translation Test:</strong><br/>
-          First Name: {translateFieldName('firstname')}<br/>
-          Last Name: {translateFieldName('lastname')}<br/>
-          Birth Date: {translateFieldName('birthdate')}<br/>
-          Birth Place: {translateFieldName('birthplace')}<br/>
-          Death Date: {translateFieldName('deathdate')}<br/>
-          Father Given Name: {translateFieldName('father_givenname')}<br/>
-          Father Surname: {translateFieldName('father_surname')}<br/>
-          Mother Given Name: {translateFieldName('mother_givenname')}<br/>
-          Mother Surname: {translateFieldName('mother_surname')}<br/>
+          <strong>{t('test.fieldTranslation') as string}:</strong><br/>
+          {t('fields.firstname') as string}: {translateFieldName('firstname')}<br/>
+          {t('fields.lastname') as string}: {translateFieldName('lastname')}<br/>
+          {t('fields.birthdate') as string}: {translateFieldName('birthdate')}<br/>
+          {t('fields.birthplace') as string}: {translateFieldName('birthplace')}<br/>
+          {t('fields.deathdate') as string}: {translateFieldName('deathdate')}<br/>
+          {t('fields.father_givenname') as string}: {translateFieldName('father_givenname')}<br/>
+          {t('fields.father_surname') as string}: {translateFieldName('father_surname')}<br/>
+          {t('fields.mother_givenname') as string}: {translateFieldName('mother_givenname')}<br/>
+          {t('fields.mother_surname') as string}: {translateFieldName('mother_surname')}<br/>
           Switch languages in the header to see translations!
         </div>
         
