@@ -48,7 +48,7 @@ export const loadLanguage = async (languageCode: string) => {
 
 // Preload all supported languages (optional)
 export const preloadAllLanguages = async () => {
-  const languages = ['tl', 'es'];
+  const languages = ['tl', 'es', 'ceb'];
   const loadPromises = languages.map(lang => loadLanguage(lang));
   await Promise.all(loadPromises);
 };

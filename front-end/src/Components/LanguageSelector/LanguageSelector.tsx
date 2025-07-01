@@ -19,6 +19,7 @@ export function LanguageSelector() {
         <option value="en">English</option>
         <option value="tl">Tagalog</option>
         <option value="es">Español</option>
+        <option value="ceb">Cebuano</option>
       </select>
     </div>
   );

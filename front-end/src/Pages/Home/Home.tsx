@@ -63,7 +63,7 @@ export function Home() {
           {t('fields.father_surname') as string}: {translateFieldName('father_surname')}<br/>
           {t('fields.mother_givenname') as string}: {translateFieldName('mother_givenname')}<br/>
           {t('fields.mother_surname') as string}: {translateFieldName('mother_surname')}<br/>
-          Switch languages in the header to see translations!
+          {t('instructions.switchLanguages') as string}
         </div>
         
         {typeof data[0] === "string" ? (

@@ -70,5 +70,15 @@
   "events": {
     "show": "Ipakita ang mga Event",
     "hide": "Itago ang mga Event"
+  },
+  "loading": {
+    "upload": "Nag-load...",
+    "language": "Nag-load ng wika..."
+  },
+  "links": {
+    "sourceLinker": "Sa SourceLinker"
+  },
+  "instructions": {
+    "switchLanguages": "Palitan ang wika sa header para makita ang mga pagsasalin!"
   }
 } 

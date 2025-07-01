@@ -17,7 +17,7 @@ export function Upload() {
         <form
           onSubmit={async (e) => {
             e.preventDefault();
-            setMessage("Loading...");
+            setMessage(t('loading.upload') as string);
             setMessage(await uploadHints(csvUri));
           }}
         >

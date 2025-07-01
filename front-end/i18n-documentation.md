@@ -2,10 +2,11 @@
 
 ## Overview
 
-PowerLinkerLite uses `react-i18next` for internationalization, supporting three languages:
+PowerLinkerLite uses `react-i18next` for internationalization, supporting four languages:
 - **English (en)** - Default language
 - **Tagalog (tl)** - Filipino language
 - **Spanish (es)** - Spanish language
+- **Cebuano (ceb)** - Cebuano/Bisaya language
 
 ## Architecture
 

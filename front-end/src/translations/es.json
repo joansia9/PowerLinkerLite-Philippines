@@ -70,5 +70,15 @@
   "events": {
     "show": "Mostrar Eventos",
     "hide": "Ocultar Eventos"
+  },
+  "loading": {
+    "upload": "Cargando...",
+    "language": "Cargando idioma..."
+  },
+  "links": {
+    "sourceLinker": "A SourceLinker"
+  },
+  "instructions": {
+    "switchLanguages": "¡Cambia el idioma en el encabezado para ver las traducciones!"
   }
 } 

@@ -10,7 +10,8 @@ export interface IAppProps {}
 const languages = [
   { code: 'en', name: 'English' },
   { code: 'tl', name: 'Tagalog' },
-  { code: 'es', name: 'Español' }
+  { code: 'es', name: 'Español' },
+  { code: 'ceb', name: 'Cebuano' }
 ];
 
 //MARK: LANGUAGE SELECTOR LOGIC
@@ -71,7 +72,7 @@ export function Layout(props: IAppProps) {
           </select>
           {isLoadingLanguage && (
             <div style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>
-              Loading language...
+              {t('loading.language') as string}
             </div>
           )}
         </div>

@@ -1,0 +1,84 @@
+{
+  "header": {
+    "title": "Power Linker",
+    "language": "Pinulongan"
+  },
+  "home": {
+    "title": "I-match ang impormasyon sa record sa mga pamilya sa kahoy",
+    "hintMessage": "Nahuman nimo ang {{count}} ka mga hint.",
+    "createNew": "Himo og Bag-o"
+  },
+  "upload": {
+    "title": "I-upload ang mga Dokumento",
+    "dragAndDrop": "I-drag ug i-drop ang mga file dinhi",
+    "or": "o",
+    "browse": "Mag-browse og mga File"
+  },
+  "footer": {
+    "copyright": "Copyright © BYU Record Linking Lab 2023. Tanang katungod gipreserba."
+  },
+  "fields": {
+    "firstname": "Pangalan",
+    "lastname": "Apelyido",
+    "birthdate": "Petsa sa Pagkatawo",
+    "birthplace": "Lugar sa Pagkatawo",
+    "deathdate": "Petsa sa Kamatayon",
+    "father_givenname": "Pangalan sa Amahan",
+    "father_surname": "Apelyido sa Amahan",
+    "mother_givenname": "Pangalan sa Inahan",
+    "mother_surname": "Apelyido sa Inahan",
+    "sex": "Sekso",
+    "relationship": "Relasyon",
+    "pid": "PID",
+    "ark": "ARK",
+    "score": "Puntos",
+    "url": "URL"
+  },
+  "relationships": {
+    "Focus": "Pangunahing Persona",
+    "Spouse": "Bana/Asawa",
+    "Mother": "Inahan",
+    "Father": "Amahan",
+    "Sister": "Igsoon nga Babaye",
+    "Brother": "Igsoon nga Lalaki",
+    "Child": "Anak",
+    "Other": "Uban"
+  },
+  "sex": {
+    "Male": "Lalaki",
+    "Female": "Babaye",
+    "Unknown": "Wala Mahibalo"
+  },
+  "relationship": {
+    "Focus": "Pangunahing",
+    "Father": "Amahan",
+    "Mother": "Inahan",
+    "Spouse": "Bana/Asawa",
+    "Sister": "Igsoon nga Babaye",
+    "Brother": "Igsoon nga Lalaki",
+    "Child": "Anak",
+    "Other": "Uban"
+  },
+  "event": {
+    "birth": "Pagkatawo",
+    "death": "Kamatayon",
+    "unknown": "Wala Mahibalo"
+  },
+  "test": {
+    "fieldTranslation": "Pagsulay sa Pagsalin sa Field"
+  },
+  "events": {
+    "show": "Ipakita ang mga Event",
+    "hide": "Itago ang mga Event"
+  },
+  "loading": {
+    "upload": "Nag-load...",
+    "language": "Nag-load og pinulongan..."
+  },
+  "links": {
+    "sourceLinker": "Sa SourceLinker"
+  },
+  "instructions": {
+    "switchLanguages": "I-usab ang pinulongan sa header aron makita ang mga pagsalin!"
+  }
+} 

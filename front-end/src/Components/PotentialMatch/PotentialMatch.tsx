@@ -46,7 +46,7 @@ export function PotentialMatch({
         <span className="sourcelinker-button">
           <NewWindowLink
             url={sourceLinkerURL}
-            linkName="To SourceLinker"
+            linkName={t('links.sourceLinker') as string}
           />
         </span>
         ) : (
