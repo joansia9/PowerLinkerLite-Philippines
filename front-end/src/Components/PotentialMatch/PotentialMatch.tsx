@@ -6,6 +6,12 @@ import Person, { Relationship } from "../../Models/Person";
 import MatchTable from "../MatchTable/MatchTable";
 import NewWindowLink from "../NewWindowLink/NewWindowLink";
 
+//TODO: changing the fields to the translated fields based on the user choice
+//FIXME: hello
+//1. use the enum value as a translation key
+import { useTranslation } from 'react-i18next';
+
+
 /* Defines comparison table component which has two iterations:
   1.) One person is being compared to one other (yes/no question)
   2.) One person has multiple possible options (matching question, can also add an entirely new person) */
@@ -28,14 +34,14 @@ export function PotentialMatch({
   createPerson: Function;
   ark: string | undefined;
   pid: string | undefined;
-}) {
-
+})  {
+  const { t } = useTranslation();
   let sourceLinkerURL: string = "https://www.familysearch.org/search/linker?pal=/ark:/61903/1:1:" + ark + "&id=" + pid;
 
   return (
     <div className="potential-match">
       <h4>
-        {recordCandidate.relationship}
+        {t(`relationship.${recordCandidate.relationship}`) as string}
         {recordCandidate.relationship === Relationship.FocusPerson ? (
         <span className="sourcelinker-button">
           <NewWindowLink

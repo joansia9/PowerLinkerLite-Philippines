@@ -49,9 +49,12 @@ jobs:
                     ]
                 }'
                 echo matrix=`echo $matrix | jq -c .` >> $GITHUB_ENV
-
+          - name: Set matrix output
+            id: set-matrix
+            run: echo "matrix=${matrix}" >> $GITHUB_OUTPUT
+              
         outputs:
-            matrix: ${{ env.matrix }}
+            matrix: ${{ steps.set-matrix.outputs.matrix }}
 
     setup:
         name: Setup

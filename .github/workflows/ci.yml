@@ -47,9 +47,13 @@ jobs:
                 ]
               }'
               echo matrix=`echo $matrix | jq -c .` >> $GITHUB_ENV
+              
+          - name: Set matrix output
+            id: set-matrix
+            run: echo "matrix=${matrix}" >> $GITHUB_OUTPUT
     
         outputs:
-          matrix: ${{ env.matrix }}
+          matrix: ${{ steps.set-matrix.outputs.matrix }}
 
     format:
       name: Terraform Format
@@ -136,11 +140,13 @@ jobs:
             
           - name: Comment Terraform Plan
             uses: actions/github-script@v7
+            env:
+              TF_WORKING_DIR: ${{ matrix.env.tf_working_dir }}
             with:
                 github-token: ${{ secrets.GITHUB_TOKEN }}
                 script: |
                   const fs = require('fs');
-                  const plan = fs.readFileSync('${{ matrix.env.tf_working_dir }}/app/plan', 'utf8');
+                  const plan = fs.readFileSync(`${process.env.TF_WORKING_DIR}/app/plan`, 'utf8');
                   const output = `## Terraform Plan 📋
                   
                   \`\`\`
