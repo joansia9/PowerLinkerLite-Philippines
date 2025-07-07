@@ -1,6 +1,7 @@
 {
-  "short_name": "Power Linker",
   "name": "Power Linker",
+  "short_name": "Power Linker",
+  "description": "A tool for matching and linking records efficiently.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -11,5 +12,43 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "shortcuts": [
+    {
+      "name": "Upload",
+      "short_name": "Upload",
+      "description": "Go to the upload page",
+      "url": "/upload",
+      "icons": [
+        {
+          "src": "icons/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Home",
+      "short_name": "Home",
+      "description": "Go to the home page",
+      "url": "/",
+      "icons": [
+        {
+          "src": "icons/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/screen1.png",
+      "sizes": "540x720",
+      "type": "image/png"
+    },
+    {
+      "src": "screenshots/screen2.png",
+      "sizes": "540x720",
+      "type": "image/png"
+    }
+  ]
 }
