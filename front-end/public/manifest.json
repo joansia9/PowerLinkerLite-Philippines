@@ -1,54 +1,53 @@
 {
   "name": "Power Linker",
-  "short_name": "Power Linker",
-  "description": "A tool for matching and linking records efficiently.",
+  "short_name": "PowerLinker",
+  "description": "A powerful tool for matching and linking genealogical records efficiently using advanced algorithms.",
+  "lang": "en",
+  "scope": "/",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#5B7A34",
+  "background_color": "#e0e8e8",
+  "categories": ["productivity", "utilities"],
   "icons": [
     {
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff",
-  "shortcuts": [
-    {
-      "name": "Upload",
-      "short_name": "Upload",
-      "description": "Go to the upload page",
-      "url": "/upload",
-      "icons": [
-        {
-          "src": "icons/icon-192x192.png",
-          "sizes": "192x192"
-        }
-      ]
+      "type": "image/x-icon",
+      "purpose": "any"
     },
     {
-      "name": "Home",
-      "short_name": "Home",
-      "description": "Go to the home page",
-      "url": "/",
-      "icons": [
-        {
-          "src": "icons/icon-192x192.png",
-          "sizes": "192x192"
-        }
-      ]
+      "src": "Philippines Flag Vector.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "Philippines Flag Vector.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "screenshots": [
     {
       "src": "screenshots/screen1.png",
       "sizes": "540x720",
-      "type": "image/png"
+      "type": "image/png",
+      "form_factor": "narrow"
     },
     {
       "src": "screenshots/screen2.png",
       "sizes": "540x720",
-      "type": "image/png"
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "screenshots/screen3.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow"
     }
   ]
 }
