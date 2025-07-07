@@ -23,6 +23,7 @@ export default function MatchTable({
 }) {
   const { t } = useTranslation();
   const [showDetails, setShowDetails]: [boolean, Function] = useState(true);
+
   const treeCandidate = useMemo(() => {
     if (selectedCandidate === -1) {
       return recordCandidate;
@@ -33,11 +34,13 @@ export default function MatchTable({
       return undefined;
     }
   }, [recordCandidate, treeCandidates, selectedCandidate]);
+  
   const eventTypes = useMemo(
     () =>
       getSortedEventTypes(recordCandidate, treeCandidates, selectedCandidate),
     [recordCandidate, treeCandidates, selectedCandidate]
   );
+  
   const detailsToShow = useMemo(() => {
     if (selectedCandidate === undefined) return false;
     if (recordCandidate.personEvents.length) return true;
