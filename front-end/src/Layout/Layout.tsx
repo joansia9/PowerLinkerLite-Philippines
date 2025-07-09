@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Outlet } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
-import { loadLanguage } from '../i18n';
+import { loadLanguage, preloadLanguages } from '../i18n';
 import "./Layout.css";
 
 export interface IAppProps {}
@@ -19,22 +19,27 @@ const languages = [
 export function Layout(props: IAppProps) {
   const { t, i18n } = useTranslation();
   const [isLoadingLanguage, setIsLoadingLanguage] = React.useState(false);
+  const [loadError, setLoadError] = React.useState<string | null>(null);
   // t -> translation function
   // i18n -> internationalization object
+
+  // Preload languages on mount for better UX
+  React.useEffect(() => {
+    const supportedLanguages = languages.map(lang => lang.code);
+    preloadLanguages(supportedLanguages);
+  }, []);
 
   //called when the language is changed this function gets called!
   const changeLanguage = async (lng: string) => { //creating a function called changeLanguage
     if (lng === i18n.language) return; // Already on this language
-    console.log(`🔄 if (lng === i18n.language) return;`);
 
     console.log(`🔄 Switching to language: ${lng}`);
     setIsLoadingLanguage(true);
-    console.log(`🔄 setIsLoadingLanguage(true)`);
+    setLoadError(null);
 
     try {
       // Load language dynamically if not already loaded
       await loadLanguage(lng);
-      console.log(`✅ await loadLanguage(${lng})`);
 
       // Change to the language
       i18n.changeLanguage(lng);
@@ -42,10 +47,15 @@ export function Layout(props: IAppProps) {
 
     } catch (error) {
       console.error('❌ Failed to change language:', error);
+      setLoadError(`Failed to load ${lng} language`);
 
       // Fallback to English if loading fails
-      i18n.changeLanguage('en');
-      console.log('❌ Fallback to English');
+      try {
+        i18n.changeLanguage('en');
+        console.log('❌ Fallback to English');
+      } catch (fallbackError) {
+        console.error('❌ Critical: Failed to fallback to English:', fallbackError);
+      }
     } finally {
       setIsLoadingLanguage(false);
     }
@@ -66,13 +76,18 @@ export function Layout(props: IAppProps) {
           >
             {languages.map((lang) => (
               <option key={lang.code} value={lang.code}>
-                {lang.name} {isLoadingLanguage && lang.code === i18n.language ? '(Loading...)' : ''}
+                {lang.name} {isLoadingLanguage && lang.code !== i18n.language ? '(Loading...)' : ''}
               </option>
             ))}
           </select>
           {isLoadingLanguage && (
             <div style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>
               {t('loading.language') as string}
+            </div>
+          )}
+          {loadError && (
+            <div style={{ fontSize: '12px', color: '#d32f2f', marginTop: '4px' }}>
+              {loadError}
             </div>
           )}
         </div>

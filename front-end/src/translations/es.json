@@ -73,7 +73,8 @@
   },
   "loading": {
     "upload": "Cargando...",
-    "language": "Cargando idioma..."
+    "language": "Cargando idioma...",
+    "page": "Cargando página..."
   },
   "links": {
     "sourceLinker": "A SourceLinker"

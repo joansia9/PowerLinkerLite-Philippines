@@ -3,7 +3,7 @@ import Person from "../../Models/Person";
 import Collapsible from "../Collapsible/Collapsible";
 import RecordSVG from "../svg/RecordSVG";
 import getSortedEventTypes from "../PotentialMatch/EventIndex";
-import loadNameComparator from "../../Services/name-comparator/nameComparisonLoader";
+import loadNameComparator, { isNameComparatorLoaded, preloadNameComparator } from "../../Services/name-comparator/nameComparisonLoader";
 import getHighlightType from "../../Services/getHighlightType";
 import { HighlightType } from "../../Models/HighlightType";
 import { useTranslation } from 'react-i18next';
@@ -27,15 +27,45 @@ export default function MatchTable({
   setAttached: Function;
 }) {
   const { t } = useTranslation();
-  const [showDetails, setShowDetails]: [boolean, Function] = useState(true);
+  const [showDetails, setShowDetails]: [boolean, Function] = useState(true); 
+  //holds the dynamically loaded name comparison function
   const [nameComparator, setNameComparator] = useState<((string1: string, string2: string) => [boolean, number, [number, number, number][]]) | null>(null);
+  //Keeps track of whether the name comparator is currently loading
   const [isLoadingComparator, setIsLoadingComparator] = useState(false);
+  //handles loading errors
   const [loadError, setLoadError] = useState<string | null>(null);
 
-  // Load name comparator when component mounts
+  // Check if we need name comparison
+  const needsNameComparison = useMemo(() => {
+    const recordName = (recordCandidate.firstname || "") + " " + (recordCandidate.lastname || "");
+    let treeName = "";
+    
+    if (selectedCandidate === -1) {
+      treeName = recordName; // Same as record candidate
+    } else if (selectedCandidate !== undefined && treeCandidates[selectedCandidate]) {
+      treeName = (treeCandidates[selectedCandidate].firstname || "") + " " + (treeCandidates[selectedCandidate].lastname || "");
+    }
+    
+    return recordName.trim() !== "" && treeName.trim() !== "" && selectedCandidate !== undefined;
+  }, [recordCandidate, treeCandidates, selectedCandidate]);
+
+  // Preload name comparator on component mount for better UX
+  useEffect(() => {
+    preloadNameComparator();
+  }, []);
+
+  // Load name comparator only when needed
   useEffect(() => {
     const loadComparator = async () => {
-      if (nameComparator || isLoadingComparator) return;
+      // Skip loading if not needed or already loaded/loading
+      if (!needsNameComparison || nameComparator || isLoadingComparator) return;
+      
+      // Check if already loaded from cache
+      if (isNameComparatorLoaded()) {
+        const loadedComparator = await loadNameComparator();
+        setNameComparator(() => loadedComparator);
+        return;
+      }
       
       setIsLoadingComparator(true);
       setLoadError(null);
@@ -52,7 +82,7 @@ export default function MatchTable({
     };
     
     loadComparator();
-  }, [nameComparator, isLoadingComparator]);
+  }, [needsNameComparison, nameComparator, isLoadingComparator]);
 
   const treeCandidate = useMemo(() => {
     if (selectedCandidate === -1) {

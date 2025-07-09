@@ -29,7 +29,8 @@
     "start-lambda": "node ./start-lambda.mjs",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "analyze": "npm run build && npx webpack-bundle-analyzer build/static/js/*.js"
   },
   "eslintConfig": {
     "extends": [
@@ -54,6 +55,7 @@
     "ajv": "^8.12.0",
     "dotenv": "^16.1.4",
     "eslint-config-react-app": "^7.0.1",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "webpack-bundle-analyzer": "^4.10.2"
   }
 }

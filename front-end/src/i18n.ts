@@ -12,6 +12,9 @@ const resources = {
   }
 };
 
+// Track loading promises to prevent duplicate loads
+const loadingPromises: Record<string, Promise<void> | undefined> = {};
+
 // my language switching engine vroom vroom
 i18n
   .use(LanguageDetector) //detects the user's choice
@@ -26,31 +29,58 @@ i18n
   });
 
 // Dynamic language loading function
-export const loadLanguage = async (languageCode: string) => {
+export const loadLanguage = async (languageCode: string): Promise<void> => {
+  // Skip if language is already loaded
   if (i18n.hasResourceBundle(languageCode, 'translation')) {
-    return; // Language already loaded
+    console.log(`Language ${languageCode} already loaded`);
+    return;
   }
 
-  try {
-    // Dynamic import based on language code
-    const translations = await import(`./translations/${languageCode}.json`);
-    
-    // Add the language to i18n
-    i18n.addResourceBundle(languageCode, 'translation', translations.default);
-    
-    console.log(`Language ${languageCode} loaded dynamically`);
-  } catch (error) {
-    console.error(`Failed to load language ${languageCode}:`, error);
-    // Fallback to English if loading fails
-    i18n.changeLanguage('en');
+  // Return existing promise if already loading
+  if (loadingPromises[languageCode]) {
+    console.log(`Language ${languageCode} already loading...`);
+    return loadingPromises[languageCode];
   }
+
+  // Create loading promise
+  loadingPromises[languageCode] = (async () => {
+    try {
+      console.log(`🔄 Loading language: ${languageCode}`);
+      
+      // Dynamic import based on language code
+      const translations = await import(`./translations/${languageCode}.json`);
+      
+      // Add the language to i18n
+      i18n.addResourceBundle(languageCode, 'translation', translations.default);
+      
+      console.log(`✅ Language ${languageCode} loaded successfully`);
+    } catch (error) {
+      console.error(`❌ Failed to load language ${languageCode}:`, error);
+      // Fallback to English if loading fails
+      throw error;
+    } finally {
+      // Clear loading promise
+      delete loadingPromises[languageCode];
+    }
+  })();
+
+  return loadingPromises[languageCode];
 };
 
-// Preload all supported languages (optional)
-export const preloadAllLanguages = async () => {
-  const languages = ['tl', 'es', 'ceb'];
-  const loadPromises = languages.map(lang => loadLanguage(lang));
-  await Promise.all(loadPromises);
+// Check if language is loaded
+export const isLanguageLoaded = (languageCode: string): boolean => {
+  return i18n.hasResourceBundle(languageCode, 'translation');
+};
+
+// Preload commonly used languages
+export const preloadLanguages = (languageCodes: string[]): void => {
+  languageCodes.forEach(lang => {
+    if (lang !== 'en' && !isLanguageLoaded(lang)) {
+      loadLanguage(lang).catch(() => {
+        // Silently fail for preloading
+      });
+    }
+  });
 };
 
 export default i18n; 

@@ -73,7 +73,8 @@
   },
   "loading": {
     "upload": "Nag-load...",
-    "language": "Nag-load og pinulongan..."
+    "language": "Nag-load og pinulongan...",
+    "page": "Nag-load og pahina..."
   },
   "links": {
     "sourceLinker": "Sa SourceLinker"

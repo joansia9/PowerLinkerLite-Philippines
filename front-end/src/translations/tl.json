@@ -73,7 +73,8 @@
   },
   "loading": {
     "upload": "Nag-load...",
-    "language": "Nag-load ng wika..."
+    "language": "Nag-load ng wika...",
+    "page": "Nag-load ng pahina..."
   },
   "links": {
     "sourceLinker": "Sa SourceLinker"
