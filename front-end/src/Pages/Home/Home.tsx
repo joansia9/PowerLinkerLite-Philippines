@@ -4,17 +4,16 @@ import NumidentHint from "../../Models/NumidentHint";
 import { useEffect, useState } from "react";
 import { Record } from "../../Models/Record";
 import { Tree } from "../../Models/Tree";
-import useFormatData, { useFieldTranslations } from "../../Services/useFormatData";
 import submitMatch from "../../Services/submitMatch";
 import useGetHint from "../../Services/useGetHint";
 import { useTranslation } from 'react-i18next';
+import useFormatData from "../../Services/useFormatData";
 
 //Shows a comparison table for each possible ark/pid attachment
 // also displays as add/match person table for when there is no match
 // has an attach all button at the bottom that greys out if attaching is somehow not possible
 export function Home() {
   const { t } = useTranslation();
-  const { translateFieldName } = useFieldTranslations();
   const [hintsDone, setHintsDone] : [number, Function] = useState(0);
   const [hintsRequested, setHintsRequested]: [number, Function] = useState(0);
   const [hintsInFlight, setHintsInFlight] = useState<number>(0);

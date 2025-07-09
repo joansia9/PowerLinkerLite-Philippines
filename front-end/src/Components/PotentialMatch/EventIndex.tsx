@@ -4,7 +4,7 @@ import {
   EventTypesIndex,
   EventTypesIndexElement,
 } from "../../Models/EventTypesIndex";
-import compareTwoStrings from "../../Services/name-comparator/index.mjs";
+import compareTwoDates from "../../Services/name-comparator/dateComparator.mjs";
 import { HighlightType  } from "../../Models/HighlightType"
 import FlexibleDate from "../../Models/FlexibleDate";
 
@@ -103,12 +103,17 @@ function matchEventTypes(
 
     const recordDate = recordEventsOfType[0].date?.toDateString() || "";
     const treeDate = treeEventsOfType[0].date?.toDateString() || "";
-
-    const matchData = compareTwoStrings(
-      recordDate,
-      treeDate
+     
+    // const matchData = compareTwoStrings(
+    //   recordDate,
+    //   treeDate
+    // );
+    const matchData = compareTwoDates(
+      new Date(recordDate),
+      new Date(treeDate), 
+      'rules'
     );
-
+    
     const highlightType = getHighlightType(
       recordDate,
       treeDate,

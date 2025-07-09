@@ -43,7 +43,7 @@ export default function DocumentMatcher({
     });
     setMatches(_matches || []);
     if (record.ARK) setLoading(false);
-  }, [record, tree]);
+  }, [record, tree, t]);
 
   useEffect(() => {
     clearTimeout(buttonsEnablingTimeout.current);

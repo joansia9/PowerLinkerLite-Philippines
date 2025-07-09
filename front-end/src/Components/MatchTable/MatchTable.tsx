@@ -3,10 +3,16 @@ import Person from "../../Models/Person";
 import Collapsible from "../Collapsible/Collapsible";
 import RecordSVG from "../svg/RecordSVG";
 import getSortedEventTypes from "../PotentialMatch/EventIndex";
-import compareTwoStrings from "../../Services/name-comparator";
+// import compareTwoStrings from "../../Services/name-comparator";
+import compareTwoNames from "../../Services/name-comparator/nameComparator.mjs";
 import getHighlightType from "../../Services/getHighlightType";
 import { HighlightType } from "../../Models/HighlightType";
 import { useTranslation } from 'react-i18next';
+
+//TODO: dynamic loading
+//1. remove static import
+//2. load when needed
+//3. use conditionally
 
 export default function MatchTable({
   selectedCandidate,
@@ -52,13 +58,22 @@ export default function MatchTable({
     return false;
   }, [recordCandidate, treeCandidates, selectedCandidate]);
 
-  const recordName = recordCandidate.firstname + " " + recordCandidate.lastname
-  const treeName = treeCandidate?.firstname + " " + treeCandidate?.lastname
+  // const recordName = recordCandidate.firstname + " " + recordCandidate.lastname
+  // const treeName = treeCandidate?.firstname + " " + treeCandidate?.lastname
 
-  const matchData = compareTwoStrings(
-    recordName,
-    treeName
-  )
+  //this can handle nulls
+  const recordName = (recordCandidate.firstname || "") + " " + (recordCandidate.lastname || "");
+  const treeName = (treeCandidate?.firstname || "") + " " + (treeCandidate?.lastname || "");
+
+  //now we should call when we have actual names!
+  // const matchData = compareTwoStrings(
+  //   recordName,
+  //   treeName
+  // )
+
+  const matchData: [boolean, number, [number, number, number][]] = recordName.trim() && treeName.trim() 
+    ? compareTwoNames(recordName, treeName) //direct name comparison instead
+    : [false, -1, []]; //can be these kinds of types
 
   const highlightType = getHighlightType(
     recordName,
