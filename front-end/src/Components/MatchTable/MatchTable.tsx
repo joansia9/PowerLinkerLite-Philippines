@@ -33,6 +33,7 @@ export default function MatchTable({
   //holds the dynamically loaded name comparison function
   //before: import compareTwoNames from "./nameComparator.mjs"; //nameComparator loaded immediately
   const [nameComparator, setNameComparator] = useState<((fullName1: string, fullName2: string) => [boolean, number, [number, number, number][]]) | null>(null);
+    //Returns
     //boolean -> if they match or not
     //number -> match quality/reqsoning (strong pronounciation match 2 vs not so much -2)
     //[number, number, number][] - Word-by-word comparison breakdown
@@ -69,7 +70,7 @@ export default function MatchTable({
       
       // Check if already loaded from cache
       if (isNameComparatorLoaded()) {
-        const loadedComparator = await loadNameComparator();
+        const loadedComparator = await loadNameComparator(); 
         setNameComparator(() => loadedComparator);
         return;
       }
