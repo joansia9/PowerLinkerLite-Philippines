@@ -3,6 +3,8 @@ import Person from "../../Models/Person";
 import Collapsible from "../Collapsible/Collapsible";
 import RecordSVG from "../svg/RecordSVG";
 import getSortedEventTypes from "../PotentialMatch/EventIndex";
+//Before: import loadNameComparator from "../../Services/name-comparator/nameComparisonLoader";
+//we were always loading the nameComparator
 import loadNameComparator, { isNameComparatorLoaded, preloadNameComparator } from "../../Services/name-comparator/nameComparisonLoader";
 import getHighlightType from "../../Services/getHighlightType";
 import { HighlightType } from "../../Models/HighlightType";
@@ -29,7 +31,12 @@ export default function MatchTable({
   const { t } = useTranslation();
   const [showDetails, setShowDetails]: [boolean, Function] = useState(true); 
   //holds the dynamically loaded name comparison function
-  const [nameComparator, setNameComparator] = useState<((string1: string, string2: string) => [boolean, number, [number, number, number][]]) | null>(null);
+  //before: import compareTwoNames from "./nameComparator.mjs"; //nameComparator loaded immediately
+  const [nameComparator, setNameComparator] = useState<((fullName1: string, fullName2: string) => [boolean, number, [number, number, number][]]) | null>(null);
+    //boolean -> if they match or not
+    //number -> match quality/reqsoning (strong pronounciation match 2 vs not so much -2)
+    //[number, number, number][] - Word-by-word comparison breakdown
+  
   //Keeps track of whether the name comparator is currently loading
   const [isLoadingComparator, setIsLoadingComparator] = useState(false);
   //handles loading errors

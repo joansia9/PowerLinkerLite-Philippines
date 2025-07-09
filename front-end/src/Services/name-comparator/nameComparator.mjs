@@ -22,19 +22,22 @@ import {
  */
 export default function compareTwoNames(full_name1, full_name2) {
   var generic_name, name_too_short, names_match, reasoning, word_combo;
+  //normalization of the name
   full_name1 = cleanNameByItself(full_name1);
   full_name2 = cleanNameByItself(full_name2);
   [full_name1, full_name2] = cleanNamesTogether(full_name1, full_name2);
+  //is this a name? (validation)
   [name_too_short, word_combo] = eitherNameTooShort(full_name1, full_name2);
-
   if (name_too_short) {
     reasoning = -2;
     return [false, reasoning, word_combo];
   }
 
+  //algorithms for comparison
   generic_name = isGenericName(full_name1, full_name2);
   [names_match, word_combo] = spellingComparison(full_name1, full_name2);
 
+  //matching logic
   if (names_match) {
     if (generic_name) {
       reasoning = 0;

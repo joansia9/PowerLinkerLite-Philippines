@@ -3,53 +3,54 @@
  * This file will be code-split into a separate chunk
  */
 
-// Cache the loaded module to avoid re-importing
-let cachedComparator: ((string1: string, string2: string) => [boolean, number, [number, number, number][]]) | null = null;
-let loadingPromise: Promise<any> | null = null;
+//change 2: module-level dynamic loading (heavy dependencies)
+
+//BEFORE
+//In MatchTable.tsx
+//MatchTable.tsx - ORIGINAL (static import)
+// import compareTwoNames from "../../Services/name-comparator/nameComparator.mjs";
+// import compareTwoStrings from "../../Services/name-comparator/index.mjs";
+// Then used directly:
+// const matchData = compareTwoNames(recordName, treeName);
+
+let cachedComparator: ((string1: string, string2: string) => [boolean, number, [number, number, number][]]) | null = null; //avoid reimports
+let loadingPromise: Promise<any> | null = null; //prevents simulatenous downloads!@ 
 
 // This dynamic import will create a separate chunk
 const loadNameComparator = async () => {
-  // Return cached version if already loaded
-  if (cachedComparator) {
-    console.log('✅ Using cached name comparison module');
-    return cachedComparator;
-  }
+  // if comparator already exists return it again to avoid re-importing and improve performance
+  if (cachedComparator) { return cachedComparator; }
 
-  // Return existing promise if already loading
-  if (loadingPromise) {
-    console.log('⏳ Name comparison module already loading...');
-    return loadingPromise;
-  }
+  // if already loading return it again bc it exists and to avoid dupes
+  if (loadingPromise) { return loadingPromise; }
 
-  console.log('🔄 Loading name comparison module...');
+  console.log('Loading name comparison module...');
   
-  // Create loading promise
-  loadingPromise = import('./nameComparator.mjs')
-    .then(module => {
-      console.log('✅ Name comparison module loaded successfully');
-      cachedComparator = module.default;
+  // dynamic import loads the results o
+  loadingPromise = import('./nameComparator.mjs') //loads the nameComparator (original guy with ALL functionality)
+    .then(results => {
+      console.log('importing working');
+      cachedComparator = results.default; //store loaded results to use later
       loadingPromise = null; // Clear loading promise
-      return cachedComparator;
+      return cachedComparator; //load the comparison module agian (function of matching names)
     })
     .catch(error => {
-      console.error('❌ Failed to load name comparison module:', error);
+      console.error('failed to load results', error);
       loadingPromise = null; // Clear loading promise on error
       throw error;
     });
-
   return loadingPromise;
 };
 
-// Export function to check if module is already loaded
+//checks existance
 export const isNameComparatorLoaded = () => cachedComparator !== null;
 
 // Export function to preload the module
 export const preloadNameComparator = () => {
   if (!cachedComparator && !loadingPromise) {
-    loadNameComparator().catch(() => {
-      // Silently fail for preloading
-    });
+    loadNameComparator().catch(() => {}); //silent failing
   }
 };
 
 export default loadNameComparator; 
+

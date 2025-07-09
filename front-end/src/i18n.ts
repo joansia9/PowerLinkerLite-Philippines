@@ -2,10 +2,10 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
-// Import only the default language initially (fall back language)
-import enTranslations from './translations/en.json';
+//change 3: ASSET LEVEL DYNAMIC LOADING (I18N TRANSLATIONS)
 
-// Initialize with only default language
+// load only english INITIALLY (bc it is default)
+import enTranslations from './translations/en.json';
 const resources = {
   en: {
     translation: enTranslations
@@ -45,7 +45,7 @@ export const loadLanguage = async (languageCode: string): Promise<void> => {
   // Create loading promise
   loadingPromises[languageCode] = (async () => {
     try {
-      console.log(`🔄 Loading language: ${languageCode}`);
+      console.log(`Loading language: ${languageCode}`);
       
       // Dynamic import based on language code
       const translations = await import(`./translations/${languageCode}.json`);
@@ -53,9 +53,9 @@ export const loadLanguage = async (languageCode: string): Promise<void> => {
       // Add the language to i18n
       i18n.addResourceBundle(languageCode, 'translation', translations.default);
       
-      console.log(`✅ Language ${languageCode} loaded successfully`);
+      console.log(`Language ${languageCode} loaded successfully`);
     } catch (error) {
-      console.error(`❌ Failed to load language ${languageCode}:`, error);
+      console.error(`Failed to load language ${languageCode}:`, error);
       // Fallback to English if loading fails
       throw error;
     } finally {
