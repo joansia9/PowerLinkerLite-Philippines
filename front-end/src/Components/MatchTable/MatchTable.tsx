@@ -1,10 +1,9 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import Person from "../../Models/Person";
 import Collapsible from "../Collapsible/Collapsible";
 import RecordSVG from "../svg/RecordSVG";
 import getSortedEventTypes from "../PotentialMatch/EventIndex";
-// import compareTwoStrings from "../../Services/name-comparator";
-import compareTwoNames from "../../Services/name-comparator/nameComparator.mjs";
+import loadNameComparator from "../../Services/name-comparator/nameComparisonLoader";
 import getHighlightType from "../../Services/getHighlightType";
 import { HighlightType } from "../../Models/HighlightType";
 import { useTranslation } from 'react-i18next';
@@ -29,6 +28,31 @@ export default function MatchTable({
 }) {
   const { t } = useTranslation();
   const [showDetails, setShowDetails]: [boolean, Function] = useState(true);
+  const [nameComparator, setNameComparator] = useState<((string1: string, string2: string) => [boolean, number, [number, number, number][]]) | null>(null);
+  const [isLoadingComparator, setIsLoadingComparator] = useState(false);
+  const [loadError, setLoadError] = useState<string | null>(null);
+
+  // Load name comparator when component mounts
+  useEffect(() => {
+    const loadComparator = async () => {
+      if (nameComparator || isLoadingComparator) return;
+      
+      setIsLoadingComparator(true);
+      setLoadError(null);
+      
+      try {
+        const loadedComparator = await loadNameComparator();
+        setNameComparator(() => loadedComparator);
+      } catch (error) {
+        console.error('Failed to load name comparator:', error);
+        setLoadError('Failed to load name comparison functionality');
+      } finally {
+        setIsLoadingComparator(false);
+      }
+    };
+    
+    loadComparator();
+  }, [nameComparator, isLoadingComparator]);
 
   const treeCandidate = useMemo(() => {
     if (selectedCandidate === -1) {
@@ -71,9 +95,20 @@ export default function MatchTable({
   //   treeName
   // )
 
-  const matchData: [boolean, number, [number, number, number][]] = recordName.trim() && treeName.trim() 
-    ? compareTwoNames(recordName, treeName) //direct name comparison instead
-    : [false, -1, []]; //can be these kinds of types
+  const matchData: [boolean, number, [number, number, number][]] = useMemo(() => {
+    // If comparator is loading or failed, return default
+    if (isLoadingComparator || loadError || !nameComparator) {
+      return [false, -1, []];
+    }
+    
+    // If we have valid names and loaded comparator, compare them
+    if (recordName.trim() && treeName.trim()) {
+      return nameComparator(recordName, treeName);
+    }
+    
+    // Default case
+    return [false, -1, []];
+  }, [recordName, treeName, nameComparator, isLoadingComparator, loadError]);
 
   const highlightType = getHighlightType(
     recordName,
@@ -84,6 +119,31 @@ export default function MatchTable({
 
   return (
     <div className="potential-match-table">
+      {isLoadingComparator && (
+        <div className="loading-indicator" style={{ 
+          background: '#f0f0f0', 
+          padding: '4px 8px', 
+          fontSize: '12px', 
+          textAlign: 'center',
+          borderRadius: '4px',
+          marginBottom: '8px'
+        }}>
+          🔄 Loading name comparison...
+        </div>
+      )}
+      {loadError && (
+        <div className="error-indicator" style={{ 
+          background: '#ffe6e6', 
+          padding: '4px 8px', 
+          fontSize: '12px', 
+          textAlign: 'center',
+          borderRadius: '4px',
+          marginBottom: '8px',
+          color: '#d00'
+        }}>
+          ⚠️ {loadError}
+        </div>
+      )}
       <button
         type="button"
         className="header-button reset"
