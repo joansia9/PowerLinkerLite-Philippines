@@ -43,18 +43,18 @@ export function Layout(props: IAppProps) {
 
       // Change to the language
       i18n.changeLanguage(lng);
-      console.log(`✅ Successfully switched to: ${lng}`);
+      console.log(`Successfully switched to: ${lng}`);
 
     } catch (error) {
-      console.error('❌ Failed to change language:', error);
+      console.error(' Failed to change language:', error);
       setLoadError(`Failed to load ${lng} language`);
 
       // Fallback to English if loading fails
       try {
         i18n.changeLanguage('en');
-        console.log('❌ Fallback to English');
+        console.log('Fallback to English');
       } catch (fallbackError) {
-        console.error('❌ Critical: Failed to fallback to English:', fallbackError);
+        console.error('Critical: Failed to fallback to English:', fallbackError);
       }
     } finally {
       setIsLoadingLanguage(false);
