@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/* skip link does not work wihtout css!  */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: #fff;
+  padding: 8px 12px;
+  text-decoration: none;
+  z-index: 1000;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.skip-link:focus {
+  top: 6px;
+}

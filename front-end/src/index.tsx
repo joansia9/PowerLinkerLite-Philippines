@@ -10,7 +10,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Router>
+    {/* added these bc Another React Router v7 future flag warning! You can add this one alongside the previous one. */}
+  <Router future={{ v7_relativeSplatPath: true,  v7_startTransition: true  }}> 
       <App />
     </Router>
   </React.StrictMode>

@@ -42,3 +42,6 @@ Zarin Loosli, Sam Carlsen, Molly Remer
 ## License
 
 BYU © 2023 Record Linking Lab
+pip install -r requirements.txt 
+echo "DEPLOYMENT_BRANCH=\"stg\"" >> lambda/.env
+python3 lambda_dev_server.py

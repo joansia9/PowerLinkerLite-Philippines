@@ -3,17 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <!--preconnect to required origins-->
-    <link rel="preconnect" href="https://your-api-domain.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <!--preload LCP image-->
-    <link rel="preload" as="image" href="/your-largest-image.png"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!-- Performance optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="//api.powerlinkerlite.rll.byu.edu">
+    <link rel="preconnect" href="https://api.powerlinkerlite.rll.byu.edu">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" as="image" href="/RLL_Logo_Full.png" fetchpriority="high">
+    <link rel="prefetch" href="/upload">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#5B7A34" />
-    <meta
-      name="description"
-      content="A powerful tool for matching and linking genealogical records efficiently using advanced algorithms."
-    />
+    <meta name="description" content="A powerful tool for matching and linking genealogical records efficiently using advanced algorithms." />
+    
     <!-- TODO: WHEN THE APP IS LIVE: check to see if this renders the right icon on phones -->
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/RLL_Logo.png" />
     <!--
@@ -32,7 +36,9 @@
     -->
     <title>Power Linker</title>
   </head>
-  <body>
+  <body> 
+    <!-- for accessibility skip link! does not work without css so have to add it-->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--

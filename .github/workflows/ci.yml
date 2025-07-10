@@ -19,6 +19,7 @@ jobs:
           - name: Set up PRD Environment Variables
             if: ${{ github.base_ref == 'prd' }}
             # Replace the app_name with the project name
+            id: prd-env
             run: |
               matrix='{
                 "env":[
@@ -35,6 +36,7 @@ jobs:
           - name: Set up STG Environment Variables
             if: ${{ github.base_ref == 'stg' || 'dev' }}
             # Replace the app_name with the project name
+            id: stg-env
             run: |
               matrix='{
                 "env":[
@@ -53,7 +55,7 @@ jobs:
             run: echo "matrix=${matrix}" >> $GITHUB_OUTPUT
     
         outputs:
-          matrix: ${{ steps.set-matrix.outputs.matrix }}
+          matrix: ${{ steps.prd-env.outputs.matrix || steps.stg-env.outputs.matrix }}
 
     format:
       name: Terraform Format
