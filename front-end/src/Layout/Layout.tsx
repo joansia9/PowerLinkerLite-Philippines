@@ -30,23 +30,21 @@ export function Layout(props: IAppProps) {
   }, []);
 
   //called when the language is changed this function gets called!
+  //we deleted the previous languageSelector because it loaded al languages while this one has
+  //proper async handling! and waits for language to load then switches! and its fall back is enlgish
   const changeLanguage = async (lng: string) => { //creating a function called changeLanguage
     if (lng === i18n.language) return; // Already on this language
 
-    console.log(`Switching to language: ${lng}`);
+    console.log(`Switching to language: ${lng}`); // now we had to delete the language selector!
     setIsLoadingLanguage(true);
     setLoadError(null);
 
     try {
-      // Load language dynamically if not already loaded
-      await loadLanguage(lng);
-
-      // Change to the language
-      i18n.changeLanguage(lng);
+      await loadLanguage(lng); // Load language dynamically if not already loaded
+      i18n.changeLanguage(lng); // Change to the language
       console.log(`Successfully switched to: ${lng}`);
 
     } catch (error) {
-      console.error(' Failed to change language:', error);
       setLoadError(`Failed to load ${lng} language`);
 
       // Fallback to English if loading fails
