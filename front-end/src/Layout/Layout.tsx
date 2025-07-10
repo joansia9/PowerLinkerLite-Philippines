@@ -33,7 +33,7 @@ export function Layout(props: IAppProps) {
   const changeLanguage = async (lng: string) => { //creating a function called changeLanguage
     if (lng === i18n.language) return; // Already on this language
 
-    console.log(`🔄 Switching to language: ${lng}`);
+    console.log(`Switching to language: ${lng}`);
     setIsLoadingLanguage(true);
     setLoadError(null);
 
