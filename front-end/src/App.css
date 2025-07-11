@@ -55,8 +55,6 @@
   --color-danger: var(--red-6);
   --color-danger-light: var(--red-7);
   --color-danger-lighter: var(--red-9);
-  --color-danger-dark: var(--red-5);
-
   --color-disabled: var(--gray-5);
   --color-disabled-light: var(--gray-7);
   --color-disabled-dark: var(--gray-3);
@@ -68,30 +66,19 @@
 
   /* Shadow system */
   --shadow-distance-1: 3px;
-  --shadow-distance-2: 6px;
-  --shadow-distance-3: 9px;
+
   --shadow-1: 0 var(--shadow-distance-1) var(--shadow-distance-1) 0
     var(--gray-6);
   --filter-shadow-1: drop-shadow(
     0 var(--shadow-distance-1) var(--shadow-distance-1) var(--gray-6)
   );
-  --shadow-2: 0 var(--shadow-distance-2) var(--shadow-distance-2) 0
-    var(--gray-6);
-  --filter-shadow-2: drop-shadow(
-    0 var(--shadow-distance-2) var(--shadow-distance-2) var(--gray-6)
-  );
-  --shadow-3: 0 var(--shadow-distance-3) var(--shadow-distance-3) 0
-    var(--gray-6);
-  --filter-shadow-3: drop-shadow(
-    0 var(--shadow-distance-3) var(--shadow-distance-3) var(--gray-6)
-  );
+
 
   /* Old variables, probably remove later */
   --color-white: white;
   --color-text: var(--dark-text);
   --color-primary: #e0e8e8;
-  --color-secondary-light: var(--color-accent-lightest);
-  --color-secondary-dark: hsl(137, 3%, 46%);
+
 }
 
 body {
@@ -103,10 +90,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.body {
-  width: 100%;
-  background-color: var(--color-primary);
-}
+
 
 .App {
   display: grid;
@@ -155,9 +139,7 @@ button.false-enabled.outlined {
   --color-disabled: var(--green-4);
 }
 
-button.false-enabled.danger {
-  --color-disabled: var(--light-text);
-}
+
 
 button:where(.reset) {
   background-color: unset;
@@ -179,21 +161,9 @@ button.primary:hover:not(:disabled) {
   background-color: var(--color-accent-lighter);
 }
 
-button.secondary {
-  background-color: var(--color-accent-lightest);
-  color: var(--dark-text);
-}
 
-button.secondary:disabled {
-  background-color: var(--color-disabled-light);
-}
 
-button.secondary:hover:not(:disabled) {
-  background-color: var(--color-accent-lighter);
-}
-
-button.outlined,
-button.danger.outlined {
+button.outlined {
   background-color: inherit;
   border: 1px solid var(--color-accent);
   color: var(--color-accent);
@@ -207,34 +177,7 @@ button.outlined:hover:not(:disabled) {
   background-color: var(--color-accent-lightest);
 }
 
-button.danger {
-  background-color: var(--color-danger);
-  color: var(--light-text);
-}
 
-button.danger:disabled {
-  background-color: var(--color-danger-lighter);
-  color: var(--color-disabled);
-}
-
-button.danger:hover:not(:disabled) {
-  background-color: var(--color-danger-light);
-}
-
-button.danger.outlined {
-  border-color: var(--color-danger);
-  color: var(--color-danger);
-}
-
-button.danger.outlined:disabled {
-  border-color: var(--color-danger-lighter);
-  background-color: transparent;
-  color: var(--color-danger-lighter);
-}
-
-button.danger.outlined:hover:not(:disabled) {
-  background-color: var(--color-danger-lighter);
-}
 
 .person-icon {
   aspect-ratio: 1 / 1;
