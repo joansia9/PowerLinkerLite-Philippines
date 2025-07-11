@@ -7,7 +7,11 @@ const ASSETS_TO_CACHE = [
   '/manifest.json',                 // PWA manifest
   '/philippines-flag-192.png',      // App icons
   '/philippines-flag-512.png',
-  '/RLL_Logo.png'
+  '/RLL_Logo_Full.png',             // Main logo used in app
+  '/images/male.svg',               // Gender icons
+  '/images/female.svg',
+  '/images/undetermined_sex.svg',
+  '/favicon.ico'                    // Favicon
 ];
 
 //cache our files means to download all the fiels in the ASSETS_TO_CACHE and store them in the browser's cache storage then if you're offline, those files can still be loaded! (offline purposes)
@@ -46,27 +50,44 @@ self.addEventListener('activate', (event) => { //sets up a listener for the acti
 // STEP 4: fetch
 self.addEventListener('fetch', (event) => {
     // GET the request from the event
+    const request = event.request;
     
     // RESPOND with:
-
-    //     TRY to find request in cache
-
-    //     IF found in cache:
-
-    //         RETURN cached response
-
-    //     ELSE:
-
-    //         TRY to fetch from network
-
-    //         IF network succeeds:
-
-    //             CACHE the response (optional)
-
-    //             RETURN network response
-
-    //         ELSE:
-    
-    //             RETURN error/offline message
-
-})
+    event.respondWith(
+        // TRY to find request in cache
+        caches.match(request)
+            .then((cachedResponse) => {
+                // IF found in cache:
+                if (cachedResponse) {
+                    // RETURN cached response
+                    return cachedResponse;
+                }
+                
+                // ELSE: TRY to fetch from network
+                return fetch(request)
+                    .then((networkResponse) => {
+                        // IF network succeeds:
+                        // CACHE the response (optional for dynamic content)
+                        if (request.url.startsWith('http') && request.method === 'GET') {
+                            const responseClone = networkResponse.clone();
+                            caches.open(CACHE_NAME)
+                                .then((cache) => {
+                                    cache.put(request, responseClone);
+                                });
+                        }
+                        // RETURN network response
+                        return networkResponse;
+                    })
+                    .catch(() => {
+                        // ELSE: RETURN error/offline message
+                        if (request.destination === 'document') {
+                            return caches.match('/');
+                        }
+                        return new Response('Offline', {
+                            status: 503,
+                            statusText: 'Service Unavailable'
+                        });
+                    });
+            })
+    );
+});

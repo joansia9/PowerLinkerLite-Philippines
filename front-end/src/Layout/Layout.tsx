@@ -97,9 +97,9 @@ export function Layout(props: IAppProps) {
       </header>
 
       {/* Body (injected components) */}
-     
+      <main id="main-content">
         <Outlet />
-     
+      </main>
 
       {/* Footer */}
       <p id="copyright">

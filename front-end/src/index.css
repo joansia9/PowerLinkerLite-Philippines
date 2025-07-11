@@ -1,31 +1,30 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
-/* skip link does not work wihtout css!  */
+/* Skip link for accessibility */
 .skip-link {
   position: absolute;
   top: -40px;
   left: 6px;
   background: #000;
   color: #fff;
-  padding: 8px 12px;
+  padding: 8px;
   text-decoration: none;
   z-index: 1000;
-  border-radius: 4px;
-  font-size: 14px;
+  border-radius: 0 0 4px 4px;
 }
 
 .skip-link:focus {
-  top: 6px;
+  top: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }

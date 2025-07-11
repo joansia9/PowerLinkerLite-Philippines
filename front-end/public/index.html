@@ -10,12 +10,18 @@
     <link rel="dns-prefetch" href="//api.powerlinkerlite.rll.byu.edu">
     <link rel="preconnect" href="https://api.powerlinkerlite.rll.byu.edu">
 
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" media="print" onload="this.media='all'">
+    <!-- Optimized font loading with font-display: swap -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"></noscript>
     
     <!-- Preload critical resources -->
     <link rel="preload" as="image" href="/RLL_Logo_Full.png" fetchpriority="high">
     <link rel="prefetch" href="/upload">
+    
+    <!-- Additional resource hints -->
+    <link rel="prefetch" href="/images/male.svg">
+    <link rel="prefetch" href="/images/female.svg">
+    <link rel="prefetch" href="/images/undetermined_sex.svg">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#5B7A34" />
