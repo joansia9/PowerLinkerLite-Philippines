@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fuzzball": "^2.1.2",
-    "unidecode": "^0.1.8"
+    "fuzzball": "^2.2.2",
+    "unidecode": "^1.1.0"
   }
 }
