@@ -6,6 +6,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 // load only english INITIALLY (bc it is default)
 import enTranslations from './translations/en.json';
+
 const resources = {
   en: {
     translation: enTranslations
@@ -30,19 +31,19 @@ i18n
 
 // Dynamic language loading function
 export const loadLanguage = async (languageCode: string): Promise<void> => {
-  // Skip if language is already loaded
+  // case: Skip if language is already loaded
   if (i18n.hasResourceBundle(languageCode, 'translation')) {
     console.log(`Language ${languageCode} already loaded`);
     return;
   }
 
-  // Return existing promise if already loading
+  // case: Return existing promise if already loading
   if (loadingPromises[languageCode]) {
     console.log(`Language ${languageCode} already loading...`);
     return loadingPromises[languageCode];
   }
 
-  // Create loading promise
+  // Create loading promise with webpack magic comments for better CHUNKING
   loadingPromises[languageCode] = (async () => {
     try {
       console.log(`Loading language: ${languageCode}`);
