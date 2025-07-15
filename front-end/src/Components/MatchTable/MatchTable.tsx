@@ -250,7 +250,8 @@ export default function MatchTable({
             }}
             type="button"
           >
-            {showDetails ? (t('events.hide') as string) : (t('events.show') as string)}
+            //TODO: Background and foreground colors do not have a sufficient contrast ratio.
+            {showDetails ? (t('events.hide') as string) : (t('events.show') as string)} 
           </button>
         </div>
       )}

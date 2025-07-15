@@ -1,6 +1,6 @@
 import "./Home.css";
 import {lazy, Suspense} from "react"; //PERFORMANCE: implementing lazy to delay heavy components
-import DocumentMatcher from "../../Components/DocumentMatcher/DocumentMatcher";
+// import DocumentMatcher from "../../Components/DocumentMatcher/DocumentMatcher";
 import NumidentHint from "../../Models/NumidentHint";
 import { useEffect, useState } from "react";
 import { Record } from "../../Models/Record";
@@ -13,9 +13,12 @@ import useFormatData from "../../Services/useFormatData";
 //Shows a comparison table for each possible ark/pid attachment
 // also displays as add/match person table for when there is no match
 // has an attach all button at the bottom that greys out if attaching is somehow not possible
+// // Add .then for default export compatibility
+const DocumentMatcher = lazy(() => import("../../Components/DocumentMatcher/DocumentMatcher").then(module => ({ default: module.default })));
+// ... existing code ...
+
 export function Home() {
   const { t } = useTranslation();
-  const DocumentMatcher = lazy(() => import("../../Components/DocumentMatcher/DocumentMatcher"));
   const [hintsDone, setHintsDone] : [number, Function] = useState(0);
   const [hintsRequested, setHintsRequested] = useState <number>(0);
   const [hintsInFlight, setHintsInFlight] = useState<number>(0);
@@ -70,7 +73,7 @@ export function Home() {
               )}
             </div>
           ) : (
-            <Suspense fallback={<div>Loading matcher...</div>}>
+          <Suspense fallback={<div>Loading matcher...</div>}>
               <DocumentMatcher
                 hintsDone={hintsDone}
                 setHintsDone={setHintsDone}
