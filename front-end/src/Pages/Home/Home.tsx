@@ -38,23 +38,20 @@ export function Home() {
   //   if (data.length + hintsInFlight < HINT_QUEUE_MAX_SIZE) 
   //     setHintsRequested(hintsRequested + 1);
   // }, [hintsRequested]);
-
-  // ... existing code ...
-  // Batch requests to prevent overload/loop: request exact deficit
+  // PROBLEM: Replace looping useEffect with batched version to prevent overload
   useEffect(() => {
     const deficit = HINT_QUEUE_MAX_SIZE - (data.length + hintsInFlight);
-    if (deficit > 0) setHintsRequested(prev => prev + deficit);
-  }, [data.length, hintsInFlight]); // Depend on queue state
-  // ... existing code ...
+    if (deficit > 0 && hintsInFlight === 0) setHintsRequested(deficit);
+  }, [data.length, hintsInFlight]);
 
   return (
       <main className="page-home">
         <header>
           <h2>{t('home.title') as string}</h2>
         </header>
-
-        <Suspense fallback={<div>Loading content...</div>}>
-          {typeof data[0] === "string" ? (
+        
+        {data[0] ? (
+          typeof data[0] === "string" ? (
             <div>
               <div className="hint-message">{data[0]}</div>
               {hintsDone > 0 ? (
@@ -73,6 +70,7 @@ export function Home() {
               )}
             </div>
           ) : (
+            <Suspense fallback={<div>Loading matcher...</div>}>
               <DocumentMatcher
                 hintsDone={hintsDone}
                 setHintsDone={setHintsDone}
@@ -81,7 +79,7 @@ export function Home() {
                 submit={(isMatch: boolean) => {
                   try {
                     submitMatch({ isMatch, data: data[0] as NumidentHint });
-                    data.splice(0, 1); // Slow. Could be replaced by a full queue implemenation if needed
+                    data.splice(0, 1);
                     setData([...data]);
                     setHintsRequested(hintsRequested + 1);
                   } catch (e: any) {
@@ -89,10 +87,11 @@ export function Home() {
                   }
                 }}
               />
-          )}
-         </Suspense>
+             </Suspense> 
+          )
+        ) : <div>Loading next hint...</div>}
       </main>
-     
+    
   );
 }
 
