@@ -17,15 +17,27 @@ root.render(
   </React.StrictMode>
 );
 
-// Register service worker for PWA benefits
-if ('serviceWorker' in navigator) {
+//bug: autorefresh
+
+if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('SW registered: ', registration);
-      })
-      .catch((registrationError) => {
-        console.log('SW registration failed: ', registrationError);
-      });
+    navigator.serviceWorker.register('/sw.js');
   });
 }
+// if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+// // Register service worker for PWA benefits
+//   console.log("DEBUG: trying to activate servive worker")
+//   if ('serviceWorker' in navigator) {
+//     console.log("DEBUG: service worker is activated")
+//     window.addEventListener('load', () => {
+//       console.log("DEBUG: event listener activated")
+//       navigator.serviceWorker.register('/sw.js')
+//         .then((registration) => {
+//           console.log('SW registered: ', registration);
+//         })
+//         .catch((registrationError) => {
+//           console.log('SW registration failed: ', registrationError);
+//         });
+//     });
+//   }
+// }
