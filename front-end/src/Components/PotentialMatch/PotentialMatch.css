@@ -317,4 +317,6 @@
   border-radius: 0.25em; /* Example border radius using em units */
   position: relative;
   transform: translateY(-0.5em); /* Move button up */
+  color: var(--green-3);
+  border-color: var(--green-3)
 }

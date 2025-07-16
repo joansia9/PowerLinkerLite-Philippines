@@ -62,7 +62,7 @@ export default function MatchTable({
     preloadNameComparator();
   }, []);
 
-  // Load name comparator only when needed
+  // Load name comparator only when needed (dynamic loading implementation!)
   useEffect(() => {
     const loadComparator = async () => {
       // Skip loading if not needed or already loaded/loading
@@ -249,8 +249,10 @@ export default function MatchTable({
               if (selectedCandidate !== undefined) setShowDetails(!showDetails);
             }}
             type="button"
-          >
-            //TODO: Background and foreground colors do not have a sufficient contrast ratio.
+            style={{
+              color: 'var(--green-3)',
+              borderColor: 'var(--green-3)'
+            }}>
             {showDetails ? (t('events.hide') as string) : (t('events.show') as string)} 
           </button>
         </div>

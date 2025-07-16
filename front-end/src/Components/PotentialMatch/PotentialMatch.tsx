@@ -1,6 +1,4 @@
 import "./PotentialMatch.css";
-
-
 import Person, { Relationship } from "../../Models/Person";
 
 import MatchTable from "../MatchTable/MatchTable";
@@ -10,7 +8,6 @@ import NewWindowLink from "../NewWindowLink/NewWindowLink";
 //FIXME: hello
 //1. use the enum value as a translation key
 import { useTranslation } from 'react-i18next';
-
 
 /* Defines comparison table component which has two iterations:
   1.) One person is being compared to one other (yes/no question)
@@ -43,7 +40,7 @@ export function PotentialMatch({
       <h4>
         {t(`relationship.${recordCandidate.relationship}`) as string}
         {recordCandidate.relationship === Relationship.FocusPerson ? (
-        <span className="sourcelinker-button">
+        <span className="sourcelinker-button"> 
           <NewWindowLink
             url={sourceLinkerURL}
             linkName={t('links.sourceLinker') as string}

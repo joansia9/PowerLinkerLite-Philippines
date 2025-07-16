@@ -131,7 +131,7 @@ button:disabled {
 }
 
 button.false-enabled {
-  --color-disabled: var(--color-accent-light);
+  --color-disabled: var(--green-2);
   --color-disabled-light: var(--color-accent-lightest);
   --color-danger-lighter: var(--color-danger);
 }

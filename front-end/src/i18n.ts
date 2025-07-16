@@ -48,10 +48,8 @@ export const loadLanguage = async (languageCode: string): Promise<void> => {
     try {
       console.log(`Loading language: ${languageCode}`);
       
-      // Dynamic import based on language code
       const translations = await import(`./translations/${languageCode}.json`);
       
-      // Add the language to i18n
       i18n.addResourceBundle(languageCode, 'translation', translations.default);
       
       console.log(`Language ${languageCode} loaded successfully`);
@@ -60,7 +58,6 @@ export const loadLanguage = async (languageCode: string): Promise<void> => {
       // Fallback to English if loading fails
       throw error;
     } finally {
-      // Clear loading promise
       delete loadingPromises[languageCode];
     }
   })();
