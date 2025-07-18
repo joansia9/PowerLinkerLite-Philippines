@@ -22,10 +22,6 @@ const NotFound = lazy(() =>
   import("./Pages/NotFound/NotFound")
     .then(module => ({ default: module.NotFound })));
 
-//Establishes URL paths to specific pages
-// the <Route path="/" element=<Layout/>}> tag wraps all other paths
-// we do this to make sure the layout(header, footer, navbar) is always on screen
-//benefits: Pages now load as separate chunks only when needed, reducing initial bundle size.
 function App() {
   const { t } = useTranslation(); // ← NEW: Translation hook for internationalization in the front end!
   

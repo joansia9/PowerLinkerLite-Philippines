@@ -41,7 +41,7 @@ export function PotentialMatch({
         {t(`relationship.${recordCandidate.relationship}`) as string}
         {recordCandidate.relationship === Relationship.FocusPerson ? (
         <span className="sourcelinker-button"> 
-          <NewWindowLink
+           <NewWindowLink
             url={sourceLinkerURL}
             linkName={t('links.sourceLinker') as string}
           />
