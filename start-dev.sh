@@ -28,7 +28,7 @@ cd back-end
 source venv/bin/activate
 python3 lambda_dev_server.py &
 BACKEND_PID=$!
-
+    
 # Start frontend in background
 echo "Starting frontend server..."
 cd ../front-end
