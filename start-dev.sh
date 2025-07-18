@@ -1,9 +1,22 @@
 #!/bin/bash
 
-# Set AWS credentials
-export AWS_ACCESS_KEY_ID="ASIATHMMC23XLOSELCP6"
-export AWS_SECRET_ACCESS_KEY="DgNMFTd2+C8NH+44DhxQ4LXONqE7vpDw0axDxvkF"
-export AWS_SESSION_TOKEN="IQoJb3JpZ2luX2VjEJz//////////wEaCXVzLXdlc3QtMiJHMEUCIQCCadbfMqiiHeY3SVP7WhASHoCpG+y2QnRMt4HW56UGIAIgPJf5T7qr5oogVWpXOKm9XEIHvZ0/jRpK5AIczCUqQAMqhwMIlf//////////ARADGgwyMjIwMjE0NzQwMzAiDHFDTT6hlar7fH/bJSrbAoX92JLNc58uWjCVK38KrZLxqXoT0jShER+AV+vK6xn3WYlF+dCwk8+O3d3UbIqPeVp4FwB0wSvVfzAouEdaqwqKsRtKZy+FQkUDG5Zez2bjoTcrCETb80Vp9k3Q5CRq2DjO69+GcrlaKRnZFL81bPcP++1vRcdJudAnar/IfVmY7HJgH93Dwqi9LoNsUWVIQotH2qF4FEy9uDIPCDoQdZ6yeIG8rTtCCorpMQ6MvQGv0gZs1nBVAM6duU2Z04Cv6V/K10sLw7LuYqESi2uCSpDwUiYl3ta2FT4skDrDOVZE/YdAncgxoVIVvBwOKTlD8wDxtygtQdEa8LcM9u5M/7FTBikAaEvUSggpgyPgyHhWKPlwB2LjrxWd7cEbTRGUr2wHV5ozBDrZfkPHyG78tRrpbXkf24n06LxQHBstCjpxa/LQPJh6Yb36JTjbkKtOGlLLzGAmLMxLfea/MP2IgcMGOqcBncu1rxnf7e/Ao/MqqixjIBbcgofCz0cPw+1UUT+2yyhe7Q8K7w7DYgf0l7zGJZA09VfxlfOhzFaQG58rDLwfER9hpJ8BTTFbnXNAhfqPd/8qR8pc/wSoCTs6VInXsMfeYZAvzECxmDPz4MwA7uwsLxHC7TvzqfSmFxY/l0qTvOwFrkcbqYGroQRPhEP+MDoR5Opq8oFjfRJLZfkHOEk5uwVKfuW/tSE="
+# Set AWS credentials - USE YOUR OWN CREDENTIALS
+# DO NOT COMMIT REAL CREDENTIALS TO GIT!
+# Option 1: Set these environment variables before running this script
+# Option 2: Use AWS CLI: aws configure
+# Option 3: Use AWS SSO: aws sso login
+
+if [ -z "$AWS_ACCESS_KEY_ID" ]; then
+    echo "⚠️  AWS credentials not set!"
+    echo "Please set your AWS credentials using one of these methods:"
+    echo "1. aws configure"
+    echo "2. aws sso login"
+    echo "3. Set environment variables: AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY"
+    echo ""
+    echo "For temporary credentials, also set: AWS_SESSION_TOKEN"
+    echo ""
+    echo "Continuing without AWS credentials - backend may not work properly..."
+fi
 
 # Kill any existing processes
 pkill -f "lambda_dev_server.py"
