@@ -1,6 +1,7 @@
 const CACHE_NAME = 'powerlinker-v1';
 const urlsToCache = [
   '/',
+  '/index.html',
   '/static/js/bundle.js',
   '/static/css/main.css',
   '/RLL_Logo_Full.png',
@@ -42,8 +43,26 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        // Return cached version or fetch from network
         return response || fetch(event.request);
+      })
+      .catch(err => {
+        console.error('[SW] Fetch failed; returning fallback.', err);
+
+        // Fallback logic for different types of requests
+        if (event.request.destination === 'document') {
+          // Return a basic offline HTML response if you don’t have offline.html
+          return new Response('<h1>Offline</h1><p>Please reconnect to the internet.</p>', {
+            headers: { 'Content-Type': 'text/html' }
+          });
+        }
+
+        // Optional fallback for images
+        if (event.request.destination === 'image') {
+          return caches.match('/images/undetermined_sex.svg');
+        }
+
+        // Default fallback (blank response)
+        return new Response('', { status: 200 });
       })
   );
 });
