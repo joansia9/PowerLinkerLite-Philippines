@@ -20,7 +20,7 @@ self.addEventListener('install', event => {
     caches.open(CACHE_NAME)
       .then(cache => cache.addAll(urlsToCache))
   );
-  // Don't call skipWaiting() to prevent auto-refresh
+  self.skipWaiting();
 });
 
 self.addEventListener('activate', event => {
@@ -36,7 +36,7 @@ self.addEventListener('activate', event => {
       );
     })
   );
-  // Don't call clients.claim() to prevent auto-refresh
+  self.clients.claim();
 });
 
 self.addEventListener('fetch', event => {
