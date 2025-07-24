@@ -18,16 +18,19 @@ root.render(
 );
 
 //bug: autorefresh
-
-// Only register service worker in production to avoid development issues
 if ('serviceWorker' in navigator) {
+  window.addEventListener('beforeinstallprompt', (e) => {
+    console.log('[PWA] beforeinstallprompt fired');
+    e.preventDefault(); 
+    (window as any).deferredPrompt = e; // Type assertion to fix TypeScript error
+  });
+  
   window.addEventListener('load', () => {
     if (process.env.NODE_ENV === 'production' || process.env.REACT_APP_ENABLE_SW === 'true') {
       navigator.serviceWorker.register('/sw.js')
         .then((registration) => console.log('SW registered:', registration))
         .catch((err) => console.warn('SW registration failed:', err));
     } else {
-      // Optional: unregister in dev if not needed
       navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
     }
   });
