@@ -43,10 +43,12 @@ Zarin Loosli, Sam Carlsen, Molly Remer
 
 BYU © 2023 Record Linking Lab
 
+cd back-end
+source venv/bin/activate
 pip install -r requirements.txt 
 echo "DEPLOYMENT_BRANCH=\"stg\"" >> lambda/.env
 python3 lambda_dev_server.py
 
 lsof -i :3000  # Development React
 lsof -i :3004  # Production build
-lsof -i :8001  # Backend API
+lsof -i :8001  # Backend APIxt

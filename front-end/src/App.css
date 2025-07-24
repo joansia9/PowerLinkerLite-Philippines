@@ -184,3 +184,10 @@ button.outlined:hover:not(:disabled) {
   aspect-ratio: 1 / 1;
   border-radius: 100vmax;
 }
+
+.offline-banner {
+  background-color: #ffcccb;
+  color: black;
+  text-align: center;
+  padding: 0.5rem;
+}

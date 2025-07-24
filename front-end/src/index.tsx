@@ -20,21 +20,15 @@ root.render(
 //bug: autorefresh
 
 // Only register service worker in production to avoid development issues
-if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('SW registered: ', registration);
-      })
-      .catch((registrationError) => {
-        console.log('SW registration failed: ', registrationError);
-      });
-  });
-} else if (process.env.NODE_ENV === 'development' && 'serviceWorker' in navigator) {
-  // Unregister any existing service workers in development
-  navigator.serviceWorker.getRegistrations().then(function(registrations) {
-    for(let registration of registrations) {
-      registration.unregister();
+    if (process.env.NODE_ENV === 'production' || process.env.REACT_APP_ENABLE_SW === 'true') {
+      navigator.serviceWorker.register('/sw.js')
+        .then((registration) => console.log('SW registered:', registration))
+        .catch((err) => console.warn('SW registration failed:', err));
+    } else {
+      // Optional: unregister in dev if not needed
+      navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
     }
   });
 }

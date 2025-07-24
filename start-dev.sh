@@ -25,7 +25,7 @@ pkill -f "npm start"
 # Start backend in background
 echo "Starting backend server..."
 cd back-end
-source venv/bin/activate
+source venv/bin/activatel
 python3 lambda_dev_server.py &
 BACKEND_PID=$!
     

@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { lazy, Suspense } from "react"; //change 1: lazy loading (aka dynamic loading) defer loading the component until it is actually needed
+import { lazy, Suspense, useEffect, useState } from "react"; //change 1: lazy loading (aka dynamic loading) defer loading the component until it is actually needed
 //suspense: lazy components load async so we need to  
 //before: it was static imports so loaded immediately
 //import { Home } from "./Pages/Home/Home"; //CHANGE ME when we are done with purely NUMIDENT
@@ -24,9 +24,81 @@ const NotFound = lazy(() =>
 
 function App() {
   const { t } = useTranslation(); // ← NEW: Translation hook for internationalization in the front end!
+
+
+  //offline page
+  const [isOffline, setIsOffline] = useState(!navigator.onLine);
+  const [showOfflineBanner, setShowOfflineBanner] = useState(false);
+
+  useEffect(() => {
+    // More robust offline detection
+    const checkOnlineStatus = async () => {
+      if (!navigator.onLine) {
+        setIsOffline(true);
+        setShowOfflineBanner(true);
+        return;
+      }
+
+      // Test actual connectivity by trying to fetch a small resource
+      try {
+        const response = await fetch('/manifest.json', {
+          method: 'HEAD',
+          cache: 'no-cache'
+        });
+        const online = response.ok;
+        setIsOffline(!online);
+        setShowOfflineBanner(!online);
+      } catch {
+        setIsOffline(true);
+        setShowOfflineBanner(true);
+      }
+    };
+
+    const handleOnline = () => {
+      setIsOffline(false);
+      // Keep banner for a moment to confirm reconnection
+      setTimeout(() => setShowOfflineBanner(false), 2000);
+    };
+
+    const handleOffline = () => {
+      setIsOffline(true);
+      setShowOfflineBanner(true);
+    };
+
+    // Initial check
+    checkOnlineStatus();
+
+    // Listen for network changes
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+
+    // Periodic connectivity checks when online
+    const interval = setInterval(() => {
+      if (navigator.onLine) {
+        checkOnlineStatus();
+      }
+    }, 30000); // Check every 30 seconds
+
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+      clearInterval(interval);
+    };
+  }, []);
+
   
   return (
     <div className="App">
+         {showOfflineBanner && (
+        <div className={`offline-banner ${!isOffline ? 'reconnected' : ''}`}>
+          <p>
+            {isOffline 
+              ? "⚠️ You're offline. Some features may not work."
+              : "✅ Back online!"
+            }
+          </p>
+      </div>
+  )}
       <Routes>
         {/* //lazy loading for home page */}
         <Route path="/" element={<Layout />}> 
