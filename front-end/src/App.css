@@ -78,6 +78,20 @@
   --color-text: var(--dark-text);
   /* not used --color-primary: #e0e8e8; */
 
+/* adding a blue to do Philippines colors */
+
+--blue-1: hsl(210, 67%, 06%);
+--blue-2: hsl(210, 67%, 16%);
+--blue-3: hsl(210, 67%, 26%);
+--blue-4: hsl(210, 67%, 36%);
+--blue-5: hsl(210, 67%, 46%); 
+--blue-6: hsl(210, 67%, 56%);
+--blue-7: hsl(210, 67%, 66%);
+--blue-8: hsl(210, 67%, 76%);
+--blue-9: hsl(210, 67%, 86%);
+--blue-10: hsl(210, 67%, 96%);
+
+
 }
 
 body {

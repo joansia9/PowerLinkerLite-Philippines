@@ -127,6 +127,8 @@ export enum Relationship {
   Child = "Child",
   //Other
   Other = "Other",
+
+  //TODO: add different generations! 
 }
 
 export enum RelationshipGroup {

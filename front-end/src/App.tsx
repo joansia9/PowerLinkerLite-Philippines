@@ -10,6 +10,7 @@ import { Layout } from "./Layout/Layout";
 import { Loading } from "./Components/Loading/Loading";
 import { useTranslation } from 'react-i18next';
 
+
 //now: dynamic imports with react.lazy
 // Lazy load pages to reduce initial bundle size
 const Home = lazy(() =>  
@@ -93,8 +94,8 @@ function App() {
         <div className={`offline-banner ${!isOffline ? 'reconnected' : ''}`}>
           <p>
             {isOffline 
-              ? "⚠️ You're offline. Some features may not work."
-              : "✅ Back online!"
+              ? "You're offline. Some features may not work."
+              : "Back online!"
             }
           </p>
       </div>
