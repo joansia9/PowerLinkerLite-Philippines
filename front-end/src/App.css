@@ -101,9 +101,6 @@
 --yellow-8: hsl(50, 67%, 76%);
 --yellow-9: hsl(50, 67%, 86%);
 --yellow-10: hsl(50, 67%, 96%);
-
-
-
 }
 
 body {
@@ -176,16 +173,16 @@ button:where(.reset) {
 }
 
 button.primary {
-  background-color: var(--color-accent-light);
+  background-color: var(--blue-8);
   color: var(--light-text);
 }
 
 button.primary:disabled {
-  background-color: var(--color-disabled);
+  background-color: var(--blue-4);
 }
 
 button.primary:hover:not(:disabled) {
-  background-color: var(--color-accent-lighter);
+  background-color: var(--blue-7);
 }
 
 
