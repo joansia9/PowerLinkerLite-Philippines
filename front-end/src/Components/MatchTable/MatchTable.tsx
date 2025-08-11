@@ -257,21 +257,26 @@ export default function MatchTable({
             <>
               {eventsOfType.length > 0 &&
                 eventsOfType.map((event, j) => (
-                  <button
-                    type="button"
-                    className={`header-button reset event-entry ${highlightBarClass(highlightType)}`}
+                  <div
+                    className="event-type-wrapper"
+                    style={{ gridRowStart: eventType as any }}
                     key={eventType + j}
                   >
-                    <div className="event-title">
-                      {t(`event.${event.type?.toLowerCase() || 'unknown'}`) as string}
-                    </div>
-                    <div className="event-panel__body">
-                      <div className={"date " + (highlightType === HighlightType.Green ? "data-matches" : highlightType === HighlightType.Red ? "data-not-matches" : "")}>
-                        {event.date?.toDateString()}
+                    <button
+                      type="button"
+                      className="header-button reset event-entry"
+                    >
+                      <div className="event-title">
+                        {t(`event.${event.type?.toLowerCase() || 'unknown'}`) as string}
                       </div>
-                      <div className="location">{event.location}</div>
-                    </div>
-                  </button>
+                      <div className={`event-panel__body ${highlightType === HighlightType.Green ? 'is-match' : (highlightType === HighlightType.Red ? 'is-not-match' : 'is-undetermined')}`}>
+                        <div className={"date " + (highlightType === HighlightType.Green ? "data-matches" : highlightType === HighlightType.Red ? "data-not-matches" : "")}>
+                          {event.date?.toDateString()}
+                        </div>
+                        <div className="location">{event.location}</div>
+                      </div>
+                    </button>
+                  </div>
                 ))}
             </>
           );

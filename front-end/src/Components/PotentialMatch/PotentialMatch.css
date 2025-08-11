@@ -419,3 +419,46 @@
 
 /* Ensure inner content panel is clear so only the bar shows as background */
 .event-entry .header-button.reset { background: transparent; border: none; box-shadow: none; padding: 0; }
+
+/* Align left and right event blocks side-by-side */
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
+}
+
+/* Let details participate in the OUTER grid */
+.details-wrapper { display: contents; }
+.details-grid { display: contents; }   /* <-- stop creating an inner grid */
+
+/* Place each side under the correct outer column/row */
+.details-left, .details-right {
+  grid-row: 2;          /* under the headers (row 1 is headers) */
+  align-self: start;
+}
+
+.details-left  { grid-column: 1; }
+.details-right { grid-column: 2; }
+
+/* This rule was styling the wrapper like a card; remove or scope it */
+ /* .potential-match-table .header-button, .details-wrapper { ... } */
+.potential-match-table > .header-button {
+  border: var(--match-border);
+  background-color: white;
+  box-shadow: var(--shadow-1);
+}
+/* keep your transparent override for details if you like */
+
+/* Bar backgrounds for event content panels */
+.event-panel__body.is-match { background-image: url('../../assets/matchBar.png'); }
+.event-panel__body.is-not-match { background-image: url('../../assets/notAMatchBar.png'); }
+.event-panel__body.is-undetermined { background-image: url('../../assets/undeterminedBar.png'); }
+
+.event-panel__body.is-match,
+.event-panel__body.is-not-match,
+.event-panel__body.is-undetermined {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
