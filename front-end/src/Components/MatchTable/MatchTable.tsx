@@ -155,6 +155,9 @@ export default function MatchTable({
     "name"
   )
 
+  const highlightBarClass = (ht: number) =>
+    ht === HighlightType.Green ? 'is-match' : ht === HighlightType.Red ? 'is-not-match' : 'is-undetermined';
+
   return (
     <div className="potential-match-table">
       {isLoadingComparator && (
@@ -184,7 +187,7 @@ export default function MatchTable({
       )}
       <button
         type="button"
-        className="header-button reset"
+        className={`header-button reset ${highlightBarClass(highlightType)}`}
       >
         <MatchHeader
           candidate={recordCandidate}
@@ -195,7 +198,7 @@ export default function MatchTable({
       {treeCandidate ? (
         <button
           type="button"
-          className="header-button reset"
+          className={`header-button reset ${highlightBarClass(highlightType)}`}
         >
           <MatchHeader
             candidate={treeCandidate}
@@ -256,7 +259,7 @@ export default function MatchTable({
                 eventsOfType.map((event, j) => (
                   <button
                     type="button"
-                    className="header-button reset event-entry"
+                    className={`header-button reset event-entry ${highlightBarClass(highlightType)}`}
                     key={eventType + j}
                   >
                     <div className="event-title">

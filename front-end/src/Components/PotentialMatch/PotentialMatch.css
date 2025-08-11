@@ -140,52 +140,8 @@
 /*/ ////////*/
 /* Details */
 /*/////////*/
-.details-wrapper {
- 
-  margin: 0.75rem 1em 0 1em; /* add top gap from header container */
-  grid-column: span 2;
-}
 
 
-
-.details-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-/* Make the wrapper participate in the grid so we can position it */
-.details-grid > .potential-match-details { display: grid; }
-/* .details-grid > .potential-match-details:nth-of-type(1) { grid-column: 1; } */
-/* .details-grid > .potential-match-details:nth-of-type(2) { grid-column: 2; } */
-
-
-
-
-
-
-
-.potential-match-details + .potential-match-details .event-type-wrapper {
-  grid-column: 2 / 3;
-  border-right: none;
-}
-
-.potential-match-details h6 {
-  font-weight: 100;
-  font-size: 0.787em;
-  margin: 0;
-}
-
-.toggle-details {
-  display: block;
-
-  border-top: 1px solid var(--color-accent);
-  /* margin: 0 calc(-1 * var(--header-padding)) calc(-1 * var(--header-padding)); */
-  padding: 0.5em;
-  width: 100%;
-
-  color: var(--color-accent);
-  text-align: start;
-}
 
 /*/ ///////////*/
 /* Match List */
@@ -199,17 +155,8 @@
   align-items: stretch;
 }
 
-.potential-match-list h3 {
-  border-bottom: var(--match-border);
-  margin: 0;
 
-  font: inherit;
-}
 
-.potential-match-list h3 ~ h3 {
-  border-top: var(--match-border);
-  border-top-width: 2px;
-}
 
 .potential-match-list ul {
   display: flex;
@@ -386,3 +333,89 @@
 
 .event-entry { text-align: unset; z-index: 1; margin: 0.5rem 1em; }
 .event-entry .event-title { font: inherit; font-weight: bold; margin: 0 0 0.25rem 0; }
+
+/* Remove white background inside details area */
+.potential-match-details .event-entry { background-color: transparent; }
+.potential-match-details .event-panel__body { background-color: transparent; }
+
+/* Make details area transparent - no white background under events */
+.details-wrapper {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Event entries use header-button styles; override to transparent within details */
+.potential-match-details .header-button {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Ensure event body has no white fill within details */
+.potential-match-details .event-panel__body {
+  background: transparent !important;
+}
+
+.col-1 { grid-column: 1; }
+.col-2 { grid-column: 2; }
+
+.col-1, .col-2 { margin: 0.75rem 1em 0 1em; }
+
+.event-title-bar {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  min-height: 40px;
+  padding: 0.25rem 0.75rem;
+  display: flex;
+  align-items: center;
+  color: white;
+  margin: 0 1em; /* align with header-button margins */
+}
+
+.event-title-bar.is-match { background-image: url('../../assets/matchBar.png'); }
+.event-title-bar.is-not-match { background-image: url('../../assets/notAMatchBar.png'); }
+.event-title-bar.is-undetermined { background-image: url('../../assets/undeterminedBar.png'); }
+
+/* Event entry content panel should span full width */
+.event-entry .header-button.reset { display: block; width: 100%; }
+
+/* Make the green/red date highlight clear within events and match panel width */
+.event-entry .date { display: block; width: 100%; }
+.event-entry .date.data-matches { background-color: transparent !important; }
+.event-entry .date.data-not-matches { background-color: transparent !important; }
+
+/* Bar backgrounds for containers based on match state */
+.header-button.reset.is-match,
+.event-entry.is-match { background-image: url('../../assets/matchBar.png'); }
+.header-button.reset.is-not-match,
+.event-entry.is-not-match { background-image: url('../../assets/notAMatchBar.png'); }
+.header-button.reset.is-undetermined,
+.event-entry.is-undetermined { background-image: url('../../assets/undeterminedBar.png'); }
+
+.header-button.reset.is-match,
+.header-button.reset.is-not-match,
+.header-button.reset.is-undetermined,
+.event-entry.is-match,
+.event-entry.is-not-match,
+.event-entry.is-undetermined {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+/* Event entries use the same bar treatment and sizing as main headers */
+.event-entry.is-match,
+.event-entry.is-not-match,
+.event-entry.is-undetermined {
+  min-height: 56px;            /* match bar height */
+  padding: 0 18px;             /* match bar side padding */
+  display: flex;
+  flex-direction: column;      /* stack title and details */
+  justify-content: center;
+  color: white;
+}
+
+/* Ensure inner content panel is clear so only the bar shows as background */
+.event-entry .header-button.reset { background: transparent; border: none; box-shadow: none; padding: 0; }
