@@ -31,7 +31,8 @@ const staticUrlsToCache = [
   '/images/male.svg',
   '/images/female.svg',
   '/images/undetermined_sex.svg',
-  '/images/checkmark.svg'
+  '/images/checkmark.svg',
+  '/newCSSIcons/philippinesBook.png',
 ];
 self.addEventListener('install', event => {
   console.log('[SW] Installed');

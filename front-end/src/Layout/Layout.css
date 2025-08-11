@@ -1,13 +1,19 @@
+:root {
+  --header-h: 64px;
+  --footer-h: 28px; /* smaller footer height */
+}
+
 /* Header */
 
 .site-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 0.125em solid var(--color-accent);
+  border-bottom: 0.125em solid var(--blue-7);
   font-size: 1.8em;
   padding: 0 1rem;
   position: relative;
+  min-height: var(--header-h);
 }
 
 .site-header h1 {
@@ -26,13 +32,14 @@
 #copyright {
   z-index: 1;
   text-align: center;
-  font-size: 0.72rem;
-  padding: .5rem;
+  font-size: 0.66rem; /* slightly smaller */
+  padding: .25rem; /* tighter */
   margin: 0rem;
-  background-color: var(--color-white);
+  background-color: transparent; /* no white bar */
   position: fixed;
   bottom: 0;
   width: 100%;
+  height: var(--footer-h);
 }
 
 .language-selector {

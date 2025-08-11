@@ -2,6 +2,18 @@
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
   align-items: stretch;
+  background-color: #9b1c1c; /* red backdrop */
+  overflow-x: hidden; /* avoid any sideways scroll */
+}
+
+.book-bg {
+  background-image: var(--book);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: contain; /* keep book proportions */
+  /* Occupy the viewport area between header and footer */
+  height: calc(100vh - var(--header-h, 64px) - var(--footer-h, 40px));
+  overflow: hidden; /* keep records stuck with the book */
 }
 
 .page-home header {

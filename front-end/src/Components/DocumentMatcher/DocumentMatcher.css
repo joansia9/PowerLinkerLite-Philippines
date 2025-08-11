@@ -15,7 +15,7 @@
 }
 
 .potential-matches {
-  padding-bottom: 35em;
+  padding-bottom: 0; /* remove large extra space so content fits */
 }
 
 .document-matcher .potential-matches > * {
@@ -44,11 +44,12 @@
 
 .button-bar  {
   z-index: 1;
-  background-color: var(--color-white);
-  position: fixed;
-  left: 0;
-  bottom: 0;
+  background-color: transparent; /* remove white strip */
+  position: static; /* put inside the book, not fixed to viewport */
+  left: auto;
+  bottom: auto;
   width: 100%;
   text-align: center;
-  padding-bottom: 2em;
+  padding-bottom: 0;
+  margin-top: 0.75rem; /* small gap from content */
 }

@@ -63,6 +63,21 @@
   font-size: 1em;
 }
 
+/* Separation between Focus header and events */
+.potential-match-header {
+  margin-bottom: 0.75rem;
+}
+
+/* Lightweight spacing-only styling for event cards */
+.event-card {
+  margin: 0.75rem 0; /* separate Birth and Death */
+}
+
+.event-card__title {
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+}
+
 .potential-match + .potential-match .lifespan {
   display: none;
 }
@@ -126,35 +141,28 @@
 /* Details */
 /*/////////*/
 .details-wrapper {
-  box-shadow: var(--shadow-1);
-  margin: 0 1em;
+ 
+  margin: 0.75rem 1em 0 1em; /* add top gap from header container */
   grid-column: span 2;
 }
 
-.collapsible-outer {
-  grid-column: span 2;
-}
+
 
 .details-grid {
-  grid-column: span 2;
-
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
-.potential-match-details {
-  display: contents;
-}
+/* Make the wrapper participate in the grid so we can position it */
+.details-grid > .potential-match-details { display: grid; }
+/* .details-grid > .potential-match-details:nth-of-type(1) { grid-column: 1; } */
+/* .details-grid > .potential-match-details:nth-of-type(2) { grid-column: 2; } */
 
-.potential-match-details .detail {
-  font-size: 1em;
-  padding: 0.5em;
-}
 
-.potential-match-details .event-type-wrapper {
-  grid-column: 1 / 2;
-  border-right: var(--match-border);
-}
+
+
+
+
 
 .potential-match-details + .potential-match-details .event-type-wrapper {
   grid-column: 2 / 3;
@@ -320,3 +328,61 @@
   color: var(--green-3);
   border-color: var(--green-3)
 }
+
+/* Individual event cards (Birth, Death) as separate containers */
+.event-card {
+  border: var(--match-border);
+  background-color: #fff;
+  box-shadow: var(--shadow-1);
+  margin: 0.75rem 0; /* space between Birth and Death */
+}
+
+.event-card__body {
+  padding: 0.5rem 0.75rem;
+}
+
+.details-left { grid-column: 1; }
+.details-right { grid-column: 2; }
+
+/* Keep consistent spacing and visuals */
+.details-left,
+.details-right {
+  box-shadow: var(--shadow-1);
+  margin: 0.75rem 1em 0 1em;
+}
+
+/* Event titles just like h4 */
+.event-title {
+  font: inherit;
+  font-weight: inherit;
+  margin: 0.5rem 0 0.25rem 0;
+  padding: 0; /* no bar background */
+}
+
+/* Event panel body styled like header-button reset */
+.event-panel { background: transparent; border: none; box-shadow: none; }
+.event-panel__body {
+  border: var(--match-border);
+  background-color: #fff;
+  box-shadow: var(--shadow-1);
+  padding: 0.5rem 0.75rem;
+}
+
+.events-left,
+.events-right {
+  margin: 0.75rem 1em 0 1em; /* align to header-button margins */
+}
+
+.event-panel__body,
+.potential-match-table .header-button {
+  border: var(--match-border);
+  background-color: #fff;
+  box-shadow: var(--shadow-1);
+}
+
+/* Ensure consistent inner padding */
+.potential-match-header,
+.event-panel__body { padding: var(--header-padding); }
+
+.event-entry { text-align: unset; z-index: 1; margin: 0.5rem 1em; }
+.event-entry .event-title { font: inherit; font-weight: bold; margin: 0 0 0.25rem 0; }

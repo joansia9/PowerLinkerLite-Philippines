@@ -52,7 +52,10 @@ export function Home() {
         <header>
           <h2>{t('home.title') as string}</h2>
         </header>
-        
+        <div
+          className="book-bg"
+          style={{ ['--book' as any]: "url('/newCSSIcons/philippinesBook.png')" }}
+        >
         {data[0] ? (
           typeof data[0] === "string" ? (
             <div>
@@ -93,6 +96,7 @@ export function Home() {
              </Suspense> 
           )
         ) : <div>Loading next hint...</div>}
+        </div>
       </main>
     
   );

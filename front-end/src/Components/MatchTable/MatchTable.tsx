@@ -1,6 +1,6 @@
 import { useMemo, useState, useEffect } from "react";
 import Person from "../../Models/Person";
-import Collapsible from "../Collapsible/Collapsible";
+// Collapsible removed; events are always visible
 import RecordSVG from "../svg/RecordSVG";
 import getSortedEventTypes from "../PotentialMatch/EventIndex";
 //Before: import loadNameComparator from "../../Services/name-comparator/nameComparisonLoader";
@@ -29,7 +29,7 @@ export default function MatchTable({
   setAttached: Function;
 }) {
   const { t } = useTranslation();
-  const [showDetails, setShowDetails]: [boolean, Function] = useState(true); 
+  // Details are always shown
   //holds the dynamically loaded name comparison function
   //before: import compareTwoNames from "./nameComparator.mjs"; //nameComparator loaded immediately
   const [nameComparator, setNameComparator] = useState<((fullName1: string, fullName2: string) => [boolean, number, [number, number, number][]]) | null>(null);
@@ -185,9 +185,6 @@ export default function MatchTable({
       <button
         type="button"
         className="header-button reset"
-        onClick={() => {
-          if (selectedCandidate !== undefined) setShowDetails(!showDetails);
-        }}
       >
         <MatchHeader
           candidate={recordCandidate}
@@ -199,7 +196,6 @@ export default function MatchTable({
         <button
           type="button"
           className="header-button reset"
-          onClick={() => setShowDetails(!showDetails)}
         >
           <MatchHeader
             candidate={treeCandidate}
@@ -221,40 +217,26 @@ export default function MatchTable({
 
       {detailsToShow && (
         <div className="details-wrapper">
-          <Collapsible open={showDetails}>
-            <div
-              className="details-grid"
-              style={{
-                gridTemplateRows:
-                  `[` +
-                  eventTypes.map((type) => type[0]).join(`] auto [`) +
-                  `]`,
-              }}
-            >
-              <MatchDetails candidate={recordCandidate} />
-              {/* Family tree person table half:
-                If there is only one link option, display that option.
-                If there is multiple link options, display the selected option
-                If there is not a selected option, display a "Create New" box/button. */}
-              {selectedCandidate !== undefined ? (
-                <MatchDetails candidate={treeCandidates[selectedCandidate]} />
-              ) : (
-                <></>
-              )}
-            </div>
-          </Collapsible>
-          <button
-            className="toggle-details reset"
-            onClick={() => {
-              if (selectedCandidate !== undefined) setShowDetails(!showDetails);
-            }}
-            type="button"
+          <div
+            className="details-grid"
             style={{
-              color: 'var(--green-3)',
-              borderColor: 'var(--green-3)'
-            }}>
-            {showDetails ? (t('events.hide') as string) : (t('events.show') as string)} 
-          </button>
+              gridTemplateRows:
+                `[` +
+                eventTypes.map((type) => type[0]).join(`] auto [`) +
+                `]`,
+            }}
+          >
+            <MatchDetails candidate={recordCandidate} />
+            {/* Family tree person table half:
+              If there is only one link option, display that option.
+              If there is multiple link options, display the selected option
+              If there is not a selected option, display a "Create New" box/button. */}
+            {selectedCandidate !== undefined ? (
+              <MatchDetails candidate={treeCandidates[selectedCandidate]} />
+            ) : (
+              <></>
+            )}
+          </div>
         </div>
       )}
     </div>
@@ -269,25 +251,26 @@ export default function MatchTable({
           ); // TODO handle multiple events of one type
 
           return (
-            <div
-              className="event-type-wrapper"
-              style={{ gridRowStart: eventType }}
-              key={eventType}
-            >
+            <>
               {eventsOfType.length > 0 &&
                 eventsOfType.map((event, j) => (
-                  <div className="detail" key={eventType + j}>
-                    <h6>{t(`event.${event.type?.toLowerCase() || 'unknown'}`) as string}</h6> 
-
-                    <div className={"date " + (highlightType === HighlightType.Green ? "data-matches" : highlightType === HighlightType.Red ? "data-not-matches" : "")}>
-                      {" "}
-                      {event.date?.toDateString()}
+                  <button
+                    type="button"
+                    className="header-button reset event-entry"
+                    key={eventType + j}
+                  >
+                    <div className="event-title">
+                      {t(`event.${event.type?.toLowerCase() || 'unknown'}`) as string}
                     </div>
-
-                    <div className="location"> {event.location}</div>
-                  </div>
+                    <div className="event-panel__body">
+                      <div className={"date " + (highlightType === HighlightType.Green ? "data-matches" : highlightType === HighlightType.Red ? "data-not-matches" : "")}>
+                        {event.date?.toDateString()}
+                      </div>
+                      <div className="location">{event.location}</div>
+                    </div>
+                  </button>
                 ))}
-            </div>
+            </>
           );
         })}
       </div>

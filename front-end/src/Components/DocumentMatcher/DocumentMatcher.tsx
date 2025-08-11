@@ -103,7 +103,6 @@ export default function DocumentMatcher({
       </div>
       <div className="button-bar">
         <div className="counter">{t('status.complete') as string + ": " + hintsDone}</div>
-        {/* The following will submit info back to Dr. Price's CSV, creating a new column for each row in the process */}
         <div className="attach-buttons">
           <button
             type="button"
