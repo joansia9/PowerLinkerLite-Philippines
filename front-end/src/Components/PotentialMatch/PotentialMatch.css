@@ -346,11 +346,13 @@
 }
 
 /* Event entries use header-button styles; override to transparent within details */
-.potential-match-details .header-button {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
+/* don't wipe styles on the actual event row buttons */
+.potential-match-details .header-button:not(.event-entry) {
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
+
 
 /* Ensure event body has no white fill within details */
 .potential-match-details .event-panel__body {
@@ -450,15 +452,73 @@
 /* keep your transparent override for details if you like */
 
 /* Bar backgrounds for event content panels */
-.event-panel__body.is-match { background-image: url('../../assets/matchBar.png'); }
-.event-panel__body.is-not-match { background-image: url('../../assets/notAMatchBar.png'); }
-.event-panel__body.is-undetermined { background-image: url('../../assets/undeterminedBar.png'); }
+.header-button.reset.is-match,
+.event-entry.is-match { background-image: url('../../assets/matchBar.png'); }
 
-.event-panel__body.is-match,
-.event-panel__body.is-not-match,
-.event-panel__body.is-undetermined {
+.header-button.reset.is-not-match,
+.event-entry.is-not-match { background-image: url('../../assets/notAMatchBar.png'); }
+
+.header-button.reset.is-undetermined,
+.event-entry.is-undetermined { background-image: url('../../assets/undeterminedBar.png'); }
+
+.event-entry.is-match,
+.event-entry.is-not-match,
+.event-entry.is-undetermined {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-color: transparent;
+  min-height: 56px;
+  padding: 0 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
 }
 
+
+/* was: .potential-match-details .header-button { background: transparent !important; ... } */
+.potential-match-details .header-button:not(.event-entry) {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+ /* Let the bar on .event-entry show through by clearing the inner panel */
+ .event-entry .event-panel__body {
+   background: transparent !important;
+   border: none !important;
+   box-shadow: none !important;
+   padding: 0; /* bar already has padding */
+}
+/* FINAL OVERRIDES – keep after everything else */
+.potential-match-details button.event-entry.is-match        { 
+  background-image: url('../../assets/matchBar.png') !important; 
+}
+.potential-match-details button.event-entry.is-not-match    { 
+  background-image: url('../../assets/notAMatchBar.png') !important; 
+}
+.potential-match-details button.event-entry.is-undetermined { 
+  background-image: url('../../assets/undeterminedBar.png') !important; 
+}
+
+.potential-match-details button.event-entry.is-match,
+.potential-match-details button.event-entry.is-not-match,
+.potential-match-details button.event-entry.is-undetermined {
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
+  background-color: transparent !important;
+  min-height: 56px;
+  padding: 0 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+}
+
+/* inner panel should be transparent so the bar shows */
+.potential-match-details button.event-entry .event-panel__body {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+}
