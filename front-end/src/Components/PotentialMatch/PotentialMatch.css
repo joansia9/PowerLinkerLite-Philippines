@@ -376,7 +376,7 @@
   margin: 0 1em; /* align with header-button margins */
 }
 
-.event-title-bar.is-match { background-image: url('/images/matchBar.png'); }
+.event-title-bar.is-match { background-image: url('../../assets/matchBar.png'); }
 .event-title-bar.is-not-match { background-image: url('../../assets/notAMatchBar.png'); }
 .event-title-bar.is-undetermined { background-image: url('../../assets/undeterminedBar.png'); }
 
@@ -390,7 +390,7 @@
 
 /* Bar backgrounds for containers based on match state */
 .header-button.reset.is-match,
-.event-entry.is-match { background-image: url('/images/matchBar.png'); }
+.event-entry.is-match { background-image: url('../../assets/matchBar.png'); }
 .header-button.reset.is-not-match,
 .event-entry.is-not-match { background-image: url('../../assets/notAMatchBar.png'); }
 .header-button.reset.is-undetermined,
@@ -460,7 +460,7 @@
 
 /* Bar backgrounds for event content panels */
 .header-button.reset.is-match,
-.event-entry.is-match { background-image: url('/images/matchBar.png'); }
+.event-entry.is-match { background-image: url('../../assets/matchBar.png'); }
 
 .header-button.reset.is-not-match,
 .event-entry.is-not-match { background-image: url('../../assets/notAMatchBar.png'); }
