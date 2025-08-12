@@ -8,6 +8,7 @@ import loadNameComparator, { isNameComparatorLoaded, preloadNameComparator } fro
 import getHighlightType from "../../Services/getHighlightType";
 import { HighlightType } from "../../Models/HighlightType";
 import { useTranslation } from 'react-i18next';
+import searchIcon from "../../assets/searchIcon.png";
 
 //TODO: dynamic loading
 //1. remove static import
@@ -304,14 +305,7 @@ export function MatchHeader({
   fromRecord: boolean;
   highlightType : number;
 }) {
-  let imageSrc: string;
-  if (candidate.sex === "Male") {
-    imageSrc = "/images/fatherIcon.png";
-  } else if (candidate.sex === "Female") {
-    imageSrc = "/images/motherIcon.png";
-  } else {
-    imageSrc = "/images/undetermined_sex.svg";
-  }
+  const imageSrc: string = searchIcon;
 
   return (
     <div className={"potential-match-header"}>
