@@ -1,7 +1,6 @@
 import { useMemo, useState, useEffect } from "react";
 import Person from "../../Models/Person";
 // Collapsible removed; events are always visible
-import RecordSVG from "../svg/RecordSVG";
 import getSortedEventTypes from "../PotentialMatch/EventIndex";
 //Before: import loadNameComparator from "../../Services/name-comparator/nameComparisonLoader";
 //we were always loading the nameComparator
@@ -305,16 +304,13 @@ export function MatchHeader({
   fromRecord: boolean;
   highlightType : number;
 }) {
-  let imageSrc: string, imageColor;
+  let imageSrc: string;
   if (candidate.sex === "Male") {
     imageSrc = "/images/fatherIcon.png";
-    imageColor = "var(--color-sex-male)";
   } else if (candidate.sex === "Female") {
     imageSrc = "/images/motherIcon.png";
-    imageColor = "var(--color-sex-female)";
   } else {
     imageSrc = "/images/undetermined_sex.svg";
-    imageColor = "var(--color-sex-undetermined)";
   }
 
   return (
@@ -335,11 +331,7 @@ export function MatchHeader({
         {candidate.birth?.year || "?"} - {candidate.death?.year || "?"}
       </span>
       <span className="pid">{candidate.PID}</span>
-      {fromRecord ? (
-        <RecordSVG alt={candidate.sex} style={{ color: imageColor }} />
-      ) : (
-        <img src={imageSrc} alt={candidate.sex} className="person-icon" />
-      )}
+      <img src={imageSrc} alt={candidate.sex} className="person-icon" />
     </div>
   );
 }

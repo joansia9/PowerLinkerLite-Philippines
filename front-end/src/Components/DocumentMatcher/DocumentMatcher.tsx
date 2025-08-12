@@ -4,7 +4,6 @@ import Person from "../../Models/Person";
 import { Record } from "../../Models/Record";
 import { Tree } from "../../Models/Tree";
 import { PotentialMatch } from "../PotentialMatch/PotentialMatch";
-import RecordSVG from "../svg/RecordSVG";
 import Match from "../../Models/Match";
 import { Loading } from "../Loading/Loading";
 import { useTranslation } from 'react-i18next';
@@ -64,10 +63,8 @@ export default function DocumentMatcher({
   return (
     <form className="document-matcher">
       {record.title ? (
-        <h3
-        style={{ textAlign: "center" }}
-        >
-          <RecordSVG />
+        <h3 style={{ textAlign: "center", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <img src="/images/male.svg" alt="Record" style={{ width: 20, height: 20 }} />
           {record.title}
         </h3>
       ) : (
