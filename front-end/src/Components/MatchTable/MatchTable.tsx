@@ -265,24 +265,26 @@ export default function MatchTable({
                       type="button"
                       className={`header-button reset event-entry ${highlightBarClass(highlightType)}`}
                     >
-                      {(() => {
-                        const t = (event.type || "").toString().toLowerCase();
-                        let icon = "";
-                        if (t === "birth" || t === "nacimiento") icon = "/newCSSIcons/birthdayIcon.png";
-                        else if (t === "death" || t === "fallecimiento") icon = "/newCSSIcons/deathIcon.png";
-                        return icon ? (
-                          <img className="event-icon" src={icon} alt={t} />
-                        ) : null;
-                      })()}
-                       <div className="event-title">
+                      <div className="event-title">
                          {t(`event.${event.type?.toLowerCase() || 'unknown'}`) as string}
                        </div>
-                       <div className="event-panel__body">
-                         <div className={"date " + (highlightType === HighlightType.Green ? "data-matches" : highlightType === HighlightType.Red ? "data-not-matches" : "")}>
-                           {event.date?.toDateString()}
-                         </div>
-                         <div className="location">{event.location}</div>
-                       </div>
+                      <div className="event-panel__body">
+                        {(() => {
+                          const eventType = (event.type || "").toString().toLowerCase();
+                          let icon = "";
+                          if (eventType === "birth" || eventType === "nacimiento") icon = "/newCSSIcons/birthdayIcon.png";
+                          else if (eventType === "death" || eventType === "fallecimiento") icon = "/newCSSIcons/deathIcon.png";
+                          return icon ? (
+                            <img className="event-icon" src={icon} alt={eventType} />
+                          ) : null;
+                        })()}
+                        <div className="event-details" style={{display:'grid', gap:'0.125rem'}}>
+                          <div className={"date " + (highlightType === HighlightType.Green ? "data-matches" : highlightType === HighlightType.Red ? "data-not-matches" : "")}>
+                            {event.date?.toDateString()}
+                          </div>
+                          <div className="location">{event.location}</div>
+                        </div>
+                      </div>
                     </button>
 
                   </div>

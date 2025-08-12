@@ -7,6 +7,7 @@ import { PotentialMatch } from "../PotentialMatch/PotentialMatch";
 import Match from "../../Models/Match";
 import { Loading } from "../Loading/Loading";
 import { useTranslation } from 'react-i18next';
+import NewWindowLink from "../NewWindowLink/NewWindowLink";
 
 export default function DocumentMatcher({
   hintsDone,
@@ -27,6 +28,11 @@ export default function DocumentMatcher({
   const [buttonsEnabled, setButtonsEnabled] = useState<boolean>(false);
   const buttonsEnablingTimeout = useRef<NodeJS.Timeout>();
   const BUTTONS_ENABLING_TIMEOUT_DURATION_MS = 700;
+  const sourceLinkerURL: string =
+    "https://www.familysearch.org/search/linker?pal=/ark:/61903/1:1:" +
+    record.ARK +
+    "&id=" +
+    tree.PID;
 
   useEffect(() => {
     let _matches = record.people?.map((recordPerson, i) => {

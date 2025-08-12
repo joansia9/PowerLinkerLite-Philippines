@@ -3,6 +3,28 @@
   margin: 0;
 }
 
+.relationship-headers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+/* Apply headerContainer background to both side headers */
+.relationship-headers h4 {
+  background-image: url('../../assets/headerContainer.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  color: white;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.95em;
+}
+
 .data-matches {
   background-color: var(--color-accent-lightest);
 }

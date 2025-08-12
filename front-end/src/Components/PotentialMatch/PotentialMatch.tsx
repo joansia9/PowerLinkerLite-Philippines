@@ -37,19 +37,14 @@ export function PotentialMatch({
 
   return (
     <div className="potential-match">
-      <h4>
-        {t(`relationship.${recordCandidate.relationship}`) as string}
-        {recordCandidate.relationship === Relationship.FocusPerson ? (
-        <span className="sourcelinker-button"> 
-           <NewWindowLink
-            url={sourceLinkerURL}
-            linkName={t('links.sourceLinker') as string}
-          />
-        </span>
-        ) : (
-          <span/>
-        )}
-      </h4>
+      <div className="relationship-headers">
+        <h4>
+          {t(`relationship.${recordCandidate.relationship}`) as string}
+        </h4>
+        <h4>
+          {t(`relationship.${(selectedCandidate !== undefined && treeCandidates[selectedCandidate]?.relationship) || recordCandidate.relationship}`) as string}
+        </h4>
+      </div>
       <div className="flex-row">
         <MatchTable
           selectedCandidate={selectedCandidate}
