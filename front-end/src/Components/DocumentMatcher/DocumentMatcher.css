@@ -8,12 +8,13 @@
   margin-inline: auto;
   margin-block: .5em 0;
   width: min(27em, 100%);
+
 }
 
 .document-matcher h3 svg {
   height: 1em;
-}
 
+}
 .potential-matches {
   padding-bottom: 0; /* remove large extra space so content fits */
 }
@@ -52,4 +53,21 @@
   text-align: center;
   padding-bottom: 0;
   margin-top: 0.75rem; /* small gap from content */
+}
+
+/* Scoreboard styling for Completed counter */
+.button-bar .counter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff; /* white font */
+  font-weight: 600;
+  min-width: 160px;
+  min-height: 44px;
+  padding: 0.25rem 0.75rem;
+  margin: 0 auto 0.5rem auto;
+  background-image: url('../../assets/scoreBoard.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: transparent;
 }

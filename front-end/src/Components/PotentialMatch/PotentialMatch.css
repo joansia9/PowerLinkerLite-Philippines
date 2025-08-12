@@ -355,6 +355,7 @@
   font-weight: inherit;
   margin: 0.5rem 0 0.25rem 0;
   padding: 0; /* will be overridden for Birth/Death above */
+  text-align: center;
 }
 
 /* Event panel body styled like header-button reset */
@@ -567,11 +568,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  justify-items: center;
   text-align: center;
   padding: 0.3rem 0.9rem;
   font-size: 1em;
   width: fit-content; /* size to content */
-  margin: 0 auto; /* center within column */
+
+  /*centering */
+  align-self: center;
+  margin: 0 auto;
+
 }
 
 
