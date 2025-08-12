@@ -64,7 +64,9 @@ export default function DocumentMatcher({
   return (
     <form className="document-matcher">
       {record.title ? (
-        <h3>
+        <h3
+        style={{ textAlign: "center" }}
+        >
           <RecordSVG />
           {record.title}
         </h3>

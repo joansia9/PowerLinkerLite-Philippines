@@ -9,11 +9,27 @@
 .book-bg {
   background-image: var(--book);
   background-repeat: no-repeat;
-  background-position: center top;
-  background-size: contain; /* keep book proportions */
-  /* Occupy the viewport area between header and footer */
-  height: calc(100vh - var(--header-h, 64px) - var(--footer-h, 40px));
-  overflow: hidden; /* keep records stuck with the book */
+  background-position: center center;
+  /* Default: fill available height so the book is big on desktops */
+  background-size: auto calc(100vh - var(--header-h, 64px) - var(--footer-h, 28px));
+  height: calc(100vh - var(--header-h, 64px) - var(--footer-h, 28px));
+  overflow: hidden;
+}
+
+/* Portrait phones/tablets: fit width so the book scales nicely when rotated */
+@media (orientation: portrait) {
+  .book-bg {
+    background-size: 100% auto; /* fill width */
+    height: auto;
+    min-height: calc(100vh - var(--header-h, 64px) - var(--footer-h, 28px));
+  }
+}
+
+/* Very small screens: add a tiny inset so edges don't clip */
+@media (max-width: 480px) {
+  .book-bg {
+    background-position: center 0.5rem;
+  }
 }
 
 .page-home header {

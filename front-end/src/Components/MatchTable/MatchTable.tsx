@@ -263,19 +263,19 @@ export default function MatchTable({
                     key={eventType + j}
                   >
                     <button
-                      type="button"
-                      className={`header-button reset event-entry ${highlightBarClass(highlightType)}`}
-                    >
-                      <div className="event-title">
-                        {t(`event.${event.type?.toLowerCase() || 'unknown'}`) as string}
+                    type="button"
+                    className={`header-button reset event-entry ${highlightBarClass(highlightType)}`}
+                  >
+                    <div className="event-title">
+                      {t(`event.${event.type?.toLowerCase() || 'unknown'}`) as string}
+                    </div>
+                    <div className="event-panel__body">
+                      <div className={"date " + (highlightType === HighlightType.Green ? "data-matches" : highlightType === HighlightType.Red ? "data-not-matches" : "")}>
+                        {event.date?.toDateString()}
                       </div>
-                      <div className="event-panel__body">
-                        <div className={"date " + (highlightType === HighlightType.Green ? "data-matches" : highlightType === HighlightType.Red ? "data-not-matches" : "")}>
-                          {event.date?.toDateString()}
-                        </div>
-                        <div className="location">{event.location}</div>
-                      </div>
-                    </button>
+                      <div className="location">{event.location}</div>
+                    </div>
+                  </button>
 
                   </div>
                 ))}

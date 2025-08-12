@@ -35,22 +35,16 @@ export function Layout(props: IAppProps) {
   const changeLanguage = async (lng: string) => { //creating a function called changeLanguage
     if (lng === i18n.language) return; // Already on this language
 
-    console.log(`Switching to language: ${lng}`); // now we had to delete the language selector!
     setIsLoadingLanguage(true);
     setLoadError(null);
 
     try {
       await loadLanguage(lng); // Load language dynamically if not already loaded
       i18n.changeLanguage(lng); // Change to the language
-      console.log(`Successfully switched to: ${lng}`);
-
     } catch (error) {
       setLoadError(`Failed to load ${lng} language`);
-
-      // Fallback to English if loading fails
       try {
         i18n.changeLanguage('en');
-        console.log('Fallback to English');
       } catch (fallbackError) {
         console.error('Critical: Failed to fallback to English:', fallbackError);
       }
@@ -61,13 +55,19 @@ export function Layout(props: IAppProps) {
 
   return (
     <>
-
       {/* Header */}
       <header className="site-header">
-        <h1>{t('header.title') as string}</h1>
+
+        {/* Center: Title + Subheading (from home.title) */}
+        <div className="header-texts">
+          <h1>{t('header.title') as string}</h1>
+          <h2 className="subheading">{t('home.title') as string}</h2>
+        </div>
+
+        {/* Right: Language selector */}
         <div className="language-selector">
-          <select 
-            value={i18n.language} 
+          <select
+            value={i18n.language}
             onChange={(e) => changeLanguage(e.target.value)}
             className="language-select"
             disabled={isLoadingLanguage}
@@ -89,11 +89,7 @@ export function Layout(props: IAppProps) {
             </div>
           )}
         </div>
-        <img
-          className="logo"
-          src="/RLL_Logo_Full.png"
-          alt="Record Linking Lab Logo"
-        />
+        <img className="logo" src="/RLL_Logo_Full.png" alt="Record Linking Lab Logo" />
       </header>
 
       {/* Body (injected components) */}

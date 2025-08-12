@@ -24,7 +24,7 @@
 }
 
 .potential-match .potential-match-table {
-  --match-border: 1px solid var(--color-accent);
+  /* --match-border: 1px solid var(--color-accent); */
 
   display: grid;
   grid-auto-flow: row;
@@ -43,7 +43,7 @@
 .details-wrapper {
   border: var(--match-border);
   background-color: white;
-  box-shadow: var(--shadow-1);
+  /* box-shadow: var(--shadow-1); */
 }
 
 /*////////*/
@@ -280,7 +280,7 @@
 .event-card {
   border: var(--match-border);
   background-color: #fff;
-  box-shadow: var(--shadow-1);
+  /* box-shadow: var(--shadow-1); */
   margin: 0.75rem 0; /* space between Birth and Death */
 }
 
@@ -294,7 +294,7 @@
 /* Keep consistent spacing and visuals */
 .details-left,
 .details-right {
-  box-shadow: var(--shadow-1);
+  /* box-shadow: var(--shadow-1); */
   margin: 0.75rem 1em 0 1em;
 }
 
@@ -311,7 +311,7 @@
 .event-panel__body {
   border: var(--match-border);
   background-color: #fff;
-  box-shadow: var(--shadow-1);
+  /* box-shadow: var(--shadow-1); */
   padding: 0.5rem 0.75rem;
 }
 
@@ -324,7 +324,7 @@
 .potential-match-table .header-button {
   border: var(--match-border);
   background-color: #fff;
-  box-shadow: var(--shadow-1);
+  /* box-shadow: var(--shadow-1); */
 }
 
 /* Ensure consistent inner padding */
@@ -430,13 +430,20 @@
 }
 
 /* Let details participate in the OUTER grid */
-.details-wrapper { display: contents; }
-.details-grid { display: contents; }   /* <-- stop creating an inner grid */
+.details-wrapper { 
+  display: contents; 
+  
+}
+.details-grid { 
+  display: contents; 
+  
+}   /* <-- stop creating an inner grid */
 
 /* Place each side under the correct outer column/row */
 .details-left, .details-right {
-  grid-row: 2;          /* under the headers (row 1 is headers) */
-  align-self: start;
+  display: grid;
+  grid-template-rows: subgrid; /* ← inherit outer row tracks (incl. [Birth], [Death]) */
+  grid-row: 2 / -1;            /* live under headers */
 }
 
 .details-left  { grid-column: 1; }
@@ -445,9 +452,9 @@
 /* This rule was styling the wrapper like a card; remove or scope it */
  /* .potential-match-table .header-button, .details-wrapper { ... } */
 .potential-match-table > .header-button {
-  border: var(--match-border);
+  /* border: var(--match-border); */
   background-color: white;
-  box-shadow: var(--shadow-1);
+  /* box-shadow: var(--shadow-1); */
 }
 /* keep your transparent override for details if you like */
 
@@ -489,36 +496,4 @@
    border: none !important;
    box-shadow: none !important;
    padding: 0; /* bar already has padding */
-}
-/* FINAL OVERRIDES – keep after everything else */
-.potential-match-details button.event-entry.is-match        { 
-  background-image: url('../../assets/matchBar.png') !important; 
-}
-.potential-match-details button.event-entry.is-not-match    { 
-  background-image: url('../../assets/notAMatchBar.png') !important; 
-}
-.potential-match-details button.event-entry.is-undetermined { 
-  background-image: url('../../assets/undeterminedBar.png') !important; 
-}
-
-.potential-match-details button.event-entry.is-match,
-.potential-match-details button.event-entry.is-not-match,
-.potential-match-details button.event-entry.is-undetermined {
-  background-size: 100% 100% !important;
-  background-repeat: no-repeat !important;
-  background-color: transparent !important;
-  min-height: 56px;
-  padding: 0 18px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: #fff;
-}
-
-/* inner panel should be transparent so the bar shows */
-.potential-match-details button.event-entry .event-panel__body {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0;
 }

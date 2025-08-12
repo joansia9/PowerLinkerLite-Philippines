@@ -49,9 +49,6 @@ export function Home() {
 
   return (
       <main className="page-home">
-        <header>
-          <h2>{t('home.title') as string}</h2>
-        </header>
         <div
           className="book-bg"
           style={{ ['--book' as any]: "url('/newCSSIcons/philippinesBook.png')" }}
