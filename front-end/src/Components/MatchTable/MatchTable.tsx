@@ -263,19 +263,28 @@ export default function MatchTable({
                     key={eventType + j}
                   >
                     <button
-                    type="button"
-                    className={`header-button reset event-entry ${highlightBarClass(highlightType)}`}
-                  >
-                    <div className="event-title">
-                      {t(`event.${event.type?.toLowerCase() || 'unknown'}`) as string}
-                    </div>
-                    <div className="event-panel__body">
-                      <div className={"date " + (highlightType === HighlightType.Green ? "data-matches" : highlightType === HighlightType.Red ? "data-not-matches" : "")}>
-                        {event.date?.toDateString()}
-                      </div>
-                      <div className="location">{event.location}</div>
-                    </div>
-                  </button>
+                      type="button"
+                      className={`header-button reset event-entry ${highlightBarClass(highlightType)}`}
+                    >
+                      {(() => {
+                        const t = (event.type || "").toString().toLowerCase();
+                        let icon = "";
+                        if (t === "birth" || t === "nacimiento") icon = "/newCSSIcons/birthdayIcon.png";
+                        else if (t === "death" || t === "fallecimiento") icon = "/newCSSIcons/deathIcon.png";
+                        return icon ? (
+                          <img className="event-icon" src={icon} alt={t} />
+                        ) : null;
+                      })()}
+                       <div className="event-title">
+                         {t(`event.${event.type?.toLowerCase() || 'unknown'}`) as string}
+                       </div>
+                       <div className="event-panel__body">
+                         <div className={"date " + (highlightType === HighlightType.Green ? "data-matches" : highlightType === HighlightType.Red ? "data-not-matches" : "")}>
+                           {event.date?.toDateString()}
+                         </div>
+                         <div className="location">{event.location}</div>
+                       </div>
+                    </button>
 
                   </div>
                 ))}
@@ -296,15 +305,15 @@ export function MatchHeader({
   fromRecord: boolean;
   highlightType : number;
 }) {
-  let imageUrl, imageColor;
+  let imageSrc: string, imageColor;
   if (candidate.sex === "Male") {
-    imageUrl = "/images/male.svg";
+    imageSrc = "/images/fatherIcon.png";
     imageColor = "var(--color-sex-male)";
   } else if (candidate.sex === "Female") {
-    imageUrl = "/images/female.svg";
+    imageSrc = "/images/motherIcon.png";
     imageColor = "var(--color-sex-female)";
   } else {
-    imageUrl = "images/undetermined_sex.svg";
+    imageSrc = "/images/undetermined_sex.svg";
     imageColor = "var(--color-sex-undetermined)";
   }
 
@@ -329,7 +338,7 @@ export function MatchHeader({
       {fromRecord ? (
         <RecordSVG alt={candidate.sex} style={{ color: imageColor }} />
       ) : (
-        <img src={imageUrl} alt={candidate.sex} className="person-icon" />
+        <img src={imageSrc} alt={candidate.sex} className="person-icon" />
       )}
     </div>
   );

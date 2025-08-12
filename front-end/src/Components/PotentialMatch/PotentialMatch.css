@@ -376,7 +376,7 @@
   margin: 0 1em; /* align with header-button margins */
 }
 
-.event-title-bar.is-match { background-image: url('../../assets/matchBar.png'); }
+.event-title-bar.is-match { background-image: url('/images/matchBar.png'); }
 .event-title-bar.is-not-match { background-image: url('../../assets/notAMatchBar.png'); }
 .event-title-bar.is-undetermined { background-image: url('../../assets/undeterminedBar.png'); }
 
@@ -390,7 +390,7 @@
 
 /* Bar backgrounds for containers based on match state */
 .header-button.reset.is-match,
-.event-entry.is-match { background-image: url('../../assets/matchBar.png'); }
+.event-entry.is-match { background-image: url('/images/matchBar.png'); }
 .header-button.reset.is-not-match,
 .event-entry.is-not-match { background-image: url('../../assets/notAMatchBar.png'); }
 .header-button.reset.is-undetermined,
@@ -460,7 +460,7 @@
 
 /* Bar backgrounds for event content panels */
 .header-button.reset.is-match,
-.event-entry.is-match { background-image: url('../../assets/matchBar.png'); }
+.event-entry.is-match { background-image: url('/images/matchBar.png'); }
 
 .header-button.reset.is-not-match,
 .event-entry.is-not-match { background-image: url('../../assets/notAMatchBar.png'); }
@@ -497,3 +497,24 @@
    box-shadow: none !important;
    padding: 0; /* bar already has padding */
 }
+
+/* Equal-size event rows with icon and text */
+.potential-match-details .event-entry {
+  display: grid;
+  grid-template-columns: auto 1fr; /* icon | content */
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 56px;
+}
+
+.potential-match-details .event-entry .event-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Make all event rows the same width as header-button */
+.potential-match-details .event-entry { width: 100%; box-sizing: border-box; }
+
+/* Ensure inner body does not add extra card look */
+.potential-match-details .event-entry .event-panel__body { background: transparent; border: none; box-shadow: none; padding: 0; }
