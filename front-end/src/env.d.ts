@@ -15,6 +15,16 @@ declare module "*.json" {
   export default value;
 }
 
+// Image module declarations
+declare module "*.png" {
+  const src: string;
+  export default src;
+}
+declare module "*.svg" {
+  const src: string;
+  export default src;
+}
+
 // If this file has no import/export statements (i.e. is a script)
 // convert it into a module by adding an empty export statement.
 export {};

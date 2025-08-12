@@ -304,7 +304,12 @@ export function MatchHeader({
   fromRecord: boolean;
   highlightType : number;
 }) {
-  const imageSrc: string = "/images/searchIcon.png";
+  const imageSrc: string =
+    candidate.sex === "Female"
+      ? "/images/motherIcon.png"
+      : candidate.sex === "Male"
+      ? "/images/fatherIcon.png"
+      : "/images/searchIcon.png";
 
   return (
     <div className={"potential-match-header"}>

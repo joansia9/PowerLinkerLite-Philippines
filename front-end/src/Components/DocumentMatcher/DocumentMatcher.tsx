@@ -64,7 +64,7 @@ export default function DocumentMatcher({
     <form className="document-matcher">
       {record.title ? (
         <h3 style={{ textAlign: "center", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-          <img src="/images/male.svg" alt="Record" style={{ width: 20, height: 20 }} />
+          <img src="/images/searchIcon.png" alt="Record" style={{ width: 20, height: 20 }} />
           {record.title}
         </h3>
       ) : (
