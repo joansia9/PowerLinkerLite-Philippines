@@ -154,6 +154,7 @@ export default function MatchTable({
     "name"
   )
 
+  // Re-enable highlight bar styling
   const highlightBarClass = (ht: number) =>
     ht === HighlightType.Green ? 'is-match' : ht === HighlightType.Red ? 'is-not-match' : 'is-undetermined';
 
@@ -268,7 +269,7 @@ export default function MatchTable({
                       <div className="event-title" style={{margin: 0}}>
                          {t(`event.${event.type?.toLowerCase() || 'unknown'}`) as string}
                        </div>
-                      <div className="event-panel__body" style={{padding: 'var(--header-padding)'}}>
+                         <div className="event-panel__body" style={{padding: 'var(--header-padding)'}}>
                         {(() => {
                           const eventType = (event.type || "").toString().toLowerCase();
                           let icon = "";

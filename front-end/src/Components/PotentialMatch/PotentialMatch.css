@@ -34,9 +34,9 @@
 .relationship-headers h4:first-child { justify-self: center; }
 .relationship-headers h4:last-child { justify-self: center; }
 
-.data-matches {
-  background-color: var(--color-accent-lightest);
-}
+
+/* Green highlight visuals */
+.data-matches { background-color: var(--color-accent-lightest); }
 
 .data-not-matches {
   background-color: var(--color-danger-lighter)
@@ -152,21 +152,11 @@
   text-align: center;
 }
 
+/* Remove connecting arrow between headers */
 .header-button
   + .header-button:not(.create-new-person)
   .potential-match-header::before {
-  /* content: "\2B95"; */
-  content: "\2192";
-
-  background-color: inherit;
-
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translate(-50%, -50%);
-
-  color: var(--color-accent-dark);
-  font-size: 1.35em;
+  content: none;
 }
 
 /*/ ////////*/
