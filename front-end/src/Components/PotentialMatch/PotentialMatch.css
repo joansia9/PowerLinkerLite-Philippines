@@ -7,23 +7,32 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
+  align-items: start;
+  justify-items: center; /* center each header within its column */
 }
 
 /* Apply headerContainer background to both side headers */
 .relationship-headers h4 {
   background-image: url('../../assets/headerContainer.png');
   background-size: 100% 100%;
+  background-position: center center;
   background-repeat: no-repeat;
   background-color: transparent;
   color: white;
-  min-height: 32px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0.2rem 0.5rem;
-  font-size: 0.95em;
+  padding: 0.3rem 0.9rem;
+  font-size: 1em;
+  width: fit-content; /* size to content */
+  position: relative;      /* allow overlap */
+  transform: translateY(8px); /* increase overlap */
+  margin-bottom: -8px;     /* match overlap amount */
+  z-index: 2;              /* ensure header sits above data */
 }
+.relationship-headers h4:first-child { justify-self: center; }
+.relationship-headers h4:last-child { justify-self: center; }
 
 .data-matches {
   background-color: var(--color-accent-lightest);
@@ -383,7 +392,7 @@
 .potential-match-header,
 .event-panel__body { padding: var(--header-padding); }
 
-.event-entry { text-align: unset; z-index: 1; margin: 0.5rem 1em; }
+.event-entry { text-align: unset; z-index: 1; margin: 0.5rem 0; }
 .event-entry .event-title { font: inherit; font-weight: bold; margin: 0 0 0.25rem 0; }
 
 /* Remove white background inside details area */
@@ -425,7 +434,7 @@
   display: flex;
   align-items: center;
   color: white;
-  margin: 0 1em; /* align with header-button margins */
+  margin: 0; /* align with header-button width */
 }
 
 .event-title-bar.is-match { background-image: url('../../assets/matchBar.png'); }
@@ -507,6 +516,7 @@
   /* border: var(--match-border); */
   background-color: white;
   /* box-shadow: var(--shadow-1); */
+  margin: 0; /* match event-entry horizontal alignment */
 }
 /* keep your transparent override for details if you like */
 
@@ -538,34 +548,40 @@
 .potential-match > h4 {
   background-image: url('../../assets/headerContainer.png');
   background-size: 100% 100%;
+  background-position: center center;
   background-repeat: no-repeat;
   background-color: transparent;
   color: white;
-  min-height: 32px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0.2rem 0.5rem;
-  font-size: 0.95em;
-  margin: 0 1em; /* align to header-button margins */
+  padding: 0.3rem 0.9rem;
+  font-size: 1em;
+  width: fit-content; /* size to content */
+  margin: 0 auto; /* center within container */
+  position: relative;      /* allow overlap */
+  transform: translateY(8px); /* increase overlap */
+  margin-bottom: -8px;     /* match overlap amount */
+  z-index: 2;              /* ensure header sits above data */
 }
 
 /* Event titles (Birth/Death) background */
 .potential-match-details .event-title {
   background-image: url('../../assets/headerContainer.png');
   background-size: 100% 100%;
+  background-position: center center;
   background-repeat: no-repeat;
   background-color: transparent;
   color: white;
-  min-height: 32px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0.2rem 0.5rem;
-  font-size: 0.95em;
-  margin: 0 1em; /* align with entry bar width */
+  padding: 0.3rem 0.9rem;
+  font-size: 1em;
+  width: fit-content; /* size to content */
+  margin: 0 auto; /* center within column */
 }
 
 
@@ -584,19 +600,11 @@
    padding: 0; /* bar already has padding */
 }
 
-/* Equal-size event rows with icon and text */
-.potential-match-details .event-entry {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* center content vertically within the bar */
-  align-items: flex-start;
-  gap: 0.25rem;
-  min-height: 48px;
-}
+
 
 .potential-match-details .event-entry .event-icon {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   object-fit: contain;
 }
 

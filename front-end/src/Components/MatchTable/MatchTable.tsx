@@ -265,10 +265,10 @@ export default function MatchTable({
                       type="button"
                       className={`header-button reset event-entry ${highlightBarClass(highlightType)}`}
                     >
-                      <div className="event-title">
+                      <div className="event-title" style={{margin: 0}}>
                          {t(`event.${event.type?.toLowerCase() || 'unknown'}`) as string}
                        </div>
-                      <div className="event-panel__body">
+                      <div className="event-panel__body" style={{padding: 'var(--header-padding)'}}>
                         {(() => {
                           const eventType = (event.type || "").toString().toLowerCase();
                           let icon = "";
