@@ -8,7 +8,6 @@ import loadNameComparator, { isNameComparatorLoaded, preloadNameComparator } fro
 import getHighlightType from "../../Services/getHighlightType";
 import { HighlightType } from "../../Models/HighlightType";
 import { useTranslation } from 'react-i18next';
-import searchIcon from "../../assets/searchIcon.png";
 
 //TODO: dynamic loading
 //1. remove static import
@@ -305,7 +304,7 @@ export function MatchHeader({
   fromRecord: boolean;
   highlightType : number;
 }) {
-  const imageSrc: string = searchIcon;
+  const imageSrc: string = "/images/searchIcon.png";
 
   return (
     <div className={"potential-match-header"}>
