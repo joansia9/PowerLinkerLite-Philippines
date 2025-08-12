@@ -115,6 +115,12 @@ export default function DocumentMatcher({
           >
             {t('buttons.attachAll') as string}
           </button>
+          <span className="source-linker-inline">
+            <NewWindowLink
+              url={sourceLinkerURL}
+              linkName={t('links.sourceLinker') as string}
+            />
+          </span>
           <button
             type="button"
             className={"outlined" + (!loading ? " false-enabled" : "")}

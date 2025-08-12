@@ -277,6 +277,35 @@
   border-color: var(--green-3)
 }
 
+/* SourceLinker button with background image */
+.sourcelinker-button button.outlined {
+  color: #fff;
+  border: none;
+  background-image: url('../../assets/sourceButton.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  padding-left: 2rem; /* space for icon if needed */
+}
+
+/* Place SourceLinker button between Attach All and Skip in the footer bar */
+.button-bar .attach-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.button-bar .attach-buttons .source-linker-inline {
+  order: 2; /* middle */
+}
+.button-bar .attach-buttons button:first-of-type {
+  order: 1; /* Attach All */
+}
+.button-bar .attach-buttons button:last-of-type {
+  order: 3; /* Skip */
+}
+
 /* Individual event cards (Birth, Death) as separate containers */
 .event-card {
   border: var(--match-border);
@@ -304,7 +333,7 @@
   font: inherit;
   font-weight: inherit;
   margin: 0.5rem 0 0.25rem 0;
-  padding: 0; /* no bar background */
+  padding: 0; /* will be overridden for Birth/Death above */
 }
 
 /* Event panel body styled like header-button reset */
@@ -483,14 +512,38 @@
   color: white;
 }
 
-/* Override: Use headerContainer.png for all header bars (focus, father, mother) and event bars (birth, death) */
-.potential-match-table > .header-button,
-.potential-match-details .event-entry,
-.event-title-bar {
-  background-image: url('../../assets/headerContainer.png') !important;
-  background-size: 100% 100% !important;
-  background-repeat: no-repeat !important;
-  background-color: transparent !important;
+/* Relationship header (Focus/Mother/Father) background */
+.potential-match > h4 {
+  background-image: url('../../assets/headerContainer.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  color: white;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.95em;
+  margin: 0 1em; /* align to header-button margins */
+}
+
+/* Event titles (Birth/Death) background */
+.potential-match-details .event-title {
+  background-image: url('../../assets/headerContainer.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  color: white;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.95em;
+  margin: 0 1em; /* align with entry bar width */
 }
 
 
@@ -516,12 +569,12 @@
   justify-content: center; /* center content vertically within the bar */
   align-items: flex-start;
   gap: 0.25rem;
-  min-height: 56px;
+  min-height: 48px;
 }
 
 .potential-match-details .event-entry .event-icon {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   object-fit: contain;
 }
 
