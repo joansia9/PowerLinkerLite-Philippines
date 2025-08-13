@@ -59,7 +59,7 @@
 
   display: grid;
   grid-auto-flow: row;
-  grid-template-columns: repeat(2, 15.8125em);
+  grid-template-columns: 1fr 1fr; /* stretch to page edges */
   grid-template-rows: auto 1fr;
 }
 
@@ -93,6 +93,10 @@
 
   text-align: left;
   font-size: 1em;
+  color:white;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 /* Separation between Focus header and events */
@@ -140,6 +144,7 @@
 
   width: 1.75em;
   height: 1.75em;
+  object-fit: contain; /* prevent stretching of mother/father icons */
   margin: 0;            /* no offset from the left edge */
   margin-right: 0.5em;  /* keep spacing between icon and text */
 }
@@ -343,11 +348,8 @@
 .details-right { grid-column: 2; }
 
 /* Keep consistent spacing and visuals */
-.details-left,
-.details-right {
-  /* box-shadow: var(--shadow-1); */
-  margin: 0.75rem 1em 0 1em;
-}
+.details-left { margin: 0.75rem 1rem 0 0; }
+.details-right { margin: 0.75rem 0 0 1rem; }
 
 /* Event titles just like h4 */
 .event-title {
@@ -593,7 +595,9 @@
    background: transparent !important;
    border: none !important;
    box-shadow: none !important;
-   padding: 0; /* bar already has padding */
+   padding: 0; 
+   margin-bottom: 20px;
+
 }
 
 

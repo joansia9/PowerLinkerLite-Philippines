@@ -49,10 +49,7 @@ export function Home() {
 
   return (
       <main className="page-home">
-        <div
-          className="book-bg"
-          style={{ ['--book' as any]: "url('/newCSSIcons/philippinesBook.png')" }}
-        >
+        <div className="book-bg">
         {data[0] ? (
           typeof data[0] === "string" ? (
             <div>

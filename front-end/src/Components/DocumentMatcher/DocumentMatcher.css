@@ -2,6 +2,24 @@
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
   justify-content: stretch;
+  background-image: url('../../assets/philippinesBook.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain; /* fit inside form area */
+}
+
+/* Stick the matcher to the visible book pages */
+.book-bg .document-matcher {
+  width: min(64rem, 68%);
+  margin-inline: auto;   /* center between left/right book margins */
+  padding: 0.5rem 1rem;  /* slight inset so content doesn't touch page edge */
+  justify-self: center;  /* ensure it's centered if parent is grid */
+}
+
+@media (orientation: portrait) {
+  .book-bg .document-matcher {
+    width: min(44rem, 90%); /* give more width on tall phones but keep inside page */
+  }
 }
 
 .document-matcher h3 {

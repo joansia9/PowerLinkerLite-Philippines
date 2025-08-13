@@ -316,9 +316,7 @@ export function MatchHeader({
 
   return (
     <div className={"potential-match-header"}>
-
-
-      <h5 className={highlightType === HighlightType.Green ? "data-matches" :  (highlightType === HighlightType.Red) ? "data-not-matches" : ""}>
+      <h5 className="">
         <span> {/*check if female and if firstnames exist and if className="", then apply data-matches*/}
           {candidate.firstname}
         </span>
