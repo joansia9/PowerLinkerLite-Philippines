@@ -7,9 +7,11 @@
 export default function NewWindowLink({
   url,
   linkName,
+  className,
 }: {
   url: string;
   linkName: string;
+  className?: string;
 }) {
 
   const handleClick = () => {
@@ -17,7 +19,7 @@ export default function NewWindowLink({
   };
 
   return (
-    <button onClick={handleClick} type="button" className="outlined">
+    <button onClick={handleClick} type="button" className={className ?? "outlined"}>
       {linkName}
     </button>
   );

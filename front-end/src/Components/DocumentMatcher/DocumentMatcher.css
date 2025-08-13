@@ -4,21 +4,21 @@
   justify-content: stretch;
   background-image: url('../../assets/philippinesBook.png');
   background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain; /* fit inside form area */
+  background-position: 90% center;
+  background-size: 95% auto; /* fit inside form area */
 }
 
 /* Stick the matcher to the visible book pages */
 .book-bg .document-matcher {
-  width: min(64rem, 68%);
+  width: min(175rem, 100%);
   margin-inline: auto;   /* center between left/right book margins */
-  padding: 0.5rem 1rem;  /* slight inset so content doesn't touch page edge */
+  padding: 0.5rem 0.5rem;  /* slight inset so content doesn't touch page edge */
   justify-self: center;  /* ensure it's centered if parent is grid */
 }
 
 @media (orientation: portrait) {
   .book-bg .document-matcher {
-    width: min(44rem, 90%); /* give more width on tall phones but keep inside page */
+    width: min(70rem, 98%); /* give more width on tall phones but keep inside page */
   }
 }
 

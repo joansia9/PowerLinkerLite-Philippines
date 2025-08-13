@@ -1,0 +1,85 @@
+/* Base look (pure CSS pixel-y, no images) */
+.pixel-btn {
+  --p: 4px;                     /* pixel size */
+  --stroke: #161616;            /* dark border */
+  --shadow: rgba(0,0,0,.3);     /* drop shadow */
+  --bg: #2e9b6f;                /* default fill */
+  --bg2: #1f6a4c;               /* darker bottom */
+  --text: #fff;
+  --btn-w: 160px;               /* default fixed width */
+  --btn-h: 44px;                /* default fixed height */
+
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  gap: 0;
+  box-sizing: border-box;
+  width: var(--btn-w);
+  height: var(--btn-h);
+  padding: 0 calc(var(--p) * 3); /* horizontal only; vertical controlled by height */
+  border: 0;
+  background:
+    linear-gradient(#ffffff20, #0000001a) padding-box,
+    linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%) border-box;
+  color: var(--text);
+  font: 600 12px/1.1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .02em;
+  text-transform: none;
+  cursor: pointer;
+  user-select: none;
+  image-rendering: pixelated;
+
+  /* chunky pixel border + bevel (no border-radius for 8-bit corners) */
+  box-shadow:
+    0 0 0 var(--p) var(--stroke),                     /* outer dark stroke */
+    0 var(--p) 0 0 var(--shadow);                     /* drop shadow */
+
+  /* “notched” corners using inner shadows */
+  outline: transparent;
+}
+.pixel-btn::before, .pixel-btn::after{
+  content:"";
+  position:absolute; inset:0;
+  box-shadow:
+    inset calc(var(--p) * 1) 0 0 #ffffff33,           /* left highlight */
+    inset 0 calc(var(--p) * -1) 0 #00000055;          /* bottom shade */
+  pointer-events:none;
+}
+
+/* Focus ring (keyboard) */
+.pixel-btn:focus-visible {
+  box-shadow:
+    0 0 0 var(--p) var(--stroke),
+    0 0 0 calc(var(--p) * 2) #4dc6ff,                 /* focus ring */
+    0 var(--p) 0 0 var(--shadow);
+}
+
+/* Sizes */
+.pixel-btn--sm { --p: 3px; font-size: 11px; --btn-w: 140px; --btn-h: 36px; }
+.pixel-btn--md { --p: 4px; font-size: 12px; --btn-w: 160px; --btn-h: 44px; }
+.pixel-btn--lg { --p: 5px; font-size: 14px; --btn-w: 200px; --btn-h: 52px; }
+
+.pixel-btn--block { display:block; width:100%; }
+
+/* Variants */
+.pixel-btn--match   { --bg: #228d3a; --bg2: #17692a; }
+.pixel-btn--notMatch{ --bg: #a53a30; --bg2: #7b2a23; }
+.pixel-btn--neutral { --bg: #2e9b6f; --bg2: #1f6a4c; }
+
+/* Disabled */
+.pixel-btn:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+  filter: grayscale(.2);
+}
+
+/* Text wrapper keeps translations crisp & centered */
+.pixel-btn__label {
+  padding-inline: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* keep consistent width regardless of text */
+  max-width: 100%;
+}
+
+

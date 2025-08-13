@@ -7,6 +7,7 @@ import { PotentialMatch } from "../PotentialMatch/PotentialMatch";
 import Match from "../../Models/Match";
 import { Loading } from "../Loading/Loading";
 import { useTranslation } from 'react-i18next';
+import PixelButton from "../PixelButton/PixelButton";
 import NewWindowLink from "../NewWindowLink/NewWindowLink";
 
 export default function DocumentMatcher({
@@ -109,36 +110,34 @@ export default function DocumentMatcher({
       <div className="button-bar">
         <div className="counter">{t('status.complete') as string + ": " + hintsDone}</div>
         <div className="attach-buttons">
-          <button
-            type="button"
-            className={"primary" + (!loading ? " false-enabled" : "")}
+          <PixelButton
+            i18nKey="buttons.attachAll"
+            variant="match"
+            size="lg"
             onClick={() => {
               submit(true);
               setLoading(true);
               setHintsDone(hintsDone + 1);
             }}
             disabled={!buttonsEnabled}
-          >
-            {t('buttons.attachAll') as string}
-          </button>
+          />
           <span className="source-linker-inline">
             <NewWindowLink
               url={sourceLinkerURL}
               linkName={t('links.sourceLinker') as string}
+              className="pixel-btn pixel-btn--neutral"
             />
           </span>
-          <button
-            type="button"
-            className={"outlined" + (!loading ? " false-enabled" : "")}
+          <PixelButton
+            i18nKey="buttons.skip"
+            variant="notMatch"
             onClick={() => {
               submit(false);
               setLoading(true);
               setHintsDone(hintsDone + 1);
             }}
             disabled={!buttonsEnabled}
-          >
-            {t('buttons.skip') as string}
-          </button>
+          />
         </div>
       </div>
       {loading && <Loading className="fixed" />}

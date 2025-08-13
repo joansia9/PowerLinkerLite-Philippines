@@ -59,7 +59,8 @@
 
   display: grid;
   grid-auto-flow: row;
-  grid-template-columns: 1fr 1fr; /* stretch to page edges */
+  /* Make both page columns 1.5x longer to extend bar lengths consistently */
+  grid-template-columns: repeat(2, calc(1.5 * 15.8125em));
   grid-template-rows: auto 1fr;
 }
 
@@ -144,7 +145,6 @@
 
   width: 1.75em;
   height: 1.75em;
-  object-fit: contain; /* prevent stretching of mother/father icons */
   margin: 0;            /* no offset from the left edge */
   margin-right: 0.5em;  /* keep spacing between icon and text */
 }
