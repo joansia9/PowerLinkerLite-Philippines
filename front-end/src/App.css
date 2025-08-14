@@ -124,6 +124,12 @@ body {
   height: 100dvh;
 }
 
+/* language-driven page background theme */
+[data-lang="en"] .page-home { background-color: #0f5132; }   /* green */
+[data-lang="tl"] .page-home { background-color: #7a1c1c; }   /* red */
+[data-lang="ceb"] .page-home { background-color: #0d3b66; }  /* blue */
+[data-lang="es"] .page-home { background-color: #4b2e83; }   /* purple */
+
 h1,
 h2 {
   color: var(--color-text);

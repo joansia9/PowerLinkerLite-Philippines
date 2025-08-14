@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
 import './i18n'; 
+import LanguageTheme from './Components/LanguageTheme/LanguageTheme';
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -11,9 +12,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     {/* added these bc Another React Router v7 future flag warning! You can add this one alongside the previous one. */}
-  <Router future={{ v7_relativeSplatPath: true,  v7_startTransition: true  }}> 
-      <App />
-    </Router>
+    <LanguageTheme>
+      <Router future={{ v7_relativeSplatPath: true,  v7_startTransition: true  }}> 
+        <App />
+      </Router>
+    </LanguageTheme>
   </React.StrictMode>
 );
 

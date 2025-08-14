@@ -32,10 +32,16 @@
 }
 .title-row {
   display: grid;
-  grid-template-columns: 1fr auto; /* title | counter */
+  grid-template-columns: 1fr; /* counter will be absolutely positioned */
   align-items: center;
   gap: 0.75rem;
   padding: 0.5rem 0.75rem;
+  position: relative;          /* anchor for absolute scoreboard */
+  min-height: 68px;            /* base row height */
+  padding-right: 240px;        /* keep title text clear of scoreboard */
+  padding-right: 240px;  /* reserve space for the scoreboard */
+  position: relative;
+  min-height: 68px;
 }
 .title-row h3 {
   display: inline-flex;
@@ -48,6 +54,7 @@
   object-fit: contain;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
+  
 }
 .counter--title {
   display: inline-flex;
@@ -55,13 +62,25 @@
   justify-content: center;
   color: #fff;
   font-weight: 600;
-  min-width: 160px;
-  min-height: 44px;
+  width: 220px;     /* visual scoreboard size */
+  height: 120px;
   padding: 0.25rem 0.75rem;
   background-image: url('../../assets/scoreBoard.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-color: transparent;
+  position: absolute;  /* take out of document flow so matches don't move */
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+
+  /* fixing the spacing of the scoreboard */
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(30%);
+
 }
 .potential-matches {
   padding-bottom: 0; /* remove large extra space so content fits */
@@ -111,16 +130,12 @@
   justify-content: center;
   color: #fff; /* white font */
   font-weight: 600;
-  min-width: 160px;
-  min-height: 44px;
+  width: 220px;     /* bigger scoreboard */
+  height: 60px;
   padding: 0.25rem 0.75rem;
   margin: 0 auto 0.5rem auto;
   background-image: url('../../assets/scoreBoard.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-color: transparent;
-  height: 10rem;
-  width: 10rem;
-  min-width: 160px;
-  min-height: 44px;
 }
