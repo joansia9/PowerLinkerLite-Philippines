@@ -23,14 +23,14 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0.3rem 0.9rem;
+  padding: 0.5rem 0.9rem;
   font-size: 1em;
   width: fit-content; /* size to content */
   position: relative;      /* allow overlap */
   transform: translateY(8px); /* increase overlap */
   margin-bottom: -20px;     /* match overlap amount */
   z-index: 2;              /* ensure header sits above data */
-  font-style: bold;
+  font-weight: bold;
 }
 .relationship-headers h4:first-child { justify-self: center; }
 .relationship-headers h4:last-child { justify-self: center; }
@@ -144,10 +144,20 @@
 .potential-match-header svg {
   grid-area: img;
 
-  width: 1.75em;
-  height: 1.75em;
-  margin: 0;            /* no offset from the left edge */
-  margin-right: 0.5em;  /* keep spacing between icon and text */
+  /* Crisper mother/father icons */
+  width: 24px;
+  height: 24px;
+  aspect-ratio: auto;          /* don’t force square crop */
+  object-fit: contain;         /* preserve icon aspect */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor; /* legacy */
+
+  /* override global .person-icon rounding for clarity */
+  border-radius: 0;
+
+  margin: 0;                   /* no offset from the left edge */
+  margin-right: 0.5em;         /* keep spacing between icon and text */
 }
 
 .potential-match .create-new-person {
@@ -604,8 +614,8 @@
 
 
 .potential-match-details .event-entry .event-icon {
-  width: 20px;
-  height: 20px;
+  width: 24px;   /* slightly larger, still well below bar height */
+  height: 24px;
   object-fit: contain;
 }
 
