@@ -28,8 +28,9 @@
   width: fit-content; /* size to content */
   position: relative;      /* allow overlap */
   transform: translateY(8px); /* increase overlap */
-  margin-bottom: -8px;     /* match overlap amount */
+  margin-bottom: -20px;     /* match overlap amount */
   z-index: 2;              /* ensure header sits above data */
+  font-style: bold;
 }
 .relationship-headers h4:first-child { justify-self: center; }
 .relationship-headers h4:last-child { justify-self: center; }

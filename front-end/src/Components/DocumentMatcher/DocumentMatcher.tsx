@@ -70,10 +70,15 @@ export default function DocumentMatcher({
   return (
     <form className="document-matcher">
       {record.title ? (
-        <h3 style={{ textAlign: "center", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-          <img src="/images/searchIcon.png" alt="Record" style={{ width: 20, height: 20 }} />
-          {record.title}
-        </h3>
+        <div className="title-row">
+          <h3>
+            <img src="/images/searchIcon.png" alt="Record" style={{ width: 20, height: 20 }} />
+            {record.title}
+          </h3>
+          <div className="counter counter--title">
+            {t('status.complete') as string + ": " + hintsDone}
+          </div>
+        </div>
       ) : (
         <div/>
       )}
@@ -108,7 +113,6 @@ export default function DocumentMatcher({
         })}
       </div>
       <div className="button-bar">
-        <div className="counter">{t('status.complete') as string + ": " + hintsDone}</div>
         <div className="attach-buttons">
           <PixelButton
             i18nKey="buttons.attachAll"

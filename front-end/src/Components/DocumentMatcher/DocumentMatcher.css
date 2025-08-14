@@ -6,14 +6,14 @@
   background-repeat: no-repeat;
   background-position: 90% center;
   background-size: 95% auto; /* fit inside form area */
+  min-height: calc(97vh - var(--header-h, 64px) - var(--footer-h, 28px));
 }
 
 /* Stick the matcher to the visible book pages */
 .book-bg .document-matcher {
   width: min(175rem, 100%);
-  margin-inline: auto;   /* center between left/right book margins */
-  padding: 0.5rem 0.5rem;  /* slight inset so content doesn't touch page edge */
-  justify-self: center;  /* ensure it's centered if parent is grid */
+  margin-inline: auto;
+  justify-self: center;
 }
 
 @media (orientation: portrait) {
@@ -23,15 +23,38 @@
 }
 
 .document-matcher h3 {
-  margin-inline: auto;
-  margin-block: .5em 0;
-  width: min(27em, 100%);
-
+  margin: 0;
 }
 
 .document-matcher h3 svg {
   height: 1em;
 
+}
+.title-row {
+  display: grid;
+  grid-template-columns: 1fr auto; /* title | counter */
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.title-row h3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.counter--title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  min-width: 160px;
+  min-height: 44px;
+  padding: 0.25rem 0.75rem;
+  background-image: url('../../assets/scoreBoard.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: transparent;
 }
 .potential-matches {
   padding-bottom: 0; /* remove large extra space so content fits */
@@ -88,4 +111,6 @@
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-color: transparent;
+  height: 10rem;
+  width: 5rem;
 }
