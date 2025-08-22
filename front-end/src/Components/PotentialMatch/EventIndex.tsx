@@ -8,15 +8,16 @@ import compareTwoDates from "../../Services/name-comparator/dateComparator.mjs";
 import { HighlightType  } from "../../Models/HighlightType"
 import FlexibleDate from "../../Models/FlexibleDate";
 
+//sorting events
 export default function getSortedEventTypes(
-  recordCandidate: Person,
-  treeCandidates: Person[],
+  recordCandidate: Person, //single person, source person being compared against
+  treeCandidates: Person[], //array of people, potential matches already in someone's tree
   selectedCandidate: number | undefined
 ): [string, number][] {
-  const treeCandidate =
-    selectedCandidate !== undefined
+  const treeCandidate = //(2) selects person
+    selectedCandidate !== undefined // (1) checks if selected
       ? treeCandidates[selectedCandidate]
-      : undefined;
+      : undefined; //(3) sets person to undefined if no selection has been made
 
   const eventsTypeIndex = getEventsIndexedByType(
     recordCandidate,
@@ -31,21 +32,23 @@ export default function getSortedEventTypes(
   return matchedEventTypes;
 }
 
+//helper: getting event TYPE
 function getEventsIndexedByType(
   recordCandidate: Person,
   treeCandidate?: Person
 ) {
-  const eventsIndex: EventTypesIndex = {};
+  const eventsIndex: EventTypesIndex = {}; //dict
 
-  for (const event of recordCandidate.personEvents) {
+  //remember personEvents = array of events
+  for (const event of recordCandidate.personEvents) { 
     if (!eventsIndex[event.sanitizedType])
       eventsIndex[event.sanitizedType] = new EventTypesIndexElement();
     if (
       !eventsIndex[event.sanitizedType].recordEvent ||
       (eventsIndex[event.sanitizedType].treeEvent?.date as FlexibleDate).getTime() >
-        (event.date as FlexibleDate).getTime()
+        (event.date as FlexibleDate).getTime() //gets earliest event date
     )
-      eventsIndex[event.sanitizedType].recordEvent = event;
+      eventsIndex[event.sanitizedType].recordEvent = event; //either marriage death etc
   }
 
   for (const event of treeCandidate?.personEvents || []) {
@@ -61,6 +64,7 @@ function getEventsIndexedByType(
   return eventsIndex;
 }
 
+//helper: sorting event types
 function sortEventTypes(eventTypesIndex: EventTypesIndex) {
   return Object.keys(eventTypesIndex).sort((key1, key2) => {
     const value1 = eventTypesIndex[key1];
@@ -87,6 +91,7 @@ function sortEventTypes(eventTypesIndex: EventTypesIndex) {
   });
 }
 
+//helper: record’s event date and tree’s event date.
 function matchEventTypes(
   eventTypeList: string[],
   recordCandidate: Person,
@@ -101,6 +106,7 @@ function matchEventTypes(
       (event) => event.sanitizedType === eventType
     );
 
+    //Extract the record’s event date and tree’s event date.
     const recordDate = recordEventsOfType[0].date?.toDateString() || "";
     const treeDate = treeEventsOfType[0].date?.toDateString() || "";
      

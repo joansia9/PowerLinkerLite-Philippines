@@ -74,7 +74,7 @@ export default class Person {
     if (this.death) events.push(this.death);
     return events;
   }
-}
+} 
 
 export class Event {
   type?: string;

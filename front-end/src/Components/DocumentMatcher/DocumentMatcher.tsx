@@ -28,7 +28,7 @@ export default function DocumentMatcher({
   const [loading, setLoading] = useState<boolean>(true);
   const [buttonsEnabled, setButtonsEnabled] = useState<boolean>(false);
   const buttonsEnablingTimeout = useRef<NodeJS.Timeout>();
-  const BUTTONS_ENABLING_TIMEOUT_DURATION_MS = 700;
+  const BUTTONS_ENABLING_TIMEOUT_DURATION_MS = 100; //edited this to make faster
   const sourceLinkerURL: string =
     "https://www.familysearch.org/search/linker?pal=/ark:/61903/1:1:" +
     record.ARK +
