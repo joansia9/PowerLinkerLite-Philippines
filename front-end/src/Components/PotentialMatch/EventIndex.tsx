@@ -1,11 +1,9 @@
 import Person from "../../Models/Person";
-import getHighlightType from "../../Services/getHighlightType";
 import {
   EventTypesIndex,
   EventTypesIndexElement,
 } from "../../Models/EventTypesIndex";
 import compareTwoDates from "../../Services/name-comparator/dateComparator.mjs";
-import { HighlightType  } from "../../Models/HighlightType"
 import FlexibleDate from "../../Models/FlexibleDate";
 
 //sorting events
@@ -13,7 +11,7 @@ export default function getSortedEventTypes(
   recordCandidate: Person, //single person, source person being compared against
   treeCandidates: Person[], //array of people, potential matches already in someone's tree
   selectedCandidate: number | undefined
-): [string, number][] {
+): [string, string][] {
   const treeCandidate = //(2) selects person
     selectedCandidate !== undefined // (1) checks if selected
       ? treeCandidates[selectedCandidate]
@@ -96,9 +94,9 @@ function matchEventTypes(
   eventTypeList: string[],
   recordCandidate: Person,
   treeCandidate?: Person
-): [string, number][] {
+): [string, string][] {
   return eventTypeList.map((eventType) => {
-    if (!treeCandidate) return [eventType, HighlightType.None] as [string, number];
+    if (!treeCandidate) return [eventType, 'is-undetermined'];
     const recordEventsOfType = recordCandidate.personEvents.filter(
       (event) => event.sanitizedType === eventType
     );
@@ -120,13 +118,14 @@ function matchEventTypes(
       'rules'
     );
     
-    const highlightType = getHighlightType(
-      recordDate,
-      treeDate,
-      matchData,
-      "date"
-    )
+    // Simple match classification based on date comparison
+    let matchClass = 'is-undetermined';
+    if (matchData[1] === 2) { // Strong match
+      matchClass = 'is-match';
+    } else if (matchData[1] === -1) { // Not a match
+      matchClass = 'is-not-match';
+    }
 
-    return [eventType, highlightType] as [string, number];
+    return [eventType, matchClass];
   });
 }

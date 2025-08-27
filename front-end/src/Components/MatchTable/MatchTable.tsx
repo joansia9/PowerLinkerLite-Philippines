@@ -5,8 +5,6 @@ import getSortedEventTypes from "../PotentialMatch/EventIndex";
 //Before: import loadNameComparator from "../../Services/name-comparator/nameComparisonLoader";
 //we were always loading the nameComparator
 import loadNameComparator, { isNameComparatorLoaded, preloadNameComparator } from "../../Services/name-comparator/nameComparisonLoader";
-import getHighlightType from "../../Services/getHighlightType";
-import { HighlightType } from "../../Models/HighlightType";
 import { useTranslation } from 'react-i18next';
 
 //TODO: dynamic loading
@@ -147,16 +145,19 @@ export default function MatchTable({
     return [false, -1, []];
   }, [recordName, treeName, nameComparator, isLoadingComparator, loadError]);
 
-  const highlightType = getHighlightType(
-    recordName,
-    treeName,
-    matchData,
-    "name"
-  )
-
-  // Re-enable highlight bar styling
-  const highlightBarClass = (ht: number) =>
-    ht === HighlightType.Green ? 'is-match' : ht === HighlightType.Red ? 'is-not-match' : 'is-undetermined';
+  // Simplified match classification for visual bars
+  const matchClass = useMemo(() => {
+    if (!matchData || matchData[2].length === 0) return 'is-undetermined';
+    const averageScore = matchData[2].reduce((sum, match) => sum + match[2], 0) / matchData[2].length;
+    
+    if (averageScore > 95 || matchData[0]) {
+      return 'is-match';
+    } else if (averageScore > 65) {
+      return 'is-undetermined';
+    } else {
+      return 'is-not-match';
+    }
+  }, [matchData]);
 
   return (
     <div className="potential-match-table">
@@ -187,23 +188,21 @@ export default function MatchTable({
       )}
       <button
         type="button"
-        className={`header-button reset ${highlightBarClass(highlightType)}`}
+        className={`header-button reset ${matchClass}`}
       >
         <MatchHeader
           candidate={recordCandidate}
           fromRecord={true}
-          highlightType={highlightType}
         />
       </button>
       {treeCandidate ? (
         <button
           type="button"
-          className={`header-button reset ${highlightBarClass(highlightType)}`}
+          className={`header-button reset ${matchClass}`}
         >
           <MatchHeader
             candidate={treeCandidate}
             fromRecord={false}
-            highlightType={highlightType}
           />
         </button>
       ) : (
@@ -225,7 +224,7 @@ export default function MatchTable({
             style={{
               gridTemplateRows:
                 `[` +
-                eventTypes.map((type) => type[0]).join(`] auto [`) +
+                eventTypes.map(([eventType]) => eventType).join(`] auto [`) +
                 `]`,
             }}
           >
@@ -248,7 +247,7 @@ export default function MatchTable({
   function MatchDetails({ candidate }: { candidate: Person }) {
     return (
       <div className="potential-match-details">
-        {eventTypes?.map(([eventType, highlightType]) => {
+        {eventTypes?.map(([eventType, eventMatchClass]) => {
           const eventsOfType = candidate.personEvents.filter(
             (event) => event.sanitizedType === eventType
           ); // TODO handle multiple events of one type
@@ -264,7 +263,7 @@ export default function MatchTable({
                   >
                     <button
                       type="button"
-                      className={`header-button reset event-entry ${highlightBarClass(highlightType)}`}
+                      className={`header-button reset event-entry ${eventMatchClass}`}
                     >
                       <div className="event-title" style={{margin: 0}}>
                          {t(`event.${event.type?.toLowerCase() || 'unknown'}`) as string}
@@ -280,7 +279,7 @@ export default function MatchTable({
                           ) : null;
                         })()}
                         <div className="event-details" style={{display:'grid', gap:'0.125rem'}}>
-                          <div className={"date " + (highlightType === HighlightType.Green ? "data-matches" : highlightType === HighlightType.Red ? "data-not-matches" : "")}>
+                          <div className="date">
                             {event.date?.toDateString()}
                           </div>
                           <div className="location">{event.location}</div>
@@ -300,12 +299,10 @@ export default function MatchTable({
 
 export function MatchHeader({
   candidate,
-  fromRecord,
-  highlightType
+  fromRecord
 }: {
   candidate: Person;
   fromRecord: boolean;
-  highlightType : number;
 }) {
   const imageSrc: string =
     candidate.sex === "Female"

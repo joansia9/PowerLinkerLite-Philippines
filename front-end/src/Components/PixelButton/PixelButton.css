@@ -55,9 +55,9 @@
 }
 
 /* Sizes */
-.pixel-btn--sm { --p: 3px; font-size: 11px; --btn-w: 140px; --btn-h: 36px; }
+.pixel-btn--sm { --p: 4px; font-size: 11px; --btn-w: 160px; --btn-h: 44px; }
 .pixel-btn--md { --p: 4px; font-size: 12px; --btn-w: 160px; --btn-h: 44px; }
-.pixel-btn--lg { --p: 5px; font-size: 14px; --btn-w: 200px; --btn-h: 52px; }
+.pixel-btn--lg { --p: 4px; font-size: 14px; --btn-w: 160px; --btn-h: 44px; }
 
 .pixel-btn--block { display:block; width:100%; }
 
