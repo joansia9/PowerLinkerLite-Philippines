@@ -24,11 +24,9 @@ export function PotentialMatch({
 }: {
   recordCandidate: Person;
   treeCandidates: Person[];
-  attached: boolean | undefined;
-  setAttached: Function;
+  setAttached: (attached: boolean) => void;
   selectedCandidate: number | undefined;
-  setSelectedCandidate: Function;
-  createPerson: Function;
+  createPerson: () => void;
   ark: string | undefined;
   pid: string | undefined;
 })  {

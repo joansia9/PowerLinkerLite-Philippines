@@ -19,12 +19,12 @@ const DocumentMatcher = lazy(() => import("../../Components/DocumentMatcher/Docu
 
 export function Home() {
   const { t } = useTranslation();
-  const [hintsDone, setHintsDone] : [number, Function] = useState(0);
+  const [hintsDone, setHintsDone] = useState<number>(0);
   const [hintsRequested, setHintsRequested] = useState <number>(0);
   const [hintsInFlight, setHintsInFlight] = useState<number>(0);
   const [data, setData] = useState<(NumidentHint | Error)[]>([]);
-  const [record, setRecord]: [Record, Function] = useState(new Record({}));
-  const [tree, setTree]: [Tree, Function] = useState(new Tree({}));
+  const [record, setRecord] = useState<Record>(new Record({}));
+  const [tree, setTree] = useState<Tree>(new Tree({}));
 
   const HINT_QUEUE_MAX_SIZE = 10;
 

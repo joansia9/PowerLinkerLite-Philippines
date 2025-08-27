@@ -18,13 +18,13 @@ export default function DocumentMatcher({
   submit,
 }: {
   hintsDone: number,
-  setHintsDone: Function,
+  setHintsDone: (count: number) => void,
   record: Record;
   tree: Tree;
-  submit: Function;
+  submit: (isMatch: boolean) => void;
 }) {
   const { t } = useTranslation();
-  const [matches, setMatches]: [Match[], Function] = useState([]);
+  const [matches, setMatches] = useState<Match[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [buttonsEnabled, setButtonsEnabled] = useState<boolean>(false);
   const buttonsEnablingTimeout = useRef<NodeJS.Timeout>();
@@ -89,18 +89,12 @@ export default function DocumentMatcher({
               key={i}
               recordCandidate={match.recordPerson}
               treeCandidates={match.treePeople}
-              attached={match.attached}
               setAttached={(attached: boolean) => {
                 const temp = [...matches];
                 temp[i].attached = attached;
                 setMatches(temp);
               }}
               selectedCandidate={match.selectedCandidate}
-              setSelectedCandidate={(selectedCandidate: number) => {
-                const temp = [...matches];
-                temp[i].selectedCandidate = selectedCandidate;
-                setMatches(temp);
-              }}
               createPerson={() => {
                 const temp = [...matches];
                 temp[i].selectedCandidate = -1;

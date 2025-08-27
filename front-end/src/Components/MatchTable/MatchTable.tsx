@@ -22,8 +22,8 @@ export default function MatchTable({
   selectedCandidate: number | undefined;
   recordCandidate: Person;
   treeCandidates: Person[];
-  createPerson: Function;
-  setAttached: Function;
+  createPerson: () => void;
+  setAttached: (attached: boolean) => void;
 }) {
   const { t } = useTranslation();
   // Details are always shown
