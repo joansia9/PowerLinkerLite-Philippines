@@ -75,11 +75,8 @@
   transform: translateY(-50%);
   z-index: 1;
 
-  /* fixing the spacing of the scoreboard */
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(30%);
+  /* adjusted positioning for better visual alignment */
+  transform: translateY(-20%);
 
 }
 .potential-matches {

@@ -78,29 +78,9 @@
   --color-text: var(--dark-text);
   /* not used --color-primary: #e0e8e8; */
 
-/* adding a blue + yellow to do Philippines colors */
-
---blue-1: hsl(210, 67%, 06%);
---blue-2: hsl(210, 67%, 16%);
---blue-3: hsl(210, 67%, 26%);
---blue-4: hsl(210, 67%, 36%);
---blue-5: hsl(210, 67%, 46%); 
---blue-6: hsl(210, 67%, 56%);
+/* Philippines colors - keeping only used variables */
 --blue-7: hsl(210, 67%, 66%);
 --blue-8: hsl(210, 67%, 76%);
---blue-9: hsl(210, 67%, 86%);
---blue-10: hsl(210, 67%, 96%);
-
---yellow-1: hsl(50, 67%, 06%);
---yellow-2: hsl(50, 67%, 16%);
---yellow-3: hsl(50, 67%, 26%);
---yellow-4: hsl(50, 67%, 36%);
---yellow-5: hsl(50, 67%, 46%); 
---yellow-6: hsl(50, 67%, 56%);
---yellow-7: hsl(50, 67%, 66%);
---yellow-8: hsl(50, 67%, 76%);
---yellow-9: hsl(50, 67%, 86%);
---yellow-10: hsl(50, 67%, 96%);
 }
 
 body {
@@ -158,18 +138,6 @@ button {
 button:disabled {
   cursor: not-allowed;
 }
-
-button.false-enabled {
-  --color-disabled: var(--green-2);
-  --color-disabled-light: var(--color-accent-lightest);
-  --color-danger-lighter: var(--color-danger);
-}
-
-button.false-enabled.outlined {
-  --color-disabled: var(--green-4);
-}
-
-
 
 button:where(.reset) {
   background-color: unset;

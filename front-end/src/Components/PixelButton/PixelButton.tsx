@@ -21,7 +21,7 @@ const PixelButton = forwardRef<HTMLButtonElement, PixelButtonProps>(
       i18nValues,
       label,
       children,
-      variant = "neutral",
+      variant = "source",
       size = "md",
       block,
       className = "",
