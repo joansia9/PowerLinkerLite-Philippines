@@ -30,6 +30,18 @@
   .book-bg {
     background-position: center 0.5rem;
   }
+  
+  /* Mobile card-based book styling */
+  .page-home {
+    background: linear-gradient(45deg, #8B4513 0%, #A0522D 50%, #8B4513 100%);
+    /* Removed dot pattern for cleaner look */
+  }
+  
+  .book-bg {
+    background: none; /* Remove book background on mobile */
+    min-height: 100vh;
+    padding: 0.5rem;
+  }
 }
 
 .page-home header {

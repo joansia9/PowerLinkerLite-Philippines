@@ -51,6 +51,25 @@
   font-size: 0.9rem;
 }
 
+/* Mobile-first improvements */
+@media (max-width: 768px) {
+  .language-select {
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+    min-height: 44px; /* Apple's minimum touch target */
+    border-radius: 8px; /* More touch-friendly */
+  }
+  
+  .site-header {
+    padding: 0.5rem;
+    grid-template-columns: auto 1fr auto;
+  }
+  
+  .header-texts h1 {
+    font-size: 1.2rem;
+  }
+}
+
 /* Landscape phones/tablets: shrink header to maximize book area */
 @media (orientation: landscape) {
   .site-header { padding: 0.2rem 0.4rem; }

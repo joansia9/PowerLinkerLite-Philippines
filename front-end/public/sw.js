@@ -3,17 +3,22 @@ const CACHE_NAME = 'powerlinker-v1';
 // Function to get the actual asset filenames from the asset manifest
 async function getAssetManifest() {
   try {
-    const response = await fetch(self.location.origin + '/asset-manifest.json');//FIXME: error here (ROOT PROBLEM)
-    //TODO: error bc sw fetch relative to their own scope, not from the origin root.
-// 💥 BOOM: If the response is empty (like offline), this line throws
-    if(!response.ok || response.status === 0) {
-      throw new Error("No response or failed to fetch json")
+    // Fix: Use absolute path from registration scope
+    const response = await fetch('/asset-manifest.json');
+    
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
     }
+    
     const manifest = await response.json();
-    return manifest.files;
+    return manifest.files || {};
   } catch (error) {
-    console.error('[SW] Failed to load asset manifest:', error);
-    return {};
+    console.warn('[SW] Asset manifest not available, using fallback caching:', error.message);
+    // Return fallback assets for development/production
+    return {
+      'main.js': '/static/js/bundle.js',
+      'main.css': '/static/css/main.css'
+    };
   }
 }
 
@@ -144,6 +149,11 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
+  // Skip non-GET requests and external requests
+  if (event.request.method !== 'GET' || !event.request.url.startsWith(self.location.origin)) {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request)
       .then(cachedResponse => {
@@ -152,26 +162,72 @@ self.addEventListener('fetch', event => {
           return cachedResponse;
         }
 
-        return fetch(event.request);
-      })
-      .catch(error => {
-        console.error('[SW] Fetch failed:', event.request.url, error); //FIXME: ERROR HERE
+        // Try network first, fall back to cache
+        return fetch(event.request)
+          .then(networkResponse => {
+            // Cache successful responses for future use
+            if (networkResponse.ok && networkResponse.status === 200) {
+              const responseClone = networkResponse.clone();
+              caches.open(CACHE_NAME)
+                .then(cache => cache.put(event.request, responseClone));
+            }
+            return networkResponse;
+          })
+          .catch(error => {
+            console.warn('[SW] Network failed, trying offline fallbacks:', event.request.url);
 
-        // 👇 Document fallback
-        if (event.request.destination === 'document') {
-          return new Response(`
-            <!DOCTYPE html>
-            <html lang="en"><head><meta charset="UTF-8"><title>Offline</title></head>
-            <body><h1>You're offline 😭</h1><p>Please reconnect.</p></body></html>
-          `, { headers: { 'Content-Type': 'text/html' } });
-        }
+            // 👇 Document fallback - improved offline page
+            if (event.request.destination === 'document') {
+              return new Response(`
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                  <meta charset="UTF-8">
+                  <meta name="viewport" content="width=device-width, initial-scale=1">
+                  <title>Power Linker - Offline</title>
+                  <style>
+                    body { font-family: system-ui; text-align: center; padding: 2rem; background: #f5f5f5; }
+                    .offline-container { max-width: 400px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; }
+                    .logo { width: 64px; height: 64px; margin: 0 auto 1rem; background: #5B7A34; border-radius: 50%; }
+                    button { background: #5B7A34; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 4px; cursor: pointer; }
+                  </style>
+                </head>
+                <body>
+                  <div class="offline-container">
+                    <div class="logo"></div>
+                    <h1>You're offline</h1>
+                    <p>Power Linker needs an internet connection to fetch new genealogy hints.</p>
+                    <button onclick="window.location.reload()">Try Again</button>
+                  </div>
+                </body>
+                </html>
+              `, { 
+                headers: { 
+                  'Content-Type': 'text/html',
+                  'Cache-Control': 'no-cache'
+                } 
+              });
+            }
 
-        // 👇 Image fallback
-        if (event.request.destination === 'image') {
-          return caches.match('/images/undetermined_sex.svg');
-        }
+            // 👇 Image fallback
+            if (event.request.destination === 'image') {
+              return caches.match('/images/undetermined_sex.svg') || 
+                     new Response('', { status: 404 });
+            }
 
-        return new Response('', { status: 200 });
+            // 👇 API fallback
+            if (event.request.url.includes('/api/')) {
+              return new Response(JSON.stringify({ 
+                error: 'Offline', 
+                message: 'This feature requires an internet connection' 
+              }), { 
+                headers: { 'Content-Type': 'application/json' },
+                status: 503 
+              });
+            }
+
+            return new Response('', { status: 404 });
+          });
       })
   );
 });

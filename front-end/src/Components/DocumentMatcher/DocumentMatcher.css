@@ -103,6 +103,209 @@
   text-align: center;
 }
 
+/* Mobile card-based design */
+@media (max-width: 480px) {
+  .document-matcher {
+    background: #8B4513; /* Brown book-like background */
+    padding: 0.5rem;
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  
+  /* Language-based card colors */
+  [data-lang="en"] .potential-matches {
+    background: #e8f5e8; /* Light green for English */
+    border-color: #0f5132;
+  }
+  
+  [data-lang="tl"] .potential-matches {
+    background: #f5e8e8; /* Light red for Tagalog */
+    border-color: #7a1c1c;
+  }
+  
+  [data-lang="ceb"] .potential-matches {
+    background: #e8f0f5; /* Light blue for Cebuano */
+    border-color: #0d3b66;
+  }
+  
+  [data-lang="es"] .potential-matches {
+    background: #f0e8f5; /* Light purple for Spanish */
+    border-color: #4b2e83;
+  }
+  
+  /* Language-based scoreboard colors */
+  [data-lang="en"] .title-row {
+    background: #c8e6c9;
+    border-color: #0f5132;
+  }
+  
+  [data-lang="tl"] .title-row {
+    background: #ffcdd2;
+    border-color: #7a1c1c;
+  }
+  
+  [data-lang="ceb"] .title-row {
+    background: #bbdefb;
+    border-color: #0d3b66;
+  }
+  
+  [data-lang="es"] .title-row {
+    background: #e1bee7;
+    border-color: #4b2e83;
+  }
+  
+  /* Language-based counter colors */
+  [data-lang="en"] .counter--title {
+    background: #0f5132;
+    border-color: #2e7d32;
+  }
+  
+  [data-lang="tl"] .counter--title {
+    background: #7a1c1c;
+    border-color: #c62828;
+  }
+  
+  [data-lang="ceb"] .counter--title {
+    background: #0d3b66;
+    border-color: #1976d2;
+  }
+  
+  [data-lang="es"] .counter--title {
+    background: #4b2e83;
+    border-color: #7b1fa2;
+  }
+  
+  /* Card container styling */
+  .potential-matches {
+    background: #F5DEB3; /* Parchment color */
+    border: 4px solid #4A4A4A; /* Reduced border thickness */
+    border-radius: 8px;
+    padding: 1rem; /* Reduced padding */
+    margin: 0.5rem 0;
+    position: relative;
+    width: 100%;
+    max-width: calc(100vw - 1rem);
+    box-sizing: border-box;
+    /* Removed complex box-shadow for cleaner look */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  
+  /* Scoreboard styling */
+  .title-row {
+    background: #D2B48C;
+    border: 3px solid #4A4A4A;
+    border-radius: 6px;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    max-width: calc(100vw - 1rem);
+    box-sizing: border-box;
+  }
+  
+  .counter--title {
+    position: relative;
+    width: auto;
+    height: auto;
+    background: #8B4513;
+    color: #F5DEB3;
+    border: 2px solid #4A4A4A;
+    border-radius: 4px;
+    padding: 0.25rem 0.75rem;
+    margin-top: 0.25rem;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  
+  /* Button container styling */
+  .attach-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0;
+    margin-top: 1rem;
+    box-sizing: border-box;
+  }
+  
+  /* Button sizing for card layout */
+  .pixel-btn {
+    --btn-w: 100%;
+    --btn-h: 48px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: monospace;
+    box-sizing: border-box;
+  }
+  
+  /* Match button (green) */
+  .pixel-btn--match {
+    --bg: #4CAF50;
+    --bg2: #388E3C;
+    grid-column: 1;
+    grid-row: 2;
+  }
+  
+  /* Source button (orange) - spans top row */
+  .source-linker-inline {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+  
+  .source-linker-inline .pixel-btn {
+    --bg: #FF9800;
+    --bg2: #F57C00;
+    width: 100%;
+  }
+  
+  /* Skip/Not Match button (red) */
+  .pixel-btn--notMatch {
+    --bg: #F44336;
+    --bg2: #D32F2F;
+    grid-column: 2;
+    grid-row: 2;
+  }
+  
+  /* Button text overrides for mobile */
+  .pixel-btn--match .pixel-btn__label {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+  
+  .pixel-btn--notMatch .pixel-btn__label {
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  
+  .source-linker-inline .pixel-btn__label {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Enhanced pixel borders for mobile */
+  .pixel-btn {
+    --p: 5px; /* Thicker borders for mobile */
+    border-image: none;
+    image-rendering: pixelated;
+  }
+  
+  /* Mobile hover effects */
+  .pixel-btn:hover:not(:disabled) {
+    --p: 7px;
+    transform: translateY(-2px);
+    box-shadow: 
+      0 0 0 var(--p) var(--stroke),
+      0 calc(var(--p) + 2px) 0 0 var(--shadow);
+  }
+}
+
 .document-matcher .loader {
   margin: auto;
   width: fit-content;

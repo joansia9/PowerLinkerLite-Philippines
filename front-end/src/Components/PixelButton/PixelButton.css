@@ -46,6 +46,13 @@
   pointer-events:none;
 }
 
+/* Hover effect - bolder borders */
+.pixel-btn:hover:not(:disabled) {
+  --p: 6px; /* Increase pixel size for bolder border */
+  transform: translateY(-1px); /* Slight lift effect */
+  transition: all 0.15s ease-out;
+}
+
 /* Focus ring (keyboard) */
 .pixel-btn:focus-visible {
   box-shadow:
@@ -80,6 +87,21 @@
   overflow: hidden;
   text-overflow: ellipsis; /* keep consistent width regardless of text */
   max-width: 100%;
+}
+
+/* Mobile touch improvements */
+@media (max-width: 768px) {
+  .pixel-btn {
+    /* Prevent zoom on double-tap */
+    touch-action: manipulation;
+    /* Larger minimum touch target */
+    min-height: 48px;
+    --btn-h: 48px;
+  }
+  
+  .pixel-btn__label {
+    font-size: 13px; /* Slightly larger on mobile */
+  }
 }
 
 

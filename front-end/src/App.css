@@ -73,15 +73,20 @@
     0 var(--shadow-distance-1) var(--shadow-distance-1) var(--gray-6)
   );
 
-  /* Remove old unused variables */
-  --color-white: white;
-  --color-text: var(--dark-text);
-  /* not used --color-primary: #e0e8e8; */
+  /* Mobile performance optimizations */
+  --mobile-transition: 0.2s ease-out;
 
-/* Philippines colors - keeping only used variables */
---blue-7: hsl(210, 67%, 66%);
---blue-8: hsl(210, 67%, 76%);
+    /* Remove old unused variables */
+    --color-white: white;
+    --color-text: var(--dark-text);
+    /* not used --color-primary: #e0e8e8; */
+  
+  /* Philippines colors - keeping only used variables */
+  --blue-7: hsl(210, 67%, 66%);
+  --blue-8: hsl(210, 67%, 76%);
+  
 }
+
 
 body {
   margin: 0;
@@ -187,4 +192,34 @@ button.outlined:hover:not(:disabled) {
   color: black;
   text-align: center;
   padding: 0.5rem;
+}
+
+/* Mobile-specific performance and UX improvements */
+@media (max-width: 768px) {
+  /* Reduce shadows on mobile for performance */
+  :root {
+    --shadow-1: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  /* Improve scrolling performance */
+  * {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+  
+  /* Optimize button interactions */
+  button {
+    transition: var(--mobile-transition);
+  }
+  
+  button:active {
+    transform: scale(0.98);
+  }
+  
+  /* Prevent text selection on interactive elements */
+  button, .pixel-btn, .header-button {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
 }
