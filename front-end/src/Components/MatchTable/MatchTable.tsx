@@ -1,4 +1,5 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, memo } from "react"; 
+//memo allows to skip loading without rerendering
 import Person from "../../Models/Person";
 // Collapsible removed; events are always visible
 import getSortedEventTypes from "../PotentialMatch/EventIndex";
@@ -12,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 //2. load when needed
 //3. use conditionally
 
-export default function MatchTable({
+const MatchTable = memo(function MatchTable({
   selectedCandidate,
   recordCandidate,
   treeCandidates,
@@ -87,7 +88,7 @@ export default function MatchTable({
     };
     
     loadComparator();
-  }, [needsNameComparison, nameComparator, isLoadingComparator]);
+  }, [needsNameComparison]); // Removed nameComparator and isLoadingComparator to prevent unnecessary re-runs
 
   const treeCandidate = useMemo(() => {
     if (selectedCandidate === -1) {
@@ -295,7 +296,9 @@ export default function MatchTable({
       </div>
     );
   }
-}
+});
+
+export default MatchTable;
 
 export function MatchHeader({
   candidate,

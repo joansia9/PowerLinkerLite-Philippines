@@ -222,4 +222,20 @@ button.outlined:hover:not(:disabled) {
     user-select: none;
     -webkit-tap-highlight-color: transparent;
   }
+  
+  /* Optimize language switching performance */
+  [data-lang] * {
+    will-change: auto; /* Reset will-change after language switch */
+  }
+  
+  /* Use GPU acceleration for language-based color changes */
+  .potential-matches,
+  .title-row,
+  .counter--title,
+  .event-details-toggle,
+  .potential-match-details .event-entry,
+  .potential-match-header img,
+  .potential-match-header svg {
+    transform: translateZ(0); /* Force GPU layer for smoother transitions */
+  }
 }
