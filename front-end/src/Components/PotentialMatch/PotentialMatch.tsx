@@ -1,8 +1,7 @@
 import "./PotentialMatch.css";
-import Person, { Relationship } from "../../Models/Person";
+import Person from "../../Models/Person";
 
 import MatchTable from "../MatchTable/MatchTable";
-import NewWindowLink from "../NewWindowLink/NewWindowLink";
 
 //TODO: changing the fields to the translated fields based on the user choice
 //FIXME: hello
