@@ -16,14 +16,20 @@ Ongoing
 
 - [React](https://reactjs.org/)
 
-## Installation
+## How to run
 
-Clone the repository, go into the `front-end` folder, and run `npm install` to install node_modules. Then, run `echo "REACT_APP_LAMBDA_URL=\"http://localhost:8001\"" >> .env`
+front end:
+cd front-end
+npm install
+npm run start-front-end
 
-### Running the Local Lambda server
-`back-end/lambda_dev_server.py` allows you to run lambdas locally for testing purposes. It uses `python-lambda-local` to execute lambdas without the validation of the production server, allowing access from localhost. It uses `python-dotenv` to access an `.env` file that decides whether you are interacting with stg or prd backend. 
-
-From within a virtual environment, enter the `back-end` directory then run `pip install -r requirements.txt`, `echo "DEPLOYMENT_BRANCH=\"stg\"" >> lambda/.env`, and finally  `python3 lambda_dev_server.py` to host the server on `localhost:8000` with lambdas that interact with the stg backend.
+back end:
+cd back-end
+source venv/bin/activate
+pip install -r requirements.txt 
+echo "DEPLOYMENT_BRANCH=\"stg\"" >> lambda/.env
+- input aws keys before --
+python3 lambda_dev_server.py
 
 ### Configure Lambda URL Mappings
 To use this server, edit `URL_MAPPINGS` in `lambda_server_settings.py` with your URL-to-handler mappings as they are set up in API Gateway. 

@@ -4,7 +4,6 @@ import Person from "../../Models/Person";
 import MatchTable from "../MatchTable/MatchTable";
 
 //TODO: changing the fields to the translated fields based on the user choice
-//FIXME: hello
 //1. use the enum value as a translation key
 import { useTranslation } from 'react-i18next';
 

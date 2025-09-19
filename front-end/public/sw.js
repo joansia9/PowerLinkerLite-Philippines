@@ -176,7 +176,6 @@ self.addEventListener('fetch', event => {
           .catch(error => {
             console.warn('[SW] Network failed, trying offline fallbacks:', event.request.url);
 
-            // 👇 Document fallback - improved offline page
             if (event.request.destination === 'document') {
               return new Response(`
                 <!DOCTYPE html>
@@ -209,13 +208,11 @@ self.addEventListener('fetch', event => {
               });
             }
 
-            // 👇 Image fallback
             if (event.request.destination === 'image') {
               return caches.match('/images/undetermined_sex.svg') || 
                      new Response('', { status: 404 });
             }
 
-            // 👇 API fallback
             if (event.request.url.includes('/api/')) {
               return new Response(JSON.stringify({ 
                 error: 'Offline', 
