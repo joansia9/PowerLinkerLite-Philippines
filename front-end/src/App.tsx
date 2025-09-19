@@ -10,6 +10,10 @@ import { Layout } from "./Layout/Layout";
 import { Loading } from "./Components/Loading/Loading";
 import { useTranslation } from 'react-i18next';
 
+interface BeforeInstallPromptEvent extends Event {
+  prompt(): Promise<void>;
+  userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
+}
 
 //now: dynamic imports with react.lazy
 // Lazy load pages to reduce initial bundle size
@@ -25,13 +29,31 @@ const NotFound = lazy(() =>
 
 function App() {
   const { t } = useTranslation(); // ← NEW: Translation hook for internationalization in the front end!
-
-
+    
+  
+  
   //offline page
   const [isOffline, setIsOffline] = useState(!navigator.onLine);
   const [showOfflineBanner, setShowOfflineBanner] = useState(false);
 
   useEffect(() => {
+    let deferredPrompt: BeforeInstallPromptEvent | null = null;
+  
+    const handleBeforeInstallPrompt = (e: Event) => {
+      console.log('[PWA] Install prompt available');
+      e.preventDefault();
+      deferredPrompt = e as BeforeInstallPromptEvent;
+    };
+  
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
+  }, []);
+
+  useEffect(() => {
+
     // More robust offline detection
     const checkOnlineStatus = async () => {
       if (!navigator.onLine) {
