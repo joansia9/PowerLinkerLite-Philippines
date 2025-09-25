@@ -1,5 +1,9 @@
 const CACHE_NAME = 'powerlinker-v1';
 
+if (!('serviceWorker' in navigator)) {
+  console.log('Service workers not supported');
+}
+
 // Function to get the actual asset filenames from the asset manifest
 async function getAssetManifest() {
   try {
