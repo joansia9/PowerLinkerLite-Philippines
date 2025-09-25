@@ -18,12 +18,12 @@ Ongoing
 
 ## How to run
 
-front end:
+## front end:
 cd front-end
 npm install
 npm run start-front-end
 
-back end:
+## back end:
 cd back-end
 source venv/bin/activate
 pip install -r requirements.txt 
